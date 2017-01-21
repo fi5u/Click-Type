@@ -1,0 +1,6 @@
+{
+  "name": "CharRow",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./CharRow.js"
+}

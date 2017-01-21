@@ -12,6 +12,7 @@ import React from 'react';
 import Link from '../Link';
 
 function Footer() {
+  return null
   return (
     <footer className="mdl-mini-footer">
       <div className="mdl-mini-footer__left-section">

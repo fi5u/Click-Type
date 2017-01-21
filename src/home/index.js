@@ -1,45 +1,110 @@
-/**
- * React Static Boilerplate
- * https://github.com/kriasoft/react-static-boilerplate
- *
- * Copyright © 2015-present Kriasoft, LLC. All rights reserved.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE.txt file in the root directory of this source tree.
- */
+import React, { PropTypes, Component } from 'react'
+import { connect } from 'react-redux'
+import Layout from '../../components/Layout'
+import s from './styles.css'
+import { title, html } from './index.md'
+import CharGrid from '../../components/CharGrid'
+import {
+    tickSpeed,
+} from '../../tools/config'
+import {
+    select,
+    startTick,
+    stopTick,
+    tick,
+} from '../actions/char-grid'
 
-import React, { PropTypes } from 'react';
-import Layout from '../../components/Layout';
-import s from './styles.css';
-import { title, html } from './index.md';
+class HomePage extends Component {
+    static propTypes = {
+        grid: PropTypes.array,
+        dispatch: PropTypes.func.isRequired,
+    }
 
-class HomePage extends React.Component {
+    constructor() {
+        super()
 
-  static propTypes = {
-    articles: PropTypes.array.isRequired,
-  };
+        document.addEventListener('keydown', this.detectClick.bind(this), true)
+        this.ticker = null
+    }
 
-  componentDidMount() {
-    document.title = title;
-  }
+    componentDidMount() {
 
-  render() {
-    return (
-      <Layout className={s.content}>
-        <div dangerouslySetInnerHTML={{ __html: html }} />
-        <h4>Articles</h4>
-        <ul>
-          {this.props.articles.map((article, i) =>
-            <li key={i}><a href={article.url}>{article.title}</a> by {article.author}</li>
-          )}
-        </ul>
-        <p>
-          <br /><br />
-        </p>
-      </Layout>
-    );
-  }
+    }
 
+    componentDidUpdate() {
+
+    }
+
+    detectClick(event) {
+        if(event.keyCode !== 32) { return }
+        event.preventDefault()
+
+        if(this.props.tickStarted || this.props.activeAxis === 'col') {
+            this.props.dispatch(select())
+            // Stop and pause
+            this.stopTick()
+            window.setTimeout(() => {
+                if(this.props.tickStarted) { return }
+                this.startTick()
+            }, tickSpeed)
+        }
+        else {
+            this.startTick()
+        }
+    }
+
+    startTick() {
+        const {
+            dispatch,
+        } = this.props
+
+        dispatch(startTick())
+        this.ticker = window.setInterval(() => {
+            dispatch(tick())
+        }, tickSpeed)
+    }
+
+    stopTick() {
+        clearInterval(this.ticker)
+        this.props.dispatch(stopTick())
+    }
+
+    render() {
+        const {
+            activeAxis,
+            col,
+            grid,
+            output,
+            row,
+        } = this.props
+
+        return (
+            <Layout className={s.content}>
+                <CharGrid
+                    activeAxis={activeAxis}
+                    activeCol={col}
+                    activeRow={row}
+                    output={output}
+                    rows={grid}
+                />
+            </Layout>
+        )
+    }
 }
 
-export default HomePage;
+function mapStateToProps(state) {
+    const {
+        charGrid,
+    } = state
+
+    return {
+        activeAxis: charGrid.activeAxis,
+        col: charGrid.col,
+        grid: charGrid.primaryGrid,
+        output: charGrid.output,
+        row: charGrid.row,
+        tickStarted: charGrid.tickStarted,
+    }
+}
+
+export default connect(mapStateToProps)(HomePage)
