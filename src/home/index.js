@@ -1,8 +1,5 @@
 import React, { PropTypes, Component } from 'react'
 import { connect } from 'react-redux'
-import Layout from '../../components/Layout'
-import s from './styles.css'
-import { title, html } from './index.md'
 import CharGrid from '../../components/CharGrid'
 import {
     tickSpeed,
@@ -79,7 +76,7 @@ class HomePage extends Component {
         } = this.props
 
         return (
-            <Layout className={s.content}>
+            <div>
                 <CharGrid
                     activeAxis={activeAxis}
                     activeCol={col}
@@ -93,7 +90,7 @@ class HomePage extends Component {
                         value={output}
                     />
                 </div>
-            </Layout>
+            </div>
         )
     }
 }

@@ -1,4 +1,4 @@
-#ClickWrite
+#ClickType
 
 A webapp built with React. Gives the user the ability to type with clicking a single button.
 
