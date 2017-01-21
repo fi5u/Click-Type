@@ -88,7 +88,10 @@ class HomePage extends Component {
                 />
 
                 <div>
-                    {output}
+                    <textarea
+                        readOnly
+                        value={output}
+                    />
                 </div>
             </Layout>
         )
