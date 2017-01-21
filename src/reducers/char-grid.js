@@ -70,6 +70,11 @@ export default function charGrid(state = initialState, action) {
                 col: selectedChar === funcChars.backup ? 0 : state.col,
             })
 
+        case types.UPDATE_OUTPUT:
+            return Object.assign({}, state, {
+                output: action.text,
+            })
+
         default:
             return state
     }

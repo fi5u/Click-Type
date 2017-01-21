@@ -23,3 +23,10 @@ export function select() {
         type: types.SELECT,
     }
 }
+
+export function updateOutput(text) {
+    return {
+        type: types.UPDATE_OUTPUT,
+        text,
+    }
+}

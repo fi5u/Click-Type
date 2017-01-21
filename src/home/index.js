@@ -9,6 +9,7 @@ import {
     startTick,
     stopTick,
     tick,
+    updateOutput,
 } from '../actions/char-grid'
 
 class HomePage extends Component {
@@ -22,6 +23,7 @@ class HomePage extends Component {
 
         document.addEventListener('keydown', this.detectClick.bind(this), true)
         this.ticker = null
+        this.updateOutput = this.updateOutput.bind(this)
     }
 
     componentDidMount() {
@@ -66,6 +68,10 @@ class HomePage extends Component {
         this.props.dispatch(stopTick())
     }
 
+    updateOutput(event) {
+        this.props.dispatch(updateOutput(event.target.value))
+    }
+
     render() {
         const {
             activeAxis,
@@ -86,7 +92,7 @@ class HomePage extends Component {
 
                 <div>
                     <textarea
-                        readOnly
+                        onChange={this.updateOutput}
                         value={output}
                     />
                 </div>
