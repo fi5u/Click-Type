@@ -16,7 +16,6 @@ class CharGrid extends React.Component {
         ]).isRequired,
         activeCol: PropTypes.number.isRequired,
         activeRow: PropTypes.number.isRequired,
-        output: PropTypes.string.isRequired,
         rows: PropTypes.array.isRequired,
     }
 
@@ -25,7 +24,6 @@ class CharGrid extends React.Component {
             activeAxis,
             activeCol,
             activeRow,
-            output,
             rows,
         } = this.props // eslint-disable-line no-use-before-define
 
@@ -44,10 +42,6 @@ class CharGrid extends React.Component {
                         />
                     )
                 })}
-
-                <div>
-                    {output}
-                </div>
             </div>
         )
     }

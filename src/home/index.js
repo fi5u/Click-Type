@@ -84,9 +84,12 @@ class HomePage extends Component {
                     activeAxis={activeAxis}
                     activeCol={col}
                     activeRow={row}
-                    output={output}
                     rows={grid}
                 />
+
+                <div>
+                    {output}
+                </div>
             </Layout>
         )
     }

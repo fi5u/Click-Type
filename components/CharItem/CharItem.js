@@ -29,7 +29,7 @@ class CharItem extends React.Component {
         if(Object.values(funcChars).indexOf(children) > -1 && !isRowActive) {
             color = '#fff'
         }
-        if(isCharActive) {
+        if(isCharActive && isRowActive) {
             color = '#eee'
         }
 
@@ -38,7 +38,7 @@ class CharItem extends React.Component {
                 style={{
                     ...style.base,
                     ...{
-                        background: isCharActive ? 'rgba(103, 90, 10, 0.6)' : 'transparent',
+                        background: isCharActive && isRowActive ? 'rgba(103, 90, 10, 0.6)' : 'transparent',
                         color: color,
                     }
                 }}
