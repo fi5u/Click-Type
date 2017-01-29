@@ -117,6 +117,10 @@ export default function charGrid(state = initialState, action) {
         case types.SELECT:
             const selectedChar = primaryGrid[state.row][state.col]
             let output = state.activeAxis === 'col' && Object.values(funcChars).indexOf(selectedChar) === -1 ? `${state.output}${selectedChar}` : state.output
+            if(state.row === 0 && state.activeAxis === 'col') {
+                // Selected a suggested word, add a space
+                output = `${output} `
+            }
             if(selectedChar === funcChars.backspace) {
                 output = output.slice(0, -1)
             }
