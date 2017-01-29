@@ -133,8 +133,9 @@ export default function charGrid(state = initialState, action) {
             let suggestedWords = []
             const firstOutputLetter = output.charAt(0).toLowerCase()
             if(output.length > 1 && words.hasOwnProperty(firstOutputLetter)) {
-                suggestedWords = words[output.charAt(0).toLowerCase()].filter(word => {
-                    return word.indexOf(output) > -1
+                let testWord = output.trim().split(' ').pop()
+                suggestedWords = words[testWord.charAt(0).toLowerCase()].filter(word => {
+                    return word.indexOf(testWord) > -1
                 })
             }
 
