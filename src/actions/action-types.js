@@ -1,4 +1,3 @@
-export const SAVE_WORDS = 'SAVE_WORDS'
 export const START_TICK = 'START_TICK'
 export const STOP_TICK = 'STOP_TICK'
 export const TICK = 'TICK'

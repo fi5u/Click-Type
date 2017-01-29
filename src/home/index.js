@@ -5,7 +5,6 @@ import {
     tickSpeed,
 } from '../../tools/config'
 import {
-    saveWords,
     select,
     setSuggestedWords,
     startTick,
@@ -29,7 +28,7 @@ class HomePage extends Component {
     }
 
     componentDidMount() {
-        this.props.dispatch(saveWords(this.props.words))
+
     }
 
     componentDidUpdate() {
@@ -110,7 +109,7 @@ class HomePage extends Component {
                 </div>
 
                 <div>
-                    {suggestedWords.map(word => {
+                    {output.length >= 1 && suggestedWords.map(word => {
                         return(
                             <span
                                 key={`suggested-word-${word}`}

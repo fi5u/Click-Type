@@ -60,13 +60,14 @@ const words = {
     z: wordsZ,
 }
 
-console.log(words.hasOwnProperty('?'))
+const defaultSuggestedWords = ['I', 'you', 'what', 'where', 'when']
 
 const initialState = {
     activeAxis: 'row',
     col: 0,
     output: '',
     primaryGrid: [
+        defaultSuggestedWords,
         ["a", "b", "c", "d", "e", "f"],
         ["g", "h", "i", "j", "k", "l"],
         ["m", "n", "o", "p", "q", "r"],
@@ -74,9 +75,8 @@ const initialState = {
         ["y", "z", characters.space, ".", ","],
     ],
     row: 0,
-    suggestedWords: [],
+    suggestedWords: defaultSuggestedWords,
     tickStarted: false,
-    words: [],
 }
 
 for(const key in activeRowChars) {
@@ -95,11 +95,6 @@ for(const key in activeRowChars) {
 export default function charGrid(state = initialState, action) {
     const primaryGrid = state.primaryGrid
     switch(action.type) {
-        case types.SAVE_WORDS:
-            return Object.assign({}, state, {
-                words: [],
-            })
-
         case types.START_TICK:
             return Object.assign({}, state, {
                 tickStarted: true,
