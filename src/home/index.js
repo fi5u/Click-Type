@@ -5,7 +5,9 @@ import {
     tickSpeed,
 } from '../../tools/config'
 import {
+    saveWords,
     select,
+    setSuggestedWords,
     startTick,
     stopTick,
     tick,
@@ -27,7 +29,7 @@ class HomePage extends Component {
     }
 
     componentDidMount() {
-
+        this.props.dispatch(saveWords(this.props.words))
     }
 
     componentDidUpdate() {
@@ -35,11 +37,20 @@ class HomePage extends Component {
     }
 
     detectClick(event) {
+        const {
+            activeAxis,
+            dispatch,
+            tickStarted,
+            output,
+            words,
+        } = this.props
+
         if(event.keyCode !== 32) { return }
         event.preventDefault()
 
-        if(this.props.tickStarted || this.props.activeAxis === 'col') {
-            this.props.dispatch(select())
+        if(tickStarted || activeAxis === 'col') {
+            dispatch(select())
+
             // Stop and pause
             this.stopTick()
             window.setTimeout(() => {
@@ -79,6 +90,7 @@ class HomePage extends Component {
             grid,
             output,
             row,
+            suggestedWords,
         } = this.props
 
         return (
@@ -96,6 +108,18 @@ class HomePage extends Component {
                         value={output}
                     />
                 </div>
+
+                <div>
+                    {suggestedWords.map(word => {
+                        return(
+                            <span
+                                key={`suggested-word-${word}`}
+                            >
+                                {word}&nbsp;
+                            </span>
+                        )
+                    })}
+                </div>
             </div>
         )
     }
@@ -112,6 +136,7 @@ function mapStateToProps(state) {
         grid: charGrid.primaryGrid,
         output: charGrid.output,
         row: charGrid.row,
+        suggestedWords: charGrid.suggestedWords,
         tickStarted: charGrid.tickStarted,
     }
 }
