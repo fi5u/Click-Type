@@ -107,18 +107,6 @@ class HomePage extends Component {
                         value={output}
                     />
                 </div>
-
-                <div>
-                    {output.length >= 1 && suggestedWords.map(word => {
-                        return(
-                            <span
-                                key={`suggested-word-${word}`}
-                            >
-                                {word}&nbsp;
-                            </span>
-                        )
-                    })}
-                </div>
             </div>
         )
     }

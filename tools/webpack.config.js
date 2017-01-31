@@ -159,10 +159,6 @@ const config = {
         test: /\.(eot|ttf|wav|mp3)$/,
         loader: 'file-loader',
       },
-      {
-        test: /\.json$/,
-        loader: 'json'
-      },
     ],
   },
 };

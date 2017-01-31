@@ -129,18 +129,26 @@ export default function charGrid(state = initialState, action) {
             }
 
             // Fetch suggestions
-            let suggestedWords = []
-            const firstOutputLetter = output.charAt(0).toLowerCase()
-            if(output.length > 1 && words.hasOwnProperty(firstOutputLetter)) {
-                let testWord = output.trim().split(' ').pop()
-                suggestedWords = words[testWord.charAt(0).toLowerCase()].filter(word => {
-                    return word.indexOf(testWord) > -1
-                })
+            let suggestedWords = state.suggestedWords
+            if(output.length > 1) {
+                let testWord = output.trim().split(' ').pop() // get last word from output
+                let firstOutputLetter = testWord.charAt(0).toLowerCase()
+                if(words.hasOwnProperty(firstOutputLetter)) {
+                    const wordCount = 5 // number of words to fetch
+                    suggestedWords = words[firstOutputLetter]
+                        .filter(word => {
+                            return word.indexOf(testWord) > -1
+                        })
+                    if(suggestedWords.length > wordCount) {
+                        suggestedWords.length = wordCount
+                    }
+                }
             }
 
             return Object.assign({}, state, {
                 activeAxis: state.activeAxis === 'row' ? 'col' : selectedChar === funcChars.backup ? 'row' : 'col',
                 output: output,
+                primaryGrid: [suggestedWords].concat(state.primaryGrid.slice(1)),
                 col: selectedChar === funcChars.backup ? 0 : state.col,
                 suggestedWords: suggestedWords,
             })
