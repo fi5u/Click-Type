@@ -1,0 +1,8 @@
+.GridRow {
+    display: flex;
+    opacity: .6;
+}
+
+.GridRow--is-active {
+    opacity: 1;
+}

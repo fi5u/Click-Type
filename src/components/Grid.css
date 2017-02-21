@@ -1,0 +1,5 @@
+.Grid {
+    display: inline-block;
+    flex-direction: column;
+    font-family: 'Courier New', monospace;
+}

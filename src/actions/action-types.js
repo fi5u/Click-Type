@@ -1,6 +1,6 @@
+export const SELECT = 'SELECT'
 export const START_TICK = 'START_TICK'
 export const STOP_TICK = 'STOP_TICK'
 export const TICK = 'TICK'
-export const SELECT = 'SELECT'
 export const UPDATE_OUTPUT = 'UPDATE_OUTPUT'
-export const SET_SUGGESTED_WORDS = 'SET_SUGGESTED_WORDS'
+export const UPDATE_SUGGESTED_WORDS = 'UPDATE_SUGGESTED_WORDS'

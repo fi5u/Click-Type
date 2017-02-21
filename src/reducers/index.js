@@ -1,6 +1,10 @@
 import { combineReducers } from 'redux'
-import charGrid from './char-grid'
+import grids from './grids'
+import output from './output'
+import timings from './timings'
 
 export default combineReducers({
-    charGrid,
+    grids,
+    output,
+    timings,
 })
