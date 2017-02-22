@@ -1,0 +1,88 @@
+exports[`test renders App correctly 1`] = `
+<div
+  className="App">
+  <div>
+    <div
+      className="Grid">
+      <div
+        className="GridRow GridRow--is-active btn-group"
+        role="group">
+        <button
+          className="GridItem GridItem--is-active btn btn-default"
+          disabled={false}
+          onClick={[Function]}
+          type="button">
+          a
+        </button>
+        <button
+          className="GridItem btn btn-default"
+          disabled={false}
+          onClick={[Function]}
+          type="button">
+          b
+        </button>
+        <button
+          className="GridItem btn btn-default"
+          disabled={false}
+          onClick={[Function]}
+          type="button">
+          c
+        </button>
+      </div>
+      <div
+        className="GridRow btn-group"
+        role="group">
+        <button
+          className="GridItem btn btn-default"
+          disabled={false}
+          onClick={[Function]}
+          type="button">
+          d
+        </button>
+        <button
+          className="GridItem btn btn-default"
+          disabled={false}
+          onClick={[Function]}
+          type="button">
+          e
+        </button>
+        <button
+          className="GridItem btn btn-default"
+          disabled={false}
+          onClick={[Function]}
+          type="button">
+          f
+        </button>
+      </div>
+      <div
+        className="GridRow btn-group"
+        role="group">
+        <button
+          className="GridItem btn btn-default"
+          disabled={false}
+          onClick={[Function]}
+          type="button">
+          g
+        </button>
+        <button
+          className="GridItem btn btn-default"
+          disabled={false}
+          onClick={[Function]}
+          type="button">
+          h
+        </button>
+        <button
+          className="GridItem btn btn-default"
+          disabled={false}
+          onClick={[Function]}
+          type="button">
+          i
+        </button>
+      </div>
+    </div>
+  </div>
+  <textarea
+    onChange={[Function]}
+    value="" />
+</div>
+`;

@@ -1,0 +1,27 @@
+exports[`test renders GridRow correctly 1`] = `
+<div
+  className="GridRow btn-group"
+  role="group">
+  <button
+    className="GridItem btn btn-default"
+    disabled={false}
+    onClick={[Function]}
+    type="button">
+    a
+  </button>
+  <button
+    className="GridItem btn btn-default"
+    disabled={false}
+    onClick={[Function]}
+    type="button">
+    b
+  </button>
+  <button
+    className="GridItem btn btn-default"
+    disabled={false}
+    onClick={[Function]}
+    type="button">
+    c
+  </button>
+</div>
+`;
