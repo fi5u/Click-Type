@@ -124,9 +124,9 @@ export class App extends Component { // export from here to allow tests w/out re
                     />
                 </div>
 
-                <div>
-                    {output}
-                </div>
+                <textarea
+                    value={output}
+                />
             </div>
         )
     }
