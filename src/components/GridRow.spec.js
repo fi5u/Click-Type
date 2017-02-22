@@ -18,8 +18,30 @@ it('renders GridRow without crashing', () => {
 })
 
 it('renders GridRow correctly', () => {
-    const tree = renderer.create(
+    let component = renderer.create(
         <GridRow {...props} />
-    ).toJSON()
+    )
+    let tree = component.toJSON()
+    expect(tree).toMatchSnapshot()
+
+    // Make row active
+    component = renderer.create(
+        <GridRow
+            {...props}
+            isActive={true}
+        />
+    )
+    tree = component.toJSON()
+    expect(tree).toMatchSnapshot()
+
+    // Make next button active
+    component = renderer.create(
+        <GridRow
+            {...props}
+            activeButtonIteration={1}
+            isActive={true}
+        />
+    )
+    tree = component.toJSON()
     expect(tree).toMatchSnapshot()
 })
