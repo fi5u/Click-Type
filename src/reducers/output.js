@@ -8,6 +8,11 @@ const initialState = {
 export default function output(state = initialState, action) {
     switch(action.type) {
 
+    case types.SET_OUTPUT:
+        return Object.assign({}, state, {
+            output: action.output,
+        })
+
     case types.UPDATE_OUTPUT: {
         // Do not output backup character
         if(action.character === config.chars.backup) {

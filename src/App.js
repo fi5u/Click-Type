@@ -8,6 +8,10 @@ import {
     updateSuggestedWords,
 } from './actions/grids'
 import {
+    setOutput,
+    updateOutput,
+} from './actions/output'
+import {
     startTick,
     stopTick,
     tick,
@@ -19,9 +23,6 @@ import {
 import Grid from './components/Grid'
 import { config } from './config'
 import { connect } from 'react-redux'
-import {
-    updateOutput,
-} from './actions/output'
 
 export class App extends Component { // export from here to allow tests w/out redux
     constructor() {
@@ -31,11 +32,16 @@ export class App extends Component { // export from here to allow tests w/out re
 
         this.clickButton = this.clickButton.bind(this)
         this.clickMainButton = this.clickMainButton.bind(this)
+        this.outputUpdate = this.outputUpdate.bind(this)
     }
 
-    clickButton(character) {
-        this.props.dispatch(updateOutput(character))
+    componentDidUpdate(prevProps) {
+        if(prevProps.output === this.props.output) { return }
         this.props.dispatch(updateSuggestedWords(this.getSuggestedWords()))
+    }
+
+    clickButton(output, replace = false) {
+        this.props.dispatch(replace ? setOutput(output) : updateOutput(output))
     }
 
     clickMainButton() {
@@ -58,7 +64,8 @@ export class App extends Component { // export from here to allow tests w/out re
     }
 
     detectClick(event) {
-        if(event.keyCode !== 32) { return }
+        // If space or typing directly in textarea, then ignore
+        if(event.keyCode !== 32 || document.activeElement.tagName === 'TEXTAREA') { return }
         this.clickMainButton()
         event.preventDefault()
     }
@@ -73,7 +80,6 @@ export class App extends Component { // export from here to allow tests w/out re
                 const wordPart = this.props.output.trim().split(' ').pop()
                 const stringAtStart = [] // store words that contain string at start
                 const stringInString = [] // store words that constain string not at start
-
                 for(let i = 0, len = words.length; i < len; i++) {
                     if(words[i].indexOf(wordPart) === 0) {
                         stringAtStart.push(words[i])
@@ -89,6 +95,10 @@ export class App extends Component { // export from here to allow tests w/out re
             }
         }
         return suggestedWords
+    }
+
+    outputUpdate(event) {
+        this.clickButton(event.target.value, true)
     }
 
     startTick() {
@@ -125,6 +135,7 @@ export class App extends Component { // export from here to allow tests w/out re
                 </div>
 
                 <textarea
+                    onChange={this.outputUpdate}
                     value={output}
                 />
             </div>
