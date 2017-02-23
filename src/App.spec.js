@@ -20,6 +20,15 @@ it('renders App without crashing', () => {
     )
 })
 
+it('allows App props to be set', () => {
+    const wrapper = mount(
+        <App {...props} />
+    )
+    expect(wrapper.props().activeAxis).toEqual('row')
+    wrapper.setProps({ activeAxis: 'col' })
+    expect(wrapper.props().activeAxis).toEqual('col')
+})
+
 it('renders App correctly', () => {
     const tree = renderer.create(
         <App {...props} />
