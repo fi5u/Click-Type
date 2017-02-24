@@ -2,7 +2,13 @@ import './Grid.css'
 import React, { PropTypes } from 'react'
 import GridRow from './GridRow'
 
-const Grid = ({activeElement, activeRow, characterGrid, clickButton}) => (
+const Grid = ({
+    activeElement,
+    activeRow,
+    characterGrid,
+    clickButton,
+    suggestedWords,
+}) => (
     <div
         className="Grid"
     >
@@ -11,7 +17,7 @@ const Grid = ({activeElement, activeRow, characterGrid, clickButton}) => (
                 <GridRow
                     activeButtonIteration={activeElement}
                     clickButton={clickButton}
-                    characters={row}
+                    characters={row.concat(suggestedWords)}
                     isActive={iteration === activeRow}
                     key={`row-${iteration}`}
                 />
@@ -25,6 +31,7 @@ Grid.propTypes = {
     activeRow: PropTypes.number.isRequired,
     characterGrid: PropTypes.array.isRequired,
     clickButton: PropTypes.func.isRequired,
+    suggestedWords: PropTypes.array.isRequired,
 }
 
 export default Grid

@@ -47,7 +47,7 @@ export class App extends Component { // export from here to allow tests w/out re
     clickMainButton() {
         if(this.props.tickStarted || this.props.activeAxis === 'col') {
             if(this.props.activeAxis === 'col') {
-                this.clickButton(this.props.grid[this.props.activeRow][this.props.activeElement])
+                this.clickButton(this.props.grid[this.props.activeRow].concat(this.props.suggestedWords)[this.props.activeElement])
             }
             this.props.dispatch(select())
 
@@ -71,7 +71,7 @@ export class App extends Component { // export from here to allow tests w/out re
     }
 
     getSuggestedWords() {
-        let suggestedWords = config.gridParts.suggestedWords[0]
+        let suggestedWords = config.gridParts.suggestedWords
         if(this.props.output.trim().length > 0 && this.props.output.slice(-1) !== ' ') {
             if(this.props.output.length === 1 && this.props.output in wordsByLetter) {
                 suggestedWords = wordsByLetter[this.props.output].slice(0, config.suggestedWordCount - 1)
@@ -119,6 +119,7 @@ export class App extends Component { // export from here to allow tests w/out re
             activeRow,
             grid,
             output,
+            suggestedWords,
         } = this.props
 
         return (
@@ -131,6 +132,7 @@ export class App extends Component { // export from here to allow tests w/out re
                         activeRow={activeRow}
                         characterGrid={grid}
                         clickButton={this.clickButton}
+                        suggestedWords={suggestedWords}
                     />
                 </div>
 
@@ -150,6 +152,7 @@ App.propTypes = {
     dispatch: PropTypes.func.isRequired,
     grid: PropTypes.array.isRequired,
     output: PropTypes.string.isRequired,
+    suggestedWords: PropTypes.array.isRequired,
     tickStarted: PropTypes.bool.isRequired,
 }
 
@@ -166,6 +169,7 @@ function mapStateToProps(state) {
         activeRow: grids.activeRow,
         grid: grids.activeGrid,
         output: output.output,
+        suggestedWords: grids.suggestedWords,
         tickStarted: timings.tickStarted,
     }
 }

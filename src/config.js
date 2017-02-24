@@ -4,12 +4,14 @@ const chars = {
     space: '[]',
 }
 
+const suggestedWords = ['I', 'you', 'what', 'when']
+
 const config = {
     chars: chars,
     gridParts: {
         additionals: {
-            pre: [chars.backup],
-            post: [chars.space, chars.backspace],
+            pre: [chars.backup, chars.backspace],
+            post: [],
         },
         letters: [
             ['a', 'b', 'c', 'd', 'e'],
@@ -19,11 +21,9 @@ const config = {
             ['u', 'v', 'w', 'x', 'y', 'z']
         ],
         punctuation: [
-            ['.', ',', '?','!']
+            [chars.space, '.', ',', '?','!']
         ],
-        suggestedWords: [
-            ['I', 'you', 'what', 'when']
-        ],
+        suggestedWords: suggestedWords,
     },
     suggestedWordCount: 4,
     tickDuration: 500,
