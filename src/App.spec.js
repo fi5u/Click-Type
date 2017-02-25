@@ -11,7 +11,7 @@ const props = {
     dispatch: jest.fn(),
     grid: [['a','b','c'],['d','e','f'],['g','h','i']],
     output: '',
-    suggestedWords: [],
+    suggestedWords: ['abs', 'ace', 'adder'],
     tickStarted: false,
 }
 

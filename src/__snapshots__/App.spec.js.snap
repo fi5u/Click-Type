@@ -28,6 +28,27 @@ exports[`test renders App correctly 1`] = `
           type="button">
           c
         </button>
+        <button
+          className="GridItem btn btn-default"
+          disabled={false}
+          onClick={[Function]}
+          type="button">
+          abs
+        </button>
+        <button
+          className="GridItem btn btn-default"
+          disabled={false}
+          onClick={[Function]}
+          type="button">
+          ace
+        </button>
+        <button
+          className="GridItem btn btn-default"
+          disabled={false}
+          onClick={[Function]}
+          type="button">
+          adder
+        </button>
       </div>
       <div
         className="GridRow btn-group"
@@ -53,6 +74,27 @@ exports[`test renders App correctly 1`] = `
           type="button">
           f
         </button>
+        <button
+          className="GridItem btn btn-default"
+          disabled={false}
+          onClick={[Function]}
+          type="button">
+          abs
+        </button>
+        <button
+          className="GridItem btn btn-default"
+          disabled={false}
+          onClick={[Function]}
+          type="button">
+          ace
+        </button>
+        <button
+          className="GridItem btn btn-default"
+          disabled={false}
+          onClick={[Function]}
+          type="button">
+          adder
+        </button>
       </div>
       <div
         className="GridRow btn-group"
@@ -77,6 +119,27 @@ exports[`test renders App correctly 1`] = `
           onClick={[Function]}
           type="button">
           i
+        </button>
+        <button
+          className="GridItem btn btn-default"
+          disabled={false}
+          onClick={[Function]}
+          type="button">
+          abs
+        </button>
+        <button
+          className="GridItem btn btn-default"
+          disabled={false}
+          onClick={[Function]}
+          type="button">
+          ace
+        </button>
+        <button
+          className="GridItem btn btn-default"
+          disabled={false}
+          onClick={[Function]}
+          type="button">
+          adder
         </button>
       </div>
     </div>

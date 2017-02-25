@@ -8,7 +8,8 @@ const props = {
     activeElement: 0,
     activeRow: 0,
     characterGrid: [['a','b','c'],['d','e','f'],['g','h','i']],
-    clickButton: jest.fn()
+    clickButton: jest.fn(),
+    suggestedWords: ['abs', 'ace', 'adder'],
 }
 
 it('renders Grid without crashing', () => {
