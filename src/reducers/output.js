@@ -19,6 +19,12 @@ export default function output(state = initialState, action) {
             return state
         }
 
+        if(action.isSuggestedWord) {
+            return Object.assign({}, state, {
+                output: `${state.output}${action.character} `,
+            })
+        }
+
         let output = state.output + action.character
 
         if(action.character === config.chars.backspace) {

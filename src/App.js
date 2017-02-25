@@ -41,7 +41,7 @@ export class App extends Component { // export from here to allow tests w/out re
     }
 
     clickButton(output, replace = false) {
-        this.props.dispatch(replace ? setOutput(output) : updateOutput(output))
+        this.props.dispatch(replace ? setOutput(output) : updateOutput(output, this.props.suggestedWords.indexOf(output) > -1))
     }
 
     clickMainButton() {
