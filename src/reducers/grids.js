@@ -9,7 +9,7 @@ const addAdditionals = baseCharGroup => {
     return returnCharGroup
 }
 
-const initialState = {
+export const initialState = {
     activeAxis: 'row',
     activeElement: 0,
     activeGrid: addAdditionals(config.gridParts.letters).concat(addAdditionals(config.gridParts.punctuation)),

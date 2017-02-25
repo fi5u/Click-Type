@@ -1,6 +1,6 @@
 import * as types from '../actions/action-types'
 
-const initialState = {
+export const initialState = {
     tickStarted: false,
 }
 
@@ -15,9 +15,6 @@ export default function timings(state = initialState, action) {
         return Object.assign({}, state, {
             tickStarted: false,
         })
-
-    case types.TICK:
-        return state
 
     default:
         return state

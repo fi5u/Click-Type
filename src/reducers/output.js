@@ -1,7 +1,7 @@
 import * as types from '../actions/action-types'
 import { config } from '../config'
 
-const initialState = {
+export const initialState = {
     output: ''
 }
 
