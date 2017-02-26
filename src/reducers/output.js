@@ -20,8 +20,14 @@ export default function output(state = initialState, action) {
         }
 
         if(action.isSuggestedWord) {
+            let output = `${state.output}${action.character} `
+            let spaceSeparatedWordArr = state.output.split(' ')
+            if(state.output[state.output.length -1] !== ' ') {
+                // last char is not space, assume to replace last word
+                output = `${spaceSeparatedWordArr.slice(0, -1).join(' ')}${spaceSeparatedWordArr.length > 1 ? ' ' : ''}${action.character} `
+            }
             return Object.assign({}, state, {
-                output: `${state.output}${action.character} `,
+                output,
             })
         }
 

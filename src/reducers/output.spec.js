@@ -139,4 +139,22 @@ it('should handle UPDATE_OUTPUT', () => {
             output: 'door '
         }
     })
+
+    expect(
+        reducer({
+            ...initialState,
+            ...{
+                output: 'a do',
+            }
+        }, {
+            type: types.UPDATE_OUTPUT,
+            character: 'dog',
+            isSuggestedWord: true,
+        })
+    ).toEqual({
+        ...initialState,
+        ...{
+            output: 'a dog ',
+        }
+    })
 })
