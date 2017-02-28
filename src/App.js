@@ -71,13 +71,14 @@ export class App extends Component { // export from here to allow tests w/out re
     }
 
     getSuggestedWords() {
+        let output = this.props.output.toLowerCase()
         let suggestedWords = config.gridParts.suggestedWords
-        if(this.props.output.trim().length > 0 && this.props.output.slice(-1) !== ' ') {
-            if(this.props.output.length === 1 && this.props.output in wordsByLetter) {
-                suggestedWords = wordsByLetter[this.props.output].slice(0, config.suggestedWordCount - 1)
+        if(output.trim().length > 0 && output.slice(-1) !== ' ') {
+            if(output.length === 1 && output in wordsByLetter) {
+                suggestedWords = wordsByLetter[output].slice(0, config.suggestedWordCount - 1)
             }
             else {
-                const wordPart = this.props.output.trim().split(' ').pop()
+                const wordPart = output.trim().split(' ').pop()
                 const stringAtStart = [] // store words that contain string at start
                 const stringInString = [] // store words that constain string not at start
                 for(let i = 0, len = words.length; i < len; i++) {
