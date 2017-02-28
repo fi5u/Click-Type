@@ -7,6 +7,11 @@ const chars = {
 const suggestedWords = ['I', 'you', 'what', 'when']
 
 const config = {
+    capitalizedAfter: [
+        '. ',
+        '? ',
+        '! ',
+    ],
     chars: chars,
     gridParts: {
         additionals: {

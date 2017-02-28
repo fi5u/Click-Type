@@ -51,7 +51,7 @@ it('should handle UPDATE_OUTPUT', () => {
     ).toEqual({
         ...initialState,
         ...{
-            output: 'a',
+            output: 'A',
         }
     })
 
@@ -64,7 +64,7 @@ it('should handle UPDATE_OUTPUT', () => {
     ).toEqual({
         ...initialState,
         ...{
-            output: 'dog ',
+            output: 'Dog ',
         }
     })
 
@@ -155,6 +155,42 @@ it('should handle UPDATE_OUTPUT', () => {
         ...initialState,
         ...{
             output: 'a dog ',
+        }
+    })
+
+    expect(
+        reducer({
+            ...initialState,
+            ...{
+                output: 'Hello today. goodb',
+            }
+        }, {
+            type: types.UPDATE_OUTPUT,
+            character: 'goodbye',
+            isSuggestedWord: true,
+        })
+    ).toEqual({
+        ...initialState,
+        ...{
+            output: 'Hello today. Goodbye ',
+        }
+    })
+
+    expect(
+        reducer({
+            ...initialState,
+            ...{
+                output: 'Hello today. ',
+            }
+        }, {
+            type: types.UPDATE_OUTPUT,
+            character: 'goodbye',
+            isSuggestedWord: true,
+        })
+    ).toEqual({
+        ...initialState,
+        ...{
+            output: 'Hello today. Goodbye ',
         }
     })
 })

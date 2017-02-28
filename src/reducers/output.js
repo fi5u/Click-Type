@@ -1,4 +1,5 @@
 import * as types from '../actions/action-types'
+import { conditionallyCapitalize } from '../helpers'
 import { config } from '../config'
 
 export const initialState = {
@@ -20,18 +21,24 @@ export default function output(state = initialState, action) {
         }
 
         if(action.isSuggestedWord) {
-            let output = `${state.output}${action.character} `
-            let spaceSeparatedWordArr = state.output.split(' ')
+            let output = conditionallyCapitalize(state.output, action.character, true)
+
             if(state.output[state.output.length -1] !== ' ') {
                 // last char is not space, assume to replace last word
-                output = `${spaceSeparatedWordArr.slice(0, -1).join(' ')}${spaceSeparatedWordArr.length > 1 ? ' ' : ''}${action.character} `
+                let spaceSeparatedWordArr = state.output.split(' ')
+                let outputNoPartWord = spaceSeparatedWordArr.slice(0, -1).join(' ')
+                if(spaceSeparatedWordArr.length > 1) {
+                    outputNoPartWord += ' '
+                }
+                output = conditionallyCapitalize(outputNoPartWord, action.character, true)
             }
             return Object.assign({}, state, {
                 output,
             })
         }
 
-        let output = state.output + action.character
+        //let output = state.output + action.character
+        let output = conditionallyCapitalize(state.output, action.character)
 
         if(action.character === config.chars.backspace) {
             output = state.output.length ? state.output.slice(0, -1) : ''
