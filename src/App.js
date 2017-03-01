@@ -41,7 +41,7 @@ export class App extends Component { // export from here to allow tests w/out re
     }
 
     clickButton(output, replace = false) {
-        this.props.dispatch(replace ? setOutput(output) : updateOutput(output, this.props.suggestedWords.indexOf(output) > -1))
+        this.props.dispatch(replace ? setOutput(output) : updateOutput(output, this.props.suggestedWords.indexOf(output) > -1, this.props.settings))
     }
 
     clickMainButton() {
@@ -153,6 +153,7 @@ App.propTypes = {
     dispatch: PropTypes.func.isRequired,
     grid: PropTypes.array.isRequired,
     output: PropTypes.string.isRequired,
+    settings: PropTypes.object.isRequired,
     suggestedWords: PropTypes.array.isRequired,
     tickStarted: PropTypes.bool.isRequired,
 }
@@ -161,6 +162,7 @@ function mapStateToProps(state) {
     const {
         grids,
         output,
+        settings,
         timings,
     } = state
 
@@ -170,6 +172,7 @@ function mapStateToProps(state) {
         activeRow: grids.activeRow,
         grid: grids.activeGrid,
         output: output.output,
+        settings,
         suggestedWords: grids.suggestedWords,
         tickStarted: timings.tickStarted,
     }

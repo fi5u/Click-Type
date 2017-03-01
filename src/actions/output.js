@@ -7,10 +7,11 @@ export function setOutput(output) {
     }
 }
 
-export function updateOutput(character, isSuggestedWord) {
+export function updateOutput(character, isSuggestedWord, settings) {
     return {
         type: types.UPDATE_OUTPUT,
         character,
         isSuggestedWord,
+        settings,
     }
 }

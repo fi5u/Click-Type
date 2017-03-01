@@ -11,6 +11,9 @@ const props = {
     dispatch: jest.fn(),
     grid: [['a','b','c'],['d','e','f'],['g','h','i']],
     output: '',
+    settings: {
+        autoCapitalize: true,
+    },
     suggestedWords: ['abs', 'ace', 'adder'],
     tickStarted: false,
 }

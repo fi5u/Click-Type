@@ -41,12 +41,16 @@ it('should handle SET_OUTPUT', () => {
     })
 })
 
+const settings = {
+    autoCapitalize: true,
+}
 it('should handle UPDATE_OUTPUT', () => {
     expect(
         reducer(initialState, {
             type: types.UPDATE_OUTPUT,
             character: 'a',
             isSuggestedWord: false,
+            settings,
         })
     ).toEqual({
         ...initialState,
@@ -60,6 +64,7 @@ it('should handle UPDATE_OUTPUT', () => {
             type: types.UPDATE_OUTPUT,
             character: 'dog',
             isSuggestedWord: true,
+            settings,
         })
     ).toEqual({
         ...initialState,
@@ -78,6 +83,7 @@ it('should handle UPDATE_OUTPUT', () => {
             type: types.UPDATE_OUTPUT,
             character: 'e',
             isSuggestedWord: false,
+            settings,
         })
     ).toEqual({
         ...initialState,
@@ -96,6 +102,7 @@ it('should handle UPDATE_OUTPUT', () => {
             type: types.UPDATE_OUTPUT,
             character: config.chars.backup,
             isSuggestedWord: false,
+            settings,
         })
     ).toEqual({
         ...initialState,
@@ -114,6 +121,7 @@ it('should handle UPDATE_OUTPUT', () => {
             type: types.UPDATE_OUTPUT,
             character: config.chars.backspace,
             isSuggestedWord: false,
+            settings,
         })
     ).toEqual({
         ...initialState,
@@ -132,6 +140,7 @@ it('should handle UPDATE_OUTPUT', () => {
             type: types.UPDATE_OUTPUT,
             character: config.chars.space,
             isSuggestedWord: false,
+            settings,
         })
     ).toEqual({
         ...initialState,
@@ -150,6 +159,7 @@ it('should handle UPDATE_OUTPUT', () => {
             type: types.UPDATE_OUTPUT,
             character: 'dog',
             isSuggestedWord: true,
+            settings,
         })
     ).toEqual({
         ...initialState,
@@ -168,6 +178,7 @@ it('should handle UPDATE_OUTPUT', () => {
             type: types.UPDATE_OUTPUT,
             character: 'goodbye',
             isSuggestedWord: true,
+            settings,
         })
     ).toEqual({
         ...initialState,
@@ -186,11 +197,36 @@ it('should handle UPDATE_OUTPUT', () => {
             type: types.UPDATE_OUTPUT,
             character: 'goodbye',
             isSuggestedWord: true,
+            settings,
         })
     ).toEqual({
         ...initialState,
         ...{
             output: 'Hello today. Goodbye ',
+        }
+    })
+
+    expect(
+        reducer({
+            ...initialState,
+            ...{
+                output: 'Hello today. ',
+            }
+        }, {
+            type: types.UPDATE_OUTPUT,
+            character: 'goodbye',
+            isSuggestedWord: true,
+            settings: {
+                ...settings,
+                ...{
+                    autoCapitalize: false,
+                }
+            },
+        })
+    ).toEqual({
+        ...initialState,
+        ...{
+            output: 'Hello today. goodbye ',
         }
     })
 })

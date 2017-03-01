@@ -21,7 +21,7 @@ export default function output(state = initialState, action) {
         }
 
         if(action.isSuggestedWord) {
-            let output = conditionallyCapitalize(state.output, action.character, true)
+            let output = conditionallyCapitalize(action.settings.autoCapitalize, state.output, action.character, true)
 
             if(state.output[state.output.length -1] !== ' ') {
                 // last char is not space, assume to replace last word
@@ -30,15 +30,14 @@ export default function output(state = initialState, action) {
                 if(spaceSeparatedWordArr.length > 1) {
                     outputNoPartWord += ' '
                 }
-                output = conditionallyCapitalize(outputNoPartWord, action.character, true)
+                output = conditionallyCapitalize(action.settings.autoCapitalize, outputNoPartWord, action.character, true)
             }
             return Object.assign({}, state, {
                 output,
             })
         }
 
-        //let output = state.output + action.character
-        let output = conditionallyCapitalize(state.output, action.character)
+        let output = conditionallyCapitalize(action.settings.autoCapitalize, state.output, action.character)
 
         if(action.character === config.chars.backspace) {
             output = state.output.length ? state.output.slice(0, -1) : ''
