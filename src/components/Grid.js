@@ -2,12 +2,15 @@ import './Grid.css'
 import React, { PropTypes } from 'react'
 import { Button } from 'react-bootstrap'
 import GridRow from './GridRow'
+import { shouldCapitalize } from '../helpers'
 
 const Grid = ({
     activeElement,
     activeRow,
     characterGrid,
     clickButton,
+    output,
+    settings,
     suggestedWords,
 }) => (
     <div
@@ -26,6 +29,9 @@ const Grid = ({
                                 className={`GridItem${iteration === activeRow && charIteration === activeElement ? ' GridItem--is-active' : ''}`}
                                 key={character}
                                 onClick={() => clickButton(character)}
+                                style={{
+                                    textTransform: settings.autoCapitalize && shouldCapitalize(output) ? 'capitalize' : 'none',
+                                }}
                             >
                                 {character}
                             </Button>
@@ -42,6 +48,7 @@ Grid.propTypes = {
     activeRow: PropTypes.number.isRequired,
     characterGrid: PropTypes.array.isRequired,
     clickButton: PropTypes.func.isRequired,
+    output: PropTypes.string.isRequired,
     settings: PropTypes.object.isRequired,
     suggestedWords: PropTypes.array.isRequired,
 }

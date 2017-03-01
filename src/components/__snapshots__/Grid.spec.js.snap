@@ -8,6 +8,11 @@ exports[`test renders Grid correctly 1`] = `
       className="GridItem GridItem--is-active btn btn-default"
       disabled={false}
       onClick={[Function]}
+      style={
+        Object {
+          "textTransform": "capitalize",
+        }
+      }
       type="button">
       a
     </button>
@@ -15,6 +20,11 @@ exports[`test renders Grid correctly 1`] = `
       className="GridItem btn btn-default"
       disabled={false}
       onClick={[Function]}
+      style={
+        Object {
+          "textTransform": "capitalize",
+        }
+      }
       type="button">
       b
     </button>
@@ -22,6 +32,11 @@ exports[`test renders Grid correctly 1`] = `
       className="GridItem btn btn-default"
       disabled={false}
       onClick={[Function]}
+      style={
+        Object {
+          "textTransform": "capitalize",
+        }
+      }
       type="button">
       c
     </button>
@@ -29,6 +44,11 @@ exports[`test renders Grid correctly 1`] = `
       className="GridItem btn btn-default"
       disabled={false}
       onClick={[Function]}
+      style={
+        Object {
+          "textTransform": "capitalize",
+        }
+      }
       type="button">
       abs
     </button>
@@ -36,6 +56,11 @@ exports[`test renders Grid correctly 1`] = `
       className="GridItem btn btn-default"
       disabled={false}
       onClick={[Function]}
+      style={
+        Object {
+          "textTransform": "capitalize",
+        }
+      }
       type="button">
       ace
     </button>
@@ -43,6 +68,11 @@ exports[`test renders Grid correctly 1`] = `
       className="GridItem btn btn-default"
       disabled={false}
       onClick={[Function]}
+      style={
+        Object {
+          "textTransform": "capitalize",
+        }
+      }
       type="button">
       adder
     </button>
@@ -54,6 +84,11 @@ exports[`test renders Grid correctly 1`] = `
       className="GridItem btn btn-default"
       disabled={false}
       onClick={[Function]}
+      style={
+        Object {
+          "textTransform": "capitalize",
+        }
+      }
       type="button">
       d
     </button>
@@ -61,6 +96,11 @@ exports[`test renders Grid correctly 1`] = `
       className="GridItem btn btn-default"
       disabled={false}
       onClick={[Function]}
+      style={
+        Object {
+          "textTransform": "capitalize",
+        }
+      }
       type="button">
       e
     </button>
@@ -68,6 +108,11 @@ exports[`test renders Grid correctly 1`] = `
       className="GridItem btn btn-default"
       disabled={false}
       onClick={[Function]}
+      style={
+        Object {
+          "textTransform": "capitalize",
+        }
+      }
       type="button">
       f
     </button>
@@ -75,6 +120,11 @@ exports[`test renders Grid correctly 1`] = `
       className="GridItem btn btn-default"
       disabled={false}
       onClick={[Function]}
+      style={
+        Object {
+          "textTransform": "capitalize",
+        }
+      }
       type="button">
       abs
     </button>
@@ -82,6 +132,11 @@ exports[`test renders Grid correctly 1`] = `
       className="GridItem btn btn-default"
       disabled={false}
       onClick={[Function]}
+      style={
+        Object {
+          "textTransform": "capitalize",
+        }
+      }
       type="button">
       ace
     </button>
@@ -89,6 +144,11 @@ exports[`test renders Grid correctly 1`] = `
       className="GridItem btn btn-default"
       disabled={false}
       onClick={[Function]}
+      style={
+        Object {
+          "textTransform": "capitalize",
+        }
+      }
       type="button">
       adder
     </button>
@@ -100,6 +160,11 @@ exports[`test renders Grid correctly 1`] = `
       className="GridItem btn btn-default"
       disabled={false}
       onClick={[Function]}
+      style={
+        Object {
+          "textTransform": "capitalize",
+        }
+      }
       type="button">
       g
     </button>
@@ -107,6 +172,11 @@ exports[`test renders Grid correctly 1`] = `
       className="GridItem btn btn-default"
       disabled={false}
       onClick={[Function]}
+      style={
+        Object {
+          "textTransform": "capitalize",
+        }
+      }
       type="button">
       h
     </button>
@@ -114,6 +184,11 @@ exports[`test renders Grid correctly 1`] = `
       className="GridItem btn btn-default"
       disabled={false}
       onClick={[Function]}
+      style={
+        Object {
+          "textTransform": "capitalize",
+        }
+      }
       type="button">
       i
     </button>
@@ -121,6 +196,11 @@ exports[`test renders Grid correctly 1`] = `
       className="GridItem btn btn-default"
       disabled={false}
       onClick={[Function]}
+      style={
+        Object {
+          "textTransform": "capitalize",
+        }
+      }
       type="button">
       abs
     </button>
@@ -128,6 +208,11 @@ exports[`test renders Grid correctly 1`] = `
       className="GridItem btn btn-default"
       disabled={false}
       onClick={[Function]}
+      style={
+        Object {
+          "textTransform": "capitalize",
+        }
+      }
       type="button">
       ace
     </button>
@@ -135,6 +220,11 @@ exports[`test renders Grid correctly 1`] = `
       className="GridItem btn btn-default"
       disabled={false}
       onClick={[Function]}
+      style={
+        Object {
+          "textTransform": "capitalize",
+        }
+      }
       type="button">
       adder
     </button>

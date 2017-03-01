@@ -134,6 +134,7 @@ export class App extends Component { // export from here to allow tests w/out re
                         activeRow={activeRow}
                         characterGrid={grid}
                         clickButton={this.clickButton}
+                        output={output}
                         settings={settings}
                         suggestedWords={suggestedWords}
                     />
