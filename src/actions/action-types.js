@@ -1,5 +1,6 @@
 export const SELECT = 'SELECT'
 export const SET_OUTPUT = 'SET_OUTPUT'
+export const SET_SETTING = 'SET_SETTING'
 export const START_TICK = 'START_TICK'
 export const STOP_TICK = 'STOP_TICK'
 export const TICK = 'TICK'
