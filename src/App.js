@@ -119,8 +119,9 @@ export class App extends Component { // export from here to allow tests w/out re
             activeElement,
             activeRow,
             grid,
-            output,
+            settings,
             suggestedWords,
+            output,
         } = this.props
 
         return (
@@ -133,6 +134,7 @@ export class App extends Component { // export from here to allow tests w/out re
                         activeRow={activeRow}
                         characterGrid={grid}
                         clickButton={this.clickButton}
+                        settings={settings}
                         suggestedWords={suggestedWords}
                     />
                 </div>

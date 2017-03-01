@@ -1,23 +1,17 @@
 import './GridItem.css'
 import './GridRow.css'
-import {
-    Button,
-    ButtonGroup,
-} from 'react-bootstrap'
 import React, {
     Component,
     PropTypes,
 } from 'react'
+import {
+    ButtonGroup,
+} from 'react-bootstrap'
 
 class GridRow extends Component {
-    clickButton(character) {
-        this.props.clickButton(character)
-    }
-
     render() {
         const {
-            activeButtonIteration,
-            characters,
+            children,
             isActive
         } = this.props
 
@@ -26,26 +20,14 @@ class GridRow extends Component {
                 className={`GridRow${isActive ? ' GridRow--is-active' : ''}`}
                 role="group"
             >
-                {characters.map((character, iteration) => {
-                    return(
-                        <Button
-                            className={`GridItem${isActive && iteration === activeButtonIteration ? ' GridItem--is-active' : ''}`}
-                            key={character}
-                            onClick={() => this.clickButton(character)}
-                        >
-                            {character}
-                        </Button>
-                    )
-                })}
+                {children}
             </ButtonGroup>
         )
     }
 }
 
 GridRow.propTypes = {
-    activeButtonIteration: PropTypes.number.isRequired,
-    characters: PropTypes.array.isRequired,
-    clickButton: PropTypes.func.isRequired,
+    children: PropTypes.node,
     isActive: PropTypes.bool.isRequired,
 }
 

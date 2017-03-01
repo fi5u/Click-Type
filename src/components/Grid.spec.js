@@ -9,6 +9,9 @@ const props = {
     activeRow: 0,
     characterGrid: [['a','b','c'],['d','e','f'],['g','h','i']],
     clickButton: jest.fn(),
+    settings: {
+        autoCapitalize: true,
+    },
     suggestedWords: ['abs', 'ace', 'adder'],
 }
 

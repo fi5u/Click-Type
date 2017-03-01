@@ -1,5 +1,6 @@
 import './Grid.css'
 import React, { PropTypes } from 'react'
+import { Button } from 'react-bootstrap'
 import GridRow from './GridRow'
 
 const Grid = ({
@@ -15,12 +16,22 @@ const Grid = ({
         {characterGrid.map((row, iteration) => {
             return (
                 <GridRow
-                    activeButtonIteration={activeElement}
                     clickButton={clickButton}
-                    characters={row.concat(suggestedWords)}
                     isActive={iteration === activeRow}
                     key={`row-${iteration}`}
-                />
+                >
+                    {row.concat(suggestedWords).map((character, charIteration) => {
+                        return(
+                            <Button
+                                className={`GridItem${iteration === activeRow && charIteration === activeElement ? ' GridItem--is-active' : ''}`}
+                                key={character}
+                                onClick={() => clickButton(character)}
+                            >
+                                {character}
+                            </Button>
+                        )
+                    })}
+                </GridRow>
             )
         })}
     </div>
@@ -31,6 +42,7 @@ Grid.propTypes = {
     activeRow: PropTypes.number.isRequired,
     characterGrid: PropTypes.array.isRequired,
     clickButton: PropTypes.func.isRequired,
+    settings: PropTypes.object.isRequired,
     suggestedWords: PropTypes.array.isRequired,
 }
 

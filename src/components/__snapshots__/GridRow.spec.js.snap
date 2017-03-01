@@ -1,83 +1,17 @@
 exports[`test renders GridRow correctly 1`] = `
 <div
   className="GridRow btn-group"
-  role="group">
-  <button
-    className="GridItem btn btn-default"
-    disabled={false}
-    onClick={[Function]}
-    type="button">
-    a
-  </button>
-  <button
-    className="GridItem btn btn-default"
-    disabled={false}
-    onClick={[Function]}
-    type="button">
-    b
-  </button>
-  <button
-    className="GridItem btn btn-default"
-    disabled={false}
-    onClick={[Function]}
-    type="button">
-    c
-  </button>
-</div>
+  role="group" />
 `;
 
 exports[`test renders GridRow correctly 2`] = `
 <div
   className="GridRow GridRow--is-active btn-group"
-  role="group">
-  <button
-    className="GridItem GridItem--is-active btn btn-default"
-    disabled={false}
-    onClick={[Function]}
-    type="button">
-    a
-  </button>
-  <button
-    className="GridItem btn btn-default"
-    disabled={false}
-    onClick={[Function]}
-    type="button">
-    b
-  </button>
-  <button
-    className="GridItem btn btn-default"
-    disabled={false}
-    onClick={[Function]}
-    type="button">
-    c
-  </button>
-</div>
+  role="group" />
 `;
 
 exports[`test renders GridRow correctly 3`] = `
 <div
   className="GridRow GridRow--is-active btn-group"
-  role="group">
-  <button
-    className="GridItem btn btn-default"
-    disabled={false}
-    onClick={[Function]}
-    type="button">
-    a
-  </button>
-  <button
-    className="GridItem GridItem--is-active btn btn-default"
-    disabled={false}
-    onClick={[Function]}
-    type="button">
-    b
-  </button>
-  <button
-    className="GridItem btn btn-default"
-    disabled={false}
-    onClick={[Function]}
-    type="button">
-    c
-  </button>
-</div>
+  role="group" />
 `;
