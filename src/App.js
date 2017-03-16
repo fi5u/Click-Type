@@ -4,6 +4,10 @@ import React, {
     PropTypes,
 } from 'react'
 import {
+    commonWords,
+    words,
+} from './data'
+import {
     select,
     updateSuggestedWords,
 } from './actions/grids'
@@ -16,10 +20,6 @@ import {
     stopTick,
     tick,
 } from './actions/timings'
-import {
-    words,
-    wordsByLetter,
-} from './data'
 import Grid from './components/Grid'
 import { config } from './config'
 import { connect } from 'react-redux'
@@ -74,28 +74,36 @@ export class App extends Component { // export from here to allow tests w/out re
         let output = this.props.output.toLowerCase()
         let suggestedWords = config.gridParts.suggestedWords
         if(output.trim().length > 0 && output.slice(-1) !== ' ') {
-            if(output.length === 1 && output in wordsByLetter) {
-                suggestedWords = wordsByLetter[output].slice(0, config.suggestedWordCount - 1)
-            }
-            else {
-                const wordPart = output.trim().split(' ').pop()
-                const stringAtStart = [] // store words that contain string at start
-                const stringInString = [] // store words that constain string not at start
-                for(let i = 0, len = words.length; i < len; i++) {
-                    if(words[i].indexOf(wordPart) === 0) {
-                        stringAtStart.push(words[i])
-                    }
-                    else if(words[i].indexOf(wordPart) > 0) {
-                        stringInString.push(words[i])
-                    }
-                    if(stringAtStart.length >= config.suggestedWordCount) {
-                        break
-                    }
-                }
-                suggestedWords = stringAtStart.concat(stringInString).slice(0, config.suggestedWordCount - 1)
+            const wordPart = output.trim().split(' ').pop()
+            // Get common words
+            suggestedWords = this.getWordsFromArray(commonWords, wordPart, config.suggestedWordCount)
+            // If not enough common words, get from full dictionary
+            if(suggestedWords.length < config.suggestedWordCount) {
+                const suggestedFullWords = this.getWordsFromArray(words, wordPart, config.suggestedWordCount - suggestedWords.length, suggestedWords)
+                suggestedWords = suggestedWords.concat(suggestedFullWords)
             }
         }
         return suggestedWords
+    }
+
+    getWordsFromArray(wordArray, match, count, ignoreValues = []) {
+        const stringAtStart = [] // store words that contain string at start
+        const stringInString = [] // store words that constain string not at start
+        for(let i = 0, len = wordArray.length; i < len; i++) {
+            if(ignoreValues.indexOf(wordArray[i]) > -1) {
+                continue
+            }
+            if(wordArray[i].indexOf(match) === 0) {
+                stringAtStart.push(wordArray[i])
+            }
+            else if(wordArray[i].indexOf(match) > 0) {
+                stringInString.push(wordArray[i])
+            }
+            if(stringAtStart.length >= count) {
+                break
+            }
+        }
+        return stringAtStart.concat(stringInString).slice(0, count)
     }
 
     outputUpdate(event) {

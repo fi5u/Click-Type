@@ -1,3 +1,4 @@
+import CommonWords from './common-words'
 import wordsA from './words-a'
 import wordsB from './words-b'
 import wordsC from './words-c'
@@ -24,6 +25,8 @@ import wordsW from './words-w'
 import wordsX from './words-x'
 import wordsY from './words-y'
 import wordsZ from './words-z'
+
+export const commonWords = CommonWords
 
 export const words = wordsA.concat(
     wordsB,

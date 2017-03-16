@@ -1,7 +1,10 @@
 /* global expect, it, jest */
+import {
+    mount,
+    shallow,
+} from 'enzyme'
 import { App } from './App' // no Redux
 import React from 'react'
-import { mount } from 'enzyme'
 import renderer from 'react-test-renderer'
 
 const props = {
@@ -38,4 +41,25 @@ it('renders App correctly', () => {
         <App {...props} />
     ).toJSON()
     expect(tree).toMatchSnapshot()
+})
+
+it('gets words from array correctly', () => {
+    const app = new App()
+    const inputTestArr = ['bat', 'ball', 'car']
+    expect(app.getWordsFromArray(inputTestArr, 'ba', 10)).toEqual(['bat', 'ball'])
+    expect(app.getWordsFromArray(inputTestArr, 'ba', 1)).toEqual(['bat'])
+    expect(app.getWordsFromArray(inputTestArr, 'a', 3)).toEqual(inputTestArr)
+    expect(app.getWordsFromArray(inputTestArr, 'a', 3, ['bat', 'ball'])).toEqual(['car'])
+})
+
+it('gets suggested words', () => {
+    const wrapper = mount(
+        <App {...props} />
+    )
+    wrapper.setProps({ output: 'ca' })
+    let suggestedWords = wrapper.instance().getSuggestedWords()
+    expect(suggestedWords[0].indexOf('ca') > -1).toBe(true)
+    wrapper.setProps({ output: 'br' })
+    suggestedWords = wrapper.instance().getSuggestedWords()
+    expect(suggestedWords[0].indexOf('br') > -1).toBe(true)
 })
