@@ -1,3 +1,4 @@
+export const ADD_PREDICTIVE_WORD = 'ADD_PREDICTIVE_WORD'
 export const SELECT = 'SELECT'
 export const SET_OUTPUT = 'SET_OUTPUT'
 export const SET_SETTING = 'SET_SETTING'

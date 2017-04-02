@@ -21,6 +21,10 @@ import {
     tick,
 } from './actions/timings'
 import Grid from './components/Grid'
+import { _ } from 'lodash'
+import {
+    addPredictiveWord,
+} from './actions/predictive'
 import { config } from './config'
 import { connect } from 'react-redux'
 
@@ -28,11 +32,27 @@ export class App extends Component { // export from here to allow tests w/out re
     constructor() {
         super()
 
+        this.addLodashMixins()
         document.addEventListener('keydown', this.detectClick.bind(this), true)
 
         this.clickButton = this.clickButton.bind(this)
         this.clickMainButton = this.clickMainButton.bind(this)
         this.outputUpdate = this.outputUpdate.bind(this)
+    }
+
+    addLodashMixins() {
+        _.mixin({
+            'sortKeysBy': (obj, comparator) => {
+                var keys = _.sortBy(_.keys(obj), (key) => {
+                    return comparator ? comparator(obj[key], key) : key
+                })
+
+                return _.zipObject(keys, _.map(keys, (key) => {
+                    return obj[key]
+                }))
+            }
+        })
+
     }
 
     componentDidUpdate(prevProps) {
@@ -42,6 +62,11 @@ export class App extends Component { // export from here to allow tests w/out re
 
     clickButton(output, replace = false) {
         this.props.dispatch(replace ? setOutput(output) : updateOutput(output, this.props.suggestedWords.indexOf(output) > -1, this.props.settings))
+        // Save predictive words
+        const outputWords = this.props.output.split(' ')
+        if((output.slice(-config.chars.space.length) === config.chars.space || output.slice(-1) === ' ') && outputWords.length > 1) {
+            this.props.dispatch(addPredictiveWord(outputWords[outputWords.length - 2], outputWords[outputWords.length - 1]))
+        }
     }
 
     clickMainButton() {
@@ -70,9 +95,37 @@ export class App extends Component { // export from here to allow tests w/out re
         event.preventDefault()
     }
 
+    getPredictiveWords(words) {
+        let foundWords = []
+        if(_.isEmpty(words)) {
+            foundWords = this.getSortedObj(this.props.predictiveWords)
+        }
+        let testWord = words[words.length - 1]
+        if(testWord && testWord in this.props.predictiveWords) {
+            let results = this.getSortedObj(this.props.predictiveWords[testWord].words)
+            foundWords = results.length ? results : foundWords
+        }
+        if(words[words.length - 2]
+            && words[words.length - 2] in this.props.predictiveWords
+            && words[words.length - 1] in this.props.predictiveWords[words[words.length - 2]].words
+        ) {
+            let results = this.getSortedObj(this.props.predictiveWords[words[words.length - 2]].words[words[words.length - 1]].words)
+            foundWords = results.length ? results : foundWords
+        }
+        return foundWords
+    }
+
+    getSortedObj(obj) {
+        return _.reverse(Object.keys(_.sortKeysBy(obj, function(value) {return value.freq})))
+    }
+
     getSuggestedWords() {
         let output = this.props.output.toLowerCase()
         let suggestedWords = config.gridParts.suggestedWords
+        const outputWords = output.trim().split(' ')
+        if(outputWords.length > 1) {
+            suggestedWords = this.getPredictiveWords(outputWords)
+        }
         if(output.trim().length > 0 && output.slice(-1) !== ' ') {
             const wordPart = output.trim().split(' ').pop()
             // Get common words
@@ -164,6 +217,7 @@ App.propTypes = {
     dispatch: PropTypes.func.isRequired,
     grid: PropTypes.array.isRequired,
     output: PropTypes.string.isRequired,
+    predictiveWords: PropTypes.object.isRequired,
     settings: PropTypes.object.isRequired,
     suggestedWords: PropTypes.array.isRequired,
     tickStarted: PropTypes.bool.isRequired,
@@ -173,6 +227,7 @@ function mapStateToProps(state) {
     const {
         grids,
         output,
+        predictive,
         settings,
         timings,
     } = state
@@ -183,6 +238,7 @@ function mapStateToProps(state) {
         activeRow: grids.activeRow,
         grid: grids.activeGrid,
         output: output.output,
+        predictiveWords: predictive.words,
         settings,
         suggestedWords: grids.suggestedWords,
         tickStarted: timings.tickStarted,
