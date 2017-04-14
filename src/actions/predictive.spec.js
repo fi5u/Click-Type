@@ -3,12 +3,10 @@ import * as actions from './predictive'
 import * as types from './action-types'
 
 it('should create an action to add a predictive word', () => {
-    const word = 'apple'
-    const nextWord = 'pear'
+    const words = ['apples', 'are']
     const expectedAction = {
         type: types.ADD_PREDICTIVE_WORD,
-        word,
-        nextWord,
+        words,
     }
-    expect(actions.addPredictiveWord(word, nextWord)).toEqual(expectedAction)
+    expect(actions.addPredictiveWord(words)).toEqual(expectedAction)
 })

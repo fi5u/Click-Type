@@ -21,7 +21,7 @@ import {
     tick,
 } from './actions/timings'
 import Grid from './components/Grid'
-import { _ } from 'lodash'
+import _ from 'lodash'
 import {
     addPredictiveWord,
 } from './actions/predictive'
@@ -32,8 +32,8 @@ export class App extends Component { // export from here to allow tests w/out re
     constructor() {
         super()
 
-        this.addLodashMixins()
         document.addEventListener('keydown', this.detectClick.bind(this), true)
+        this.addLodashMixins()
 
         this.clickButton = this.clickButton.bind(this)
         this.clickMainButton = this.clickMainButton.bind(this)
@@ -52,7 +52,6 @@ export class App extends Component { // export from here to allow tests w/out re
                 }))
             }
         })
-
     }
 
     componentDidUpdate(prevProps) {
@@ -61,11 +60,13 @@ export class App extends Component { // export from here to allow tests w/out re
     }
 
     clickButton(output, replace = false) {
+        const isSuggestedWord = this.props.suggestedWords.indexOf(output) > -1
         this.props.dispatch(replace ? setOutput(output) : updateOutput(output, this.props.suggestedWords.indexOf(output) > -1, this.props.settings))
+
         // Save predictive words
-        const outputWords = this.props.output.split(' ')
-        if((output.slice(-config.chars.space.length) === config.chars.space || output.slice(-1) === ' ') && outputWords.length > 1) {
-            this.props.dispatch(addPredictiveWord(outputWords[outputWords.length - 2], outputWords[outputWords.length - 1]))
+        const outputWords = this.props.output.trim().split(' ')
+        if((output.slice(-config.chars.space.length) === config.chars.space || output.slice(-1) === ' ' || isSuggestedWord) && outputWords.length > 1) {
+            this.props.dispatch(addPredictiveWord(outputWords.concat(outputWords[outputWords.length - 1] !== output ? output : [])))
         }
     }
 
@@ -124,7 +125,7 @@ export class App extends Component { // export from here to allow tests w/out re
         let suggestedWords = config.gridParts.suggestedWords
         const outputWords = output.trim().split(' ')
         if(outputWords.length > 1) {
-            suggestedWords = this.getPredictiveWords(outputWords)
+            suggestedWords = _.uniq(this.getPredictiveWords(outputWords).concat(config.gridParts.suggestedWords)).slice(0, config.suggestedWordCount)
         }
         if(output.trim().length > 0 && output.slice(-1) !== ' ') {
             const wordPart = output.trim().split(' ').pop()

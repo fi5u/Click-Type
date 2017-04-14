@@ -13,15 +13,26 @@ it('should handle ADD_PREDICTIVE_WORD', () => {
     expect(
         reducer(initialState, {
             type: types.ADD_PREDICTIVE_WORD,
-            word: 'apple',
-            nextWord: 'pear',
+            words: [],
+        })
+    ).toEqual(initialState)
+
+    expect(
+        reducer(initialState, {
+            type: types.ADD_PREDICTIVE_WORD,
+            words: ['apples', 'are'],
         })
     ).toEqual({
         ...initialState,
         ...{
             words: {
-                apple: {
-                    pear: 1,
+                apples: {
+                    freq: 1,
+                    words: {
+                        are: {
+                            freq: 1,
+                        }
+                    }
                 }
             },
         }
@@ -29,22 +40,37 @@ it('should handle ADD_PREDICTIVE_WORD', () => {
 
     expect(
         reducer({
-            words: {
-                apple: {
-                    pear: 1,
+            ...initialState,
+            ...{
+                words: {
+                    apples: {
+                        freq: 1,
+                        words: {
+                            are: {
+                                freq: 1,
+                            }
+                        }
+                    }
                 },
             }
         }, {
             type: types.ADD_PREDICTIVE_WORD,
-            word: 'apple',
-            nextWord: 'pear',
+            words: ['apples', 'can'],
         })
     ).toEqual({
         ...initialState,
         ...{
             words: {
-                apple: {
-                    pear: 2,
+                apples: {
+                    freq: 2,
+                    words: {
+                        are: {
+                            freq: 1,
+                        },
+                        can: {
+                            freq: 1,
+                        }
+                    }
                 }
             },
         }
@@ -52,23 +78,37 @@ it('should handle ADD_PREDICTIVE_WORD', () => {
 
     expect(
         reducer({
-            words: {
-                apple: {
-                    pear: 1,
+            ...initialState,
+            ...{
+                words: {
+                    apples: {
+                        freq: 1,
+                        words: {
+                            are: {
+                                freq: 1,
+                            }
+                        }
+                    }
                 },
             }
         }, {
             type: types.ADD_PREDICTIVE_WORD,
-            word: 'apple',
-            nextWord: 'banana',
+            words: ['what'],
         })
     ).toEqual({
         ...initialState,
         ...{
             words: {
-                apple: {
-                    banana: 1,
-                    pear: 1,
+                apples: {
+                    freq: 1,
+                    words: {
+                        are: {
+                            freq: 1,
+                        },
+                    }
+                },
+                what: {
+                    freq: 1,
                 }
             },
         }
@@ -76,32 +116,165 @@ it('should handle ADD_PREDICTIVE_WORD', () => {
 
     expect(
         reducer({
-            words: {
-                apple: {
-                    banana: 1,
-                    pear: 1,
+            ...initialState,
+            ...{
+                words: {
+                    apples: {
+                        freq: 1,
+                        words: {
+                            are: {
+                                freq: 1,
+                            }
+                        }
+                    }
                 },
-                pear: {
-                    banana: 1,
-                }
             }
         }, {
             type: types.ADD_PREDICTIVE_WORD,
-            word: 'pear',
-            nextWord: 'banana',
+            words: ['apples', 'take', 'time'],
         })
     ).toEqual({
         ...initialState,
         ...{
             words: {
-                apple: {
-                    banana: 1,
-                    pear: 1,
+                apples: {
+                    freq: 2,
+                    words: {
+                        are: {
+                            freq: 1,
+                        },
+                        take: {
+                            freq: 1,
+                            words: {
+                                time: {
+                                    freq: 1,
+                                },
+                            },
+                        },
+                    },
                 },
-                pear: {
-                    banana: 2,
-                }
             },
         }
+    })
+
+    expect(
+        reducer({
+            words: {},
+        }, {
+            type: types.ADD_PREDICTIVE_WORD,
+            words: ['i'],
+        })
+    ).toEqual({
+        words: {
+            i: {
+                freq: 1,
+            },
+        },
+    })
+
+    expect(
+        reducer({
+            words: {},
+        }, {
+            type: types.ADD_PREDICTIVE_WORD,
+            words: ['i', 'love'],
+        })
+    ).toEqual({
+        words: {
+            i: {
+                freq: 1,
+                words: {
+                    love: {
+                        freq: 1,
+                    },
+                },
+            },
+        },
+    })
+
+    expect(
+        reducer({
+            words: {
+                i: {
+                    freq: 1,
+                    words: {
+                        love: {
+                            freq: 1,
+                        },
+                    },
+                },
+            },
+        }, {
+            type: types.ADD_PREDICTIVE_WORD,
+            words: ['i', 'love', 'my'],
+        })
+    ).toEqual({
+        words: {
+            i: {
+                freq: 2,
+                words: {
+                    love: {
+                        freq: 2,
+                        words: {
+                            my: {
+                                freq: 1,
+                            },
+                        },
+                    },
+                },
+            },
+        },
+    })
+
+    expect(
+        reducer({
+            words: {
+                i: {
+                    freq: 2,
+                    words: {
+                        love: {
+                            freq: 2,
+                            words: {
+                                my: {
+                                    freq: 1,
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        }, {
+            type: types.ADD_PREDICTIVE_WORD,
+            words: ['i', 'love', 'my', 'canary'],
+        })
+    ).toEqual({
+        words: {
+            i: {
+                freq: 2,
+                words: {
+                    love: {
+                        freq: 2,
+                        words: {
+                            my: {
+                                freq: 1,
+                            },
+                        },
+                    },
+                },
+            },
+            love: {
+                freq: 1,
+                words: {
+                    my: {
+                        freq: 1,
+                        words: {
+                            canary: {
+                                freq: 1,
+                            },
+                        },
+                    },
+                },
+            },
+        },
     })
 })

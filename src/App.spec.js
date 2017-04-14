@@ -1,7 +1,10 @@
 /* global expect, it, jest */
+import * as outputActions from './actions/output'
+import * as predictiveActions from './actions/predictive'
+import { mount, shallow } from 'enzyme'
 import { App } from './App' // no Redux
 import React from 'react'
-import { mount } from 'enzyme'
+import { config } from './config'
 import renderer from 'react-test-renderer'
 
 const props = {
@@ -165,6 +168,11 @@ it('gets predictive words', () => {
     expect(predicitedWords[1]).toBe('you')
     expect(predicitedWords[2]).toBe('tomorrow')
 
+    predicitedWords = wrapper.instance().getPredictiveWords(['I', 'think'])
+    expect(predicitedWords[0]).toBe('when')
+    expect(predicitedWords[1]).toBe('things')
+    expect(predicitedWords[2]).toBe('before')
+
     predicitedWords = wrapper.instance().getPredictiveWords(['do', 'when'])
     expect(predicitedWords.length).toBe(0)
 
@@ -191,8 +199,38 @@ it('gets suggested words', () => {
 
     wrapper.setProps({
         output: 'Apples are ',
+        predictiveWords: {},
     })
     suggestedWords = wrapper.instance().getSuggestedWords()
-    expect(suggestedWords[0]).toBe('healthy')
-    expect(suggestedWords[1]).toBe('green')
+    expect(suggestedWords[0]).toBe(config.gridParts.suggestedWords[0])
+    expect(suggestedWords[1]).toBe(config.gridParts.suggestedWords[1])
+    expect(suggestedWords[2]).toBe(config.gridParts.suggestedWords[2])
+})
+
+it('handles the click event', () => {
+    const wrapper = shallow(
+        <App {...props} output="ca" predictiveWords={predictiveWords} />
+    )
+    let output = 'canary'
+    outputActions.setOutput = jest.fn()
+    outputActions.updateOutput = jest.fn()
+    predictiveActions.addPredictiveWord = jest.fn()
+
+    wrapper.instance().clickButton(output)
+    expect(outputActions.updateOutput).toHaveBeenCalledWith('canary', wrapper.instance().props.suggestedWords.indexOf(output) > -1, wrapper.instance().props.settings)
+
+    wrapper.setProps({
+        output: 'I love my ',
+        suggestedWords: ['canary'],
+    })
+    wrapper.instance().clickButton(output)
+    expect(predictiveActions.addPredictiveWord).toHaveBeenCalledWith(['I', 'love', 'my', 'canary'])
+
+    output = 'I love my canary'
+    wrapper.setProps({
+        output: 'I love my ',
+        suggestedWords: [],
+    })
+    wrapper.instance().clickButton(output, true)
+    expect(outputActions.setOutput).toHaveBeenCalledWith(output)
 })
