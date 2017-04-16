@@ -117,7 +117,7 @@ export class App extends Component { // export from here to allow tests w/out re
     }
 
     getSortedObj(obj) {
-        return _.reverse(Object.keys(_.sortKeysBy(obj, function(value) {return value.freq})))
+        return _.reverse(Object.keys(_.sortKeysBy(obj, value => { return value.freq })))
     }
 
     getSuggestedWords() {
