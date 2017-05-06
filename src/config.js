@@ -4,6 +4,14 @@ const chars = {
     space: '[]',
 }
 
+const punctuation = [
+    chars.space,
+    '.',
+    ',',
+    '?',
+    '!',
+]
+
 const suggestedWords = ['I', 'you', 'what', 'when']
 
 const config = {
@@ -25,11 +33,10 @@ const config = {
             ['p', 'q', 'r', 's', 't'],
             ['u', 'v', 'w', 'x', 'y', 'z']
         ],
-        punctuation: [
-            [chars.space, '.', ',', '?','!']
-        ],
+        punctuation: [punctuation],
         suggestedWords: suggestedWords,
     },
+    punctuation: punctuation,
     suggestedWordCount: 4,
     tickDuration: 500,
 }

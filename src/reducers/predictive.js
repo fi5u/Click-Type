@@ -1,4 +1,5 @@
 import * as types from '../actions/action-types'
+import { config } from '../config'
 import deepAssign from 'deep-assign'
 
 export const initialState = {
@@ -9,6 +10,10 @@ export default function predictive(state = initialState, action) {
     switch(action.type) {
     case types.ADD_PREDICTIVE_WORD: {
         const words = action.words.slice(-3).map(word => {
+            // remove any punctuation at the end
+            if(config.punctuation.indexOf(word[word.length - 1]) > -1) {
+                return word.slice(0, word.length - 1).toLowerCase()
+            }
             return word.toLowerCase()
         })
         if(words.length === 0) {
