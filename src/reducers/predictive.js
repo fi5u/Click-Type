@@ -8,7 +8,9 @@ export const initialState = {
 export default function predictive(state = initialState, action) {
     switch(action.type) {
     case types.ADD_PREDICTIVE_WORD: {
-        const words = action.words.slice(-3)
+        const words = action.words.slice(-3).map(word => {
+            return word.toLowerCase()
+        })
         if(words.length === 0) {
             return state
         }

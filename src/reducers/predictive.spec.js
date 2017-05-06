@@ -277,4 +277,30 @@ it('should handle ADD_PREDICTIVE_WORD', () => {
             },
         },
     })
+
+    expect(
+        reducer({
+            ...initialState,
+            ...{
+                words: {},
+            }
+        }, {
+            type: types.ADD_PREDICTIVE_WORD,
+            words: ['Apples', 'are'],
+        })
+    ).toEqual({
+        ...initialState,
+        ...{
+            words: {
+                apples: {
+                    freq: 1,
+                    words: {
+                        are: {
+                            freq: 1,
+                        }
+                    }
+                }
+            },
+        }
+    })
 })
