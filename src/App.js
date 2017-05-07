@@ -125,7 +125,9 @@ export class App extends Component { // export from here to allow tests w/out re
         let suggestedWords = config.gridParts.suggestedWords
         const outputWords = output.trim().split(' ')
         if(outputWords.length > 1) {
-            suggestedWords = _.uniq(this.getPredictiveWords(outputWords).concat(config.gridParts.suggestedWords)).slice(0, config.suggestedWordCount)
+            // Do not allow duplicates
+            // Concat the default suggested words
+            suggestedWords = _.uniqBy(this.getPredictiveWords(outputWords).concat(config.gridParts.suggestedWords), word => word.toLowerCase()).slice(0, config.suggestedWordCount)
         }
         if(output.trim().length > 0 && output.slice(-1) !== ' ') {
             const wordPart = output.trim().split(' ').pop()

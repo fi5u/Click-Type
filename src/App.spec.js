@@ -205,6 +205,29 @@ it('gets suggested words', () => {
     expect(suggestedWords[0]).toBe(config.gridParts.suggestedWords[0])
     expect(suggestedWords[1]).toBe(config.gridParts.suggestedWords[1])
     expect(suggestedWords[2]).toBe(config.gridParts.suggestedWords[2])
+
+    wrapper.setProps({
+        output: 'What do ',
+        predictiveWords: {
+            what: {
+                freq: 1,
+                words: {
+                    do: {
+                        freq: 1,
+                        words: {
+                            i: {
+                                freq: 1,
+                            }
+                        }
+                    }
+                }
+            }
+        },
+    })
+    suggestedWords = wrapper.instance().getSuggestedWords()
+    expect(suggestedWords[0]).toBe('i')
+    expect(suggestedWords[1]).not.toBe('i')
+    expect(suggestedWords[2]).not.toBe('i')
 })
 
 it('handles the click event', () => {
