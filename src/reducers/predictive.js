@@ -1,6 +1,7 @@
 import * as types from '../actions/action-types'
 import { config } from '../config'
 import deepAssign from 'deep-assign'
+import { wordsByLetter } from '../data'
 
 export const initialState = {
     words: {},
@@ -9,13 +10,29 @@ export const initialState = {
 export default function predictive(state = initialState, action) {
     switch(action.type) {
     case types.ADD_PREDICTIVE_WORD: {
-        const words = action.words.slice(-3).map(word => {
-            // remove any punctuation at the end
-            if(config.punctuation.indexOf(word[word.length - 1]) > -1) {
-                return word.slice(0, word.length - 1).toLowerCase()
-            }
-            return word.toLowerCase()
-        })
+        let nonDictionaryWordFound = false
+        const words = action.words.slice(-3)
+            .map(word => {
+                if(config.chars.space === word) { return undefined } // do not save space symbol
+                if(nonDictionaryWordFound) { return undefined } // do not save subsequent words
+                let modifiedWord = word.toLowerCase()
+
+                // remove any punctuation at the end
+                if(config.punctuation.indexOf(modifiedWord[modifiedWord.length - 1]) > -1) {
+                    modifiedWord = modifiedWord.slice(0, modifiedWord.length - 1)
+                }
+
+                // check is word in dictionary
+                if(wordsByLetter[modifiedWord[0]].indexOf(modifiedWord) === -1) {
+                    nonDictionaryWordFound = true
+                    return undefined
+                }
+
+                return modifiedWord
+            })
+            .filter(word => {
+                return typeof word !== 'undefined'
+            })
         if(words.length === 0) {
             return state
         }

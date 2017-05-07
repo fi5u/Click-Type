@@ -335,3 +335,69 @@ it('should handle ADD_PREDICTIVE_WORD', () => {
         }
     })
 })
+
+it('should handle ADD_PREDICTIVE_WORD and not add a non-dictionary word', () => {
+    expect(
+        reducer({
+            ...initialState,
+            ...{
+                words: {},
+            }
+        }, {
+            type: types.ADD_PREDICTIVE_WORD,
+            words: ['I', 'elvo', 'apples.'],
+        })
+    ).toEqual({
+        ...initialState,
+        ...{
+            words: {
+                i: {
+                    freq: 1,
+                }
+            },
+        }
+    })
+
+    expect(
+        reducer({
+            ...initialState,
+            ...{
+                words: {},
+            }
+        }, {
+            type: types.ADD_PREDICTIVE_WORD,
+            words: ['I', 'love', 'ppleas.'],
+        })
+    ).toEqual({
+        ...initialState,
+        ...{
+            words: {
+                i: {
+                    freq: 1,
+                    words: {
+                        'love': {
+                            freq: 1,
+                        },
+                    },
+                },
+            },
+        }
+    })
+
+    expect(
+        reducer({
+            ...initialState,
+            ...{
+                words: {},
+            }
+        }, {
+            type: types.ADD_PREDICTIVE_WORD,
+            words: ['sfdlk', 'love', 'apples'],
+        })
+    ).toEqual({
+        ...initialState,
+        ...{
+            words: {},
+        }
+    })
+})
