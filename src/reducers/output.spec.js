@@ -230,3 +230,24 @@ it('should handle UPDATE_OUTPUT', () => {
         }
     })
 })
+
+it('should handle UPDATE_OUTPUT removing space before punctuation', () => {
+    expect(
+        reducer({
+            ...initialState,
+            ...{
+                output: 'Hello today ',
+            }
+        }, {
+            type: types.UPDATE_OUTPUT,
+            character: '!',
+            isSuggestedWord: false,
+            settings: settings,
+        })
+    ).toEqual({
+        ...initialState,
+        ...{
+            output: 'Hello today! ',
+        }
+    })
+})

@@ -47,6 +47,12 @@ export default function output(state = initialState, action) {
             output = state.output + ' '
         }
 
+        // If punctuation and punctuation should not have space before, remove space
+        if(config.tightPunctuation.indexOf(action.character) > -1 &&
+            state.output[state.output.length - 1] === ' ') {
+            output = state.output.slice(0, state.output.length - 1) + action.character + ' '
+        }
+
         return Object.assign({}, state, {
             output,
         })

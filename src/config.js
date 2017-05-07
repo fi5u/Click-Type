@@ -12,6 +12,14 @@ const punctuation = [
     '!',
 ]
 
+const tightPunctuation = [
+    // Should not have space before
+    '.',
+    ',',
+    '?',
+    '!',
+]
+
 const suggestedWords = ['I', 'you', 'what', 'when']
 
 const config = {
@@ -39,6 +47,7 @@ const config = {
     punctuation: punctuation,
     suggestedWordCount: 4,
     tickDuration: 500,
+    tightPunctuation: tightPunctuation,
 }
 
 export { config }
