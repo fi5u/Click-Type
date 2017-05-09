@@ -1,5 +1,6 @@
 export const ADD_PREDICTIVE_WORD = 'ADD_PREDICTIVE_WORD'
 export const SELECT = 'SELECT'
+export const SET_ACTIVE_COLUMN = 'SET_ACTIVE_COLUMN'
 export const SET_OUTPUT = 'SET_OUTPUT'
 export const SET_SETTING = 'SET_SETTING'
 export const START_TICK = 'START_TICK'

@@ -1,4 +1,5 @@
 /* global expect, it, jest */
+import * as gridsActions from './actions/grids'
 import * as outputActions from './actions/output'
 import * as predictiveActions from './actions/predictive'
 import { mount, shallow } from 'enzyme'
@@ -256,4 +257,18 @@ it('handles the click event', () => {
     })
     wrapper.instance().clickButton(output, true)
     expect(outputActions.setOutput).toHaveBeenCalledWith(output)
+})
+
+it('handles the click event by moving to the first suggested word after selecting a suggested word', () => {
+    const wrapper = mount(
+        <App {...props}
+            activeElement={5}
+            output="ad"
+            predictiveWords={predictiveWords}
+        />
+    )
+    let output = 'adder'
+    gridsActions.setActiveColumn = jest.fn()
+    wrapper.instance().clickButton(output)
+    expect(gridsActions.setActiveColumn).toHaveBeenCalledWith(wrapper.props().grid[wrapper.props().activeRow].length)
 })

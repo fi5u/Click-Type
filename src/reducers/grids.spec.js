@@ -82,3 +82,17 @@ it('should handle UPDATE_SUGGESTED_WORDS', () => {
         }
     })
 })
+
+it('should handle SET_ACTIVE_COLUMN', () => {
+    expect(
+        reducer(initialState, {
+            type: types.SET_ACTIVE_COLUMN,
+            columnIndex: 3,
+        })
+    ).toEqual({
+        ...initialState,
+        ...{
+            activeElement: 3,
+        }
+    })
+})

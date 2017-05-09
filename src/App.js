@@ -9,6 +9,7 @@ import {
 } from './data'
 import {
     select,
+    setActiveColumn,
     updateSuggestedWords,
 } from './actions/grids'
 import {
@@ -61,7 +62,12 @@ export class App extends Component { // export from here to allow tests w/out re
 
     clickButton(output, replace = false) {
         const isSuggestedWord = this.props.suggestedWords.indexOf(output) > -1
-        this.props.dispatch(replace ? setOutput(output) : updateOutput(output, this.props.suggestedWords.indexOf(output) > -1, this.props.settings))
+        this.props.dispatch(replace ? setOutput(output) : updateOutput(output, isSuggestedWord, this.props.settings))
+
+        // Move focus back to first suggested word
+        if(isSuggestedWord) {
+            this.props.dispatch(setActiveColumn(this.props.grid[this.props.activeRow].length))
+        }
 
         // Save predictive words
         const outputWords = this.props.output.trim().split(' ')

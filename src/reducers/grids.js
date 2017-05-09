@@ -24,6 +24,11 @@ export default function grids(state = initialState, action) {
             activeAxis: state.activeAxis === 'col' && state.activeGrid[state.activeRow].concat(state.suggestedWords)[state.activeElement] === config.chars.backup ? 'row' : 'col',
         })
 
+    case types.SET_ACTIVE_COLUMN:
+        return Object.assign({}, state, {
+            activeElement: action.columnIndex,
+        })
+
     case types.TICK:
         return Object.assign({}, state, {
             activeElement: state.activeAxis === 'row' ? 0 : state.activeElement >= state.activeGrid[state.activeRow].concat(state.suggestedWords).length - 1 ? 0 : state.activeElement + 1,
