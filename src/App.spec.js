@@ -126,6 +126,7 @@ it('gets words from array correctly', () => {
     const app = new App()
     const inputTestArr = ['bat', 'ball', 'car']
     expect(app.getWordsFromArray(inputTestArr, 'ba', 10)).toEqual(['bat', 'ball'])
+    expect(app.getWordsFromArray(inputTestArr, 'Ba', 10)).toEqual(['bat', 'ball'])
     expect(app.getWordsFromArray(inputTestArr, 'ba', 1)).toEqual(['bat'])
     expect(app.getWordsFromArray(inputTestArr, 'a', 3)).toEqual(inputTestArr)
     expect(app.getWordsFromArray(inputTestArr, 'a', 3, ['bat', 'ball'])).toEqual(['car'])
@@ -159,7 +160,17 @@ it('gets predictive words', () => {
     expect(predicitedWords[1]).toBe('things')
     expect(predicitedWords[2]).toBe('before')
 
+    predicitedWords = wrapper.instance().getPredictiveWords(['Think'])
+    expect(predicitedWords[0]).toBe('when')
+    expect(predicitedWords[1]).toBe('things')
+    expect(predicitedWords[2]).toBe('before')
+
     predicitedWords = wrapper.instance().getPredictiveWords(['think', 'when'])
+    expect(predicitedWords[0]).toBe('is')
+    expect(predicitedWords[1]).toBe('you')
+    expect(predicitedWords[2]).toBe('tomorrow')
+
+    predicitedWords = wrapper.instance().getPredictiveWords(['Think', 'when'])
     expect(predicitedWords[0]).toBe('is')
     expect(predicitedWords[1]).toBe('you')
     expect(predicitedWords[2]).toBe('tomorrow')
@@ -243,6 +254,13 @@ it('gets suggested words', () => {
     })
     suggestedWords = wrapper.instance().getSuggestedWords()
     expect(suggestedWords[0]).toBe('dad\'s')
+
+    wrapper.setProps({
+        output: 'Apples ',
+        predictiveWords: predictiveWords,
+    })
+    suggestedWords = wrapper.instance().getSuggestedWords()
+    expect(suggestedWords[0]).toBe('taste')
 })
 
 it('handles the click event', () => {

@@ -104,19 +104,20 @@ export class App extends Component { // export from here to allow tests w/out re
 
     getPredictiveWords(words) {
         let foundWords = []
+        let wordsLower = words.map(word => (word.toLowerCase()))
         if(_.isEmpty(words)) {
             foundWords = this.getSortedObj(this.props.predictiveWords)
         }
-        let testWord = words[words.length - 1]
+        let testWord = wordsLower[wordsLower.length - 1]
         if(testWord && testWord in this.props.predictiveWords) {
             let results = this.getSortedObj(this.props.predictiveWords[testWord].words)
             foundWords = results.length ? results : foundWords
         }
-        if(words[words.length - 2]
-            && words[words.length - 2] in this.props.predictiveWords
-            && words[words.length - 1] in this.props.predictiveWords[words[words.length - 2]].words
+        if(wordsLower[wordsLower.length - 2]
+            && wordsLower[wordsLower.length - 2] in this.props.predictiveWords
+            && wordsLower[wordsLower.length - 1] in this.props.predictiveWords[wordsLower[wordsLower.length - 2]].words
         ) {
-            let results = this.getSortedObj(this.props.predictiveWords[words[words.length - 2]].words[words[words.length - 1]].words)
+            let results = this.getSortedObj(this.props.predictiveWords[wordsLower[wordsLower.length - 2]].words[wordsLower[wordsLower.length - 1]].words)
             foundWords = results.length ? results : foundWords
         }
         return foundWords
@@ -130,7 +131,7 @@ export class App extends Component { // export from here to allow tests w/out re
         let output = this.props.output.toLowerCase()
         let suggestedWords = config.gridParts.suggestedWords
         const outputWords = output.trim().split(' ')
-        if(outputWords.length > 1) {
+        if(outputWords.length > 0) {
             // Do not allow duplicates
             // Concat the default suggested words
             suggestedWords = _.uniqBy(this.getPredictiveWords(outputWords).concat(config.gridParts.suggestedWords), word => word.toLowerCase()).slice(0, config.suggestedWordCount)
@@ -164,10 +165,10 @@ export class App extends Component { // export from here to allow tests w/out re
             if(ignoreValues.indexOf(wordArray[i]) > -1) {
                 continue
             }
-            if(wordArray[i].indexOf(match) === 0) {
+            if(wordArray[i].indexOf(match.toLowerCase()) === 0) {
                 stringAtStart.push(wordArray[i])
             }
-            else if(wordArray[i].indexOf(match) > 0) {
+            else if(wordArray[i].indexOf(match.toLowerCase()) > 0) {
                 stringInString.push(wordArray[i])
             }
             if(stringAtStart.length >= count) {
