@@ -136,6 +136,14 @@ export class App extends Component { // export from here to allow tests w/out re
             suggestedWords = _.uniqBy(this.getPredictiveWords(outputWords).concat(config.gridParts.suggestedWords), word => word.toLowerCase()).slice(0, config.suggestedWordCount)
         }
         if(output.trim().length > 0 && output.slice(-1) !== ' ') {
+            // If last char is apostrope, suggest an 's'
+            const trimmedOutput = output.trim()
+            if(trimmedOutput.slice(-1) === '’' || trimmedOutput.slice(-1) === '\'') {
+                return ['s', 's.', 's,', 's?', 's!'].map(suffix => {
+                    return outputWords[outputWords.length - 1] + suffix
+                })
+            }
+
             const wordPart = output.trim().split(' ').pop()
             // Get common words
             suggestedWords = this.getWordsFromArray(commonWords, wordPart, config.suggestedWordCount)
@@ -145,6 +153,7 @@ export class App extends Component { // export from here to allow tests w/out re
                 suggestedWords = suggestedWords.concat(suggestedFullWords)
             }
         }
+
         return suggestedWords
     }
 

@@ -8,8 +8,9 @@
 - ~~after 'tight' punctuation mark, add space~~
 - ~~jump to first predictive word after predictive word selected~~
 - ~~add apostrophe to punctuation~~
-- suggest an 's' after apostrophe
-- allow (valid) words with apostrophe to be saved to predictive list
+- ~~allow (valid) words with apostrophe to be saved to predictive list~~
+- ~~suggest an 's' after apostrophe~~
+- check reason why word 'is' is not saving
 - show cursor on textarea
 - highlight predictive words differently
 - add punctuation (question mark) to predictive word

@@ -229,6 +229,20 @@ it('gets suggested words', () => {
     expect(suggestedWords[0]).toBe('i')
     expect(suggestedWords[1]).not.toBe('i')
     expect(suggestedWords[2]).not.toBe('i')
+
+    wrapper.setProps({
+        output: 'dad’',
+        predictiveWords: {},
+    })
+    suggestedWords = wrapper.instance().getSuggestedWords()
+    expect(suggestedWords[0]).toBe('dad’s')
+
+    wrapper.setProps({
+        output: 'dad\'',
+        predictiveWords: {},
+    })
+    suggestedWords = wrapper.instance().getSuggestedWords()
+    expect(suggestedWords[0]).toBe('dad\'s')
 })
 
 it('handles the click event', () => {
