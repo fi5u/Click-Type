@@ -7,7 +7,8 @@
 - ~~adding a 'tight' punctuation mark (',', '.', '!', '?') trims space before~~
 - ~~after 'tight' punctuation mark, add space~~
 - ~~jump to first predictive word after predictive word selected~~
-- add apostrophe to punctuation
+- ~~add apostrophe to punctuation~~
+- suggest an 's' after apostrophe
 - allow (valid) words with apostrophe to be saved to predictive list
 - show cursor on textarea
 - highlight predictive words differently

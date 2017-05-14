@@ -401,3 +401,57 @@ it('should handle ADD_PREDICTIVE_WORD and not add a non-dictionary word', () => 
         }
     })
 })
+
+it('should handle ADD_PREDICTIVE_WORD that contains an apostrophe', () => {
+    expect(
+        reducer({
+            ...initialState,
+            ...{
+                words: {},
+            }
+        }, {
+            type: types.ADD_PREDICTIVE_WORD,
+            words: ['mum’s', 'house'],
+        })
+    ).toEqual({
+        ...initialState,
+        ...{
+            words: {
+                'mum’s': {
+                    freq: 1,
+                    words: {
+                        house: {
+                            freq: 1,
+                        }
+                    }
+                },
+            },
+        }
+    })
+
+    expect(
+        reducer({
+            ...initialState,
+            ...{
+                words: {},
+            }
+        }, {
+            type: types.ADD_PREDICTIVE_WORD,
+            words: ['mum\'s', 'house'],
+        })
+    ).toEqual({
+        ...initialState,
+        ...{
+            words: {
+                'mum\'s': {
+                    freq: 1,
+                    words: {
+                        house: {
+                            freq: 1,
+                        }
+                    }
+                },
+            },
+        }
+    })
+})

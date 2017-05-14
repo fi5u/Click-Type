@@ -23,7 +23,13 @@ export default function predictive(state = initialState, action) {
                 }
 
                 // check is word in dictionary
-                if(wordsByLetter[modifiedWord[0]].indexOf(modifiedWord) === -1) {
+                // if apostrophe + 's', check word before apostrophe
+                let dictCheckWord = modifiedWord
+                if(dictCheckWord.slice(dictCheckWord.length - 2) === '’s' ||
+                    dictCheckWord.slice(dictCheckWord.length - 2) === '\'s') {
+                    dictCheckWord = dictCheckWord.slice(0, dictCheckWord.length - 2)
+                }
+                if(wordsByLetter[dictCheckWord[0]].indexOf(dictCheckWord) === -1) {
                     nonDictionaryWordFound = true
                     return undefined
                 }

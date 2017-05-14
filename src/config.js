@@ -8,6 +8,7 @@ const punctuation = [
     chars.space,
     '.',
     ',',
+    '’',
     '?',
     '!',
 ]
@@ -16,6 +17,7 @@ const tightPunctuation = [
     // Should not have space before
     '.',
     ',',
+    '’',
     '?',
     '!',
 ]
