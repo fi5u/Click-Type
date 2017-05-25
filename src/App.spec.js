@@ -237,9 +237,9 @@ it('gets suggested words', () => {
         },
     })
     suggestedWords = wrapper.instance().getSuggestedWords()
-    expect(suggestedWords[0]).toBe('i')
-    expect(suggestedWords[1]).not.toBe('i')
-    expect(suggestedWords[2]).not.toBe('i')
+    expect(suggestedWords[0]).toBe('I')
+    expect(suggestedWords[1]).not.toBe('I')
+    expect(suggestedWords[2]).not.toBe('I')
 
     wrapper.setProps({
         output: 'dad’',

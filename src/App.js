@@ -155,6 +155,13 @@ export class App extends Component { // export from here to allow tests w/out re
             }
         }
 
+        // An 'i' in suggested words should be capitalized
+        for(let i = suggestedWords.length - 1; i >= 0; i--) {
+            if(suggestedWords[i] === 'i') {
+                suggestedWords[i] = 'I'
+            }
+        }
+
         return suggestedWords
     }
 

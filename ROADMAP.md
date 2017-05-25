@@ -10,8 +10,8 @@
 - ~~add apostrophe to punctuation~~
 - ~~allow (valid) words with apostrophe to be saved to predictive list~~
 - ~~suggest an 's' after apostrophe~~
-- make case insensitive when comparing words from predictive
-- fix problem where duplicate 'i' appears on same row as 'I' in predictive list
+- make case insensitive when comparing words from predictive (?)
+- ~~fix problem where duplicate 'i' appears on same row as 'I' in predictive list~~
 - check reason why word 'is' is not saving
 - show cursor on textarea
 - highlight predictive words differently
