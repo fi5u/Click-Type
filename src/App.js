@@ -22,10 +22,9 @@ import {
     tick,
 } from './actions/timings'
 import Grid from './components/Grid'
+import OutputDisplay from './components/OutputDisplay'
 import _ from 'lodash'
-import {
-    addPredictiveWord,
-} from './actions/predictive'
+import { addPredictiveWord } from './actions/predictive'
 import { config } from './config'
 import { connect } from 'react-redux'
 
@@ -38,7 +37,6 @@ export class App extends Component { // export from here to allow tests w/out re
 
         this.clickButton = this.clickButton.bind(this)
         this.clickMainButton = this.clickMainButton.bind(this)
-        this.outputUpdate = this.outputUpdate.bind(this)
     }
 
     addLodashMixins() {
@@ -97,7 +95,7 @@ export class App extends Component { // export from here to allow tests w/out re
 
     detectClick(event) {
         // If space or typing directly in textarea, then ignore
-        if(event.keyCode !== 32 || document.activeElement.tagName === 'TEXTAREA') { return }
+        if(event.keyCode !== 32) { return }
         this.clickMainButton()
         event.preventDefault()
     }
@@ -185,10 +183,6 @@ export class App extends Component { // export from here to allow tests w/out re
         return stringAtStart.concat(stringInString).slice(0, count)
     }
 
-    outputUpdate(event) {
-        this.clickButton(event.target.value, true)
-    }
-
     startTick() {
         this.props.dispatch(startTick())
         this.ticker = window.setInterval(() => {
@@ -227,8 +221,7 @@ export class App extends Component { // export from here to allow tests w/out re
                     />
                 </div>
 
-                <textarea
-                    onChange={this.outputUpdate}
+                <OutputDisplay
                     value={output}
                 />
             </div>

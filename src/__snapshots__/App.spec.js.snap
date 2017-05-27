@@ -234,8 +234,12 @@ exports[`test renders App correctly 1`] = `
       </div>
     </div>
   </div>
-  <textarea
-    onChange={[Function]}
-    value="" />
+  <div
+    className="OutputDisplay">
+    <span
+      className="OutputDisplay__content">
+      
+    </span>
+  </div>
 </div>
 `;

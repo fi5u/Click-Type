@@ -1,0 +1,19 @@
+exports[`test renders OutputDisplay correctly 1`] = `
+<div
+  className="OutputDisplay">
+  <span
+    className="OutputDisplay__content">
+    
+  </span>
+</div>
+`;
+
+exports[`test renders OutputDisplay correctly 2`] = `
+<div
+  className="OutputDisplay">
+  <span
+    className="OutputDisplay__content">
+    The quick brown fox
+  </span>
+</div>
+`;

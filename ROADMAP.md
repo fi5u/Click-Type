@@ -12,8 +12,12 @@
 - ~~suggest an 's' after apostrophe~~
 - make case insensitive when comparing words from predictive (?)
 - ~~fix problem where duplicate 'i' appears on same row as 'I' in predictive list~~
-- check reason why word 'is' is not saving
-- show cursor on textarea
+- ~~check reason why word 'is' is not saving (it was saving correctly)~~
+- ~~show cursor on textarea~
+- use [pos-js](https://www.npmjs.com/package/pos) to predict next word better
+- If word should be capitalized, then predictive word should be
+- Add caps-lock button
+- Add numbers
 - highlight predictive words differently
 - add punctuation (question mark) to predictive word
 - give some visual indicator (perhaps animation) that focus has moved to first predicted word
