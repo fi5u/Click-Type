@@ -15,9 +15,12 @@
 - ~~check reason why word 'is' is not saving (it was saving correctly)~~
 - ~~show cursor on textarea~
 - use [pos-js](https://www.npmjs.com/package/pos) to predict next word better
-- If word should be capitalized, then predictive word should be
-- Add caps-lock button
-- Add numbers
+- ~predict whether sentence should be a question, and suggest question mark~
+- writing `don'` results in `don's`, should be `don't`
+- do not save child words after full stop - create new parent word
+- if word should be capitalized, then predictive word should be
+- add caps-lock button
+- add numbers
 - highlight predictive words differently
 - add punctuation (question mark) to predictive word
 - give some visual indicator (perhaps animation) that focus has moved to first predicted word

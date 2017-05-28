@@ -2,6 +2,7 @@ import './Grid.css'
 import React, { PropTypes } from 'react'
 import { Button } from 'react-bootstrap'
 import GridRow from './GridRow'
+import _ from 'lodash'
 import { shouldCapitalize } from '../helpers'
 
 const Grid = ({
@@ -23,7 +24,8 @@ const Grid = ({
                     isActive={iteration === activeRow}
                     key={`row-${iteration}`}
                 >
-                    {row.concat(suggestedWords).map((character, charIteration) => {
+                    {_.uniqBy(row.concat(suggestedWords), word => word !== 'I' ? word.toLowerCase() : word).map((character, charIteration) => {
+                        // Do not allow duplicates apart from 'I' which can be with lower 'i'
                         return(
                             <Button
                                 className={`GridItem${iteration === activeRow && charIteration === activeElement ? ' GridItem--is-active' : ''}`}

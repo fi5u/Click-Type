@@ -22,6 +22,7 @@ import {
     tick,
 } from './actions/timings'
 import Grid from './components/Grid'
+import LanguageProcessing from './services/language-processing'
 import OutputDisplay from './components/OutputDisplay'
 import _ from 'lodash'
 import { addPredictiveWord } from './actions/predictive'
@@ -34,6 +35,7 @@ export class App extends Component { // export from here to allow tests w/out re
 
         document.addEventListener('keydown', this.detectClick.bind(this), true)
         this.addLodashMixins()
+        this.langProcess = new LanguageProcessing()
 
         this.clickButton = this.clickButton.bind(this)
         this.clickMainButton = this.clickMainButton.bind(this)
@@ -129,10 +131,19 @@ export class App extends Component { // export from here to allow tests w/out re
         let output = this.props.output.toLowerCase()
         let suggestedWords = config.gridParts.suggestedWords
         const outputWords = output.trim().split(' ')
+
         if(outputWords.length > 0) {
             // Do not allow duplicates
             // Concat the default suggested words
             suggestedWords = _.uniqBy(this.getPredictiveWords(outputWords).concat(config.gridParts.suggestedWords), word => word.toLowerCase()).slice(0, config.suggestedWordCount)
+
+            // If endeded on a full word and sentence is a question, offer question mark
+            if(output.slice(-1) === ' ') {
+                const lastSentence = output.split(/\.|\?|!/g).pop()
+                if(this.langProcess.shouldBeAQuestion(lastSentence)) {
+                    suggestedWords = ['?'].concat(suggestedWords).slice(0, config.suggestedWordCount)
+                }
+            }
         }
         if(output.trim().length > 0 && output.slice(-1) !== ' ') {
             // If last char is apostrope, suggest an 's'
@@ -165,7 +176,7 @@ export class App extends Component { // export from here to allow tests w/out re
 
     getWordsFromArray(wordArray, match, count, ignoreValues = []) {
         const stringAtStart = [] // store words that contain string at start
-        const stringInString = [] // store words that constain string not at start
+        const stringInString = [] // store words that contain string not at start
         for(let i = 0, len = wordArray.length; i < len; i++) {
             if(ignoreValues.indexOf(wordArray[i]) > -1) {
                 continue

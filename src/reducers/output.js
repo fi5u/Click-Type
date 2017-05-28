@@ -23,7 +23,12 @@ export default function output(state = initialState, action) {
         if(action.isSuggestedWord) {
             let output = conditionallyCapitalize(action.settings.autoCapitalize, state.output, action.character, true)
 
-            if(state.output[state.output.length -1] !== ' ') {
+            // Do not put space in front of punctuation when punc is suggested word
+            if(config.tightPunctuation.indexOf(action.character) > -1) {
+                output = output.slice(0, output.length - 3) + action.character + ' '
+            }
+
+            if(state.output[state.output.length -1] !== ' ' && action.character !== '?') {
                 // last char is not space, assume to replace last word
                 let spaceSeparatedWordArr = state.output.split(' ')
                 let outputNoPartWord = spaceSeparatedWordArr.slice(0, -1).join(' ')

@@ -29,7 +29,7 @@ export default function predictive(state = initialState, action) {
                     dictCheckWord.slice(dictCheckWord.length - 2) === '\'s') {
                     dictCheckWord = dictCheckWord.slice(0, dictCheckWord.length - 2)
                 }
-                if(wordsByLetter[dictCheckWord[0]].indexOf(dictCheckWord) === -1) {
+                if(wordsByLetter[dictCheckWord[0]] && wordsByLetter[dictCheckWord[0]].indexOf(dictCheckWord) === -1) {
                     nonDictionaryWordFound = true
                     return undefined
                 }
