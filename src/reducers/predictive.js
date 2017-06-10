@@ -29,7 +29,7 @@ export default function predictive(state = initialState, action) {
                     dictCheckWord.slice(-2, -1) === '\'') {
                     dictCheckWord = dictCheckWord.slice(0, dictCheckWord.length - 2)
                     // if last letter before apostrophe is 'n', remove it
-                    const wordPreApostrophe = modifiedWord.split(/[’|\']{1}/)[0]
+                    const wordPreApostrophe = modifiedWord.split(/[’|']{1}/)[0]
                     if(wordPreApostrophe.slice(-1) === 'n') {
                         dictCheckWord = wordPreApostrophe.slice(0, wordPreApostrophe.length - 1)
                     }

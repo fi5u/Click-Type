@@ -272,3 +272,24 @@ it('should handle UPDATE_OUTPUT removing space before punctuation when punc is s
         }
     })
 })
+
+it('should handle UPDATE_OUTPUT when passing a suggested word starting with space', () => {
+    expect(
+        reducer({
+            ...initialState,
+            ...{
+                output: 'You are happy.',
+            }
+        }, {
+            type: types.UPDATE_OUTPUT,
+            character: ' you',
+            isSuggestedWord: true,
+            settings: settings,
+        })
+    ).toEqual({
+        ...initialState,
+        ...{
+            output: 'You are happy. You ',
+        }
+    })
+})

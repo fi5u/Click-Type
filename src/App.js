@@ -160,6 +160,11 @@ export class App extends Component { // export from here to allow tests w/out re
                 const suggestedFullWords = this.getWordsFromArray(words, wordPart, config.suggestedWordCount - suggestedWords.length, suggestedWords)
                 suggestedWords = suggestedWords.concat(suggestedFullWords)
             }
+
+            // If no suggested words, suggest a space plus default suggested words
+            if(!suggestedWords.length) {
+                suggestedWords = config.gridParts.suggestedWords.map(word => ` ${word}`)
+            }
         }
 
         // An 'i' in suggested words should be capitalized

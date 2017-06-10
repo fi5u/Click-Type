@@ -13,6 +13,7 @@ it('should conditionally capitalize correctly', () => {
     expect(conditionallyCapitalize(true, 'Today. ', 'i', true)).toEqual('Today. I ')
     expect(conditionallyCapitalize(true, 'Today. ', 'hello')).toEqual('Today. Hello')
     expect(conditionallyCapitalize(true, 'Today. ', 'hello', true)).toEqual('Today. Hello ')
+    expect(conditionallyCapitalize(true, 'today.', ' you')).toEqual('today. You')
     expect(conditionallyCapitalize(false, 'Toda', 'y')).toEqual('Today')
     expect(conditionallyCapitalize(false, 'Today', ' ')).toEqual('Today ')
     expect(conditionallyCapitalize(false, 'Today.', ' ')).toEqual('Today. ')
@@ -31,4 +32,5 @@ it('should capitalize correctly', () => {
     expect(shouldCapitalize('Today, ')).toEqual(false)
     expect(shouldCapitalize('Today ')).toEqual(false)
     expect(shouldCapitalize('Today I')).toEqual(false)
+    expect(shouldCapitalize('you.', ' you')).toEqual(true)
 })

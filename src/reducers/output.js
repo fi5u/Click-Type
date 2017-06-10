@@ -28,7 +28,7 @@ export default function output(state = initialState, action) {
                 output = output.slice(0, output.length - 3) + action.character + ' '
             }
 
-            if(state.output[state.output.length -1] !== ' ' && action.character !== '?') {
+            if(state.output.slice(-1) !== ' ' && action.character !== '?' && action.character[0] !== ' ') {
                 // last char is not space, assume to replace last word
                 let spaceSeparatedWordArr = state.output.split(' ')
                 let outputNoPartWord = spaceSeparatedWordArr.slice(0, -1).join(' ')
