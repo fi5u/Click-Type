@@ -3,6 +3,21 @@ import LanguageProcessing from './language-processing'
 
 const langProcess = new LanguageProcessing()
 
+it('should correctly suggest words from a word ending with an apostrophe', () => {
+    expect(langProcess.getApostrophizedWords('cat')).toEqual([])
+    expect(langProcess.getApostrophizedWords('cat\'').indexOf('cat\'s')).toBeGreaterThan(-1)
+    expect(langProcess.getApostrophizedWords('cat’').indexOf('cat’s')).toBeGreaterThan(-1)
+    expect(langProcess.getApostrophizedWords('i’').indexOf('i’m')).toBeGreaterThan(-1)
+    expect(langProcess.getApostrophizedWords('i’').indexOf('i’ll')).toBeGreaterThan(-1)
+    expect(langProcess.getApostrophizedWords('i’').indexOf('i’ve')).toBeGreaterThan(-1)
+    expect(langProcess.getApostrophizedWords('they’').indexOf('they’ve')).toBeGreaterThan(-1)
+    expect(langProcess.getApostrophizedWords('they’').indexOf('they’re')).toBeGreaterThan(-1)
+    expect(langProcess.getApostrophizedWords('they’').indexOf('they’ll')).toBeGreaterThan(-1)
+    expect(langProcess.getApostrophizedWords('wasn’').indexOf('wasn’t')).toBeGreaterThan(-1)
+    expect(langProcess.getApostrophizedWords('she’').indexOf('she’s')).toBeGreaterThan(-1)
+    expect(langProcess.getApostrophizedWords('it’').indexOf('it’s')).toBeGreaterThan(-1)
+})
+
 it('should correctly suggest the final word to have a question mark', () => {
     expect(langProcess.shouldBeAQuestion('I am happy')).toEqual(false)
     expect(langProcess.shouldBeAQuestion('We don\'t like cheese')).toEqual(false)

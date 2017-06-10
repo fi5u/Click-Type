@@ -246,14 +246,22 @@ it('gets suggested words', () => {
         predictiveWords: {},
     })
     suggestedWords = wrapper.instance().getSuggestedWords()
-    expect(suggestedWords[0]).toBe('dad’s')
+    expect(suggestedWords.indexOf('dad’s')).toBeGreaterThan(-1)
 
     wrapper.setProps({
         output: 'dad\'',
         predictiveWords: {},
     })
     suggestedWords = wrapper.instance().getSuggestedWords()
-    expect(suggestedWords[0]).toBe('dad\'s')
+    expect(suggestedWords.indexOf('dad\'s')).toBeGreaterThan(-1)
+
+    wrapper.setProps({
+        output: 'it’',
+        predictiveWords: {},
+    })
+    suggestedWords = wrapper.instance().getSuggestedWords()
+    expect(suggestedWords.indexOf('it’s')).toBeGreaterThan(-1)
+    expect(suggestedWords.indexOf('it’ll')).toBeGreaterThan(-1)
 
     wrapper.setProps({
         output: 'Apples ',

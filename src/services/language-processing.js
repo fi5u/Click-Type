@@ -1,6 +1,109 @@
 import pos from 'pos'
 
 export default class LanguageProcessing {
+    /** Create suggested words when the last char is apostrophe
+        Pass the word plus apostrophe */
+    getApostrophizedWords(preWord) {
+        const apostrophes = ['’', '\'']
+        const word = preWord.slice(0, preWord.length - 1) // minus apostrophe
+        const apostrophe = preWord.slice(-1)
+
+        // If no final apostrophe, return empty suggestion
+        if(apostrophes.indexOf(apostrophe) === -1) {
+            return []
+        }
+
+        const personalPronouns = [
+            'he',
+            'i',
+            'it',
+            'she',
+            'they',
+            'we',
+            'you',
+        ]
+        const results = []
+
+        // I’m
+        if(this._testApostropheWord(word, ['i'])) {
+            results.push(`${word}${apostrophe}m`)
+        }
+
+        // 'are' words
+        if(this._testApostropheWord(word, [
+            'they',
+            'we',
+            'you',
+        ])) {
+            results.push(`${word}${apostrophe}re`)
+        }
+
+        // 'will' words
+        if(this._testApostropheWord(word, personalPronouns)) {
+            results.push(`${word}${apostrophe}ll`)
+        }
+
+        // 'not' words
+        if(this._testApostropheWord(word, [
+            'aren',
+            'can',
+            'couldn',
+            'didn',
+            'doesn',
+            'don',
+            'hadn',
+            'hasn',
+            'haven',
+            'isn',
+            'mustn',
+            'needn',
+            'oughtn',
+            'shan',
+            'shouldn',
+            'wasn',
+            'weren',
+            'won',
+            'wouldn',
+        ])) {
+            results.push(`${word}${apostrophe}t`)
+        }
+
+        // 'have' words
+        if(this._testApostropheWord(word, [
+            'i',
+            'they',
+            'we',
+            'you',
+        ])) {
+            results.push(`${word}${apostrophe}ve`)
+        }
+
+        // 'had' words
+        if(this._testApostropheWord(word, personalPronouns)) {
+            results.push(`${word}${apostrophe}d`)
+        }
+
+        // personal ownership words
+        if(this._testApostropheWord(word, [
+            'he',
+            'it',
+            'she',
+        ])) {
+            results.push(`${word}${apostrophe}s`)
+        }
+
+        // will words
+        if(this._testApostropheWord(word, personalPronouns)) {
+            results.push(`${word}${apostrophe}ll`)
+        }
+
+        if(results.length === 0) {
+            // Default to `’s`
+            return [`${word}${apostrophe}s`]
+        }
+        return results
+    }
+
     /** Determines if the last word should have a question mark */
     shouldBeAQuestion(sentence) {
         const words = sentence.trim().toLowerCase().split(' ')
@@ -49,5 +152,9 @@ export default class LanguageProcessing {
         const tagger = new pos.Tagger()
         const taggedWords = tagger.tag(words)
         return taggedWords.map(taggedWord => taggedWord[1])
+    }
+
+    _testApostropheWord(word, list) {
+        return list.indexOf(word) > -1
     }
 }

@@ -131,6 +131,7 @@ export class App extends Component { // export from here to allow tests w/out re
         let output = this.props.output.toLowerCase()
         let suggestedWords = config.gridParts.suggestedWords
         const outputWords = output.trim().split(' ')
+        const lastWord = outputWords.length > 0 ? outputWords[outputWords.length - 1] : ''
 
         if(outputWords.length > 0) {
             // Do not allow duplicates
@@ -146,12 +147,9 @@ export class App extends Component { // export from here to allow tests w/out re
             }
         }
         if(output.trim().length > 0 && output.slice(-1) !== ' ') {
-            // If last char is apostrope, suggest an 's'
-            const trimmedOutput = output.trim()
-            if(trimmedOutput.slice(-1) === '’' || trimmedOutput.slice(-1) === '\'') {
-                return ['s', 's.', 's,', 's?', 's!'].map(suffix => {
-                    return outputWords[outputWords.length - 1] + suffix
-                })
+            // If last char is apostrope, suggest suitable replacements
+            if(lastWord.slice(-1) === '’' || lastWord.slice(-1) === '\'') {
+                return this.langProcess.getApostrophizedWords(lastWord)
             }
 
             const wordPart = output.trim().split(' ').pop()

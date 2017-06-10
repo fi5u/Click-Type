@@ -15,8 +15,12 @@
 - ~~check reason why word 'is' is not saving (it was saving correctly)~~
 - ~~show cursor on textarea~
 - use [pos-js](https://www.npmjs.com/package/pos) to predict next word better
-- ~predict whether sentence should be a question, and suggest question mark~
-- writing `don'` results in `don's`, should be `don't`
+- ~~predict whether sentence should be a question, and suggest question mark~~
+- ~~writing `don'` results in `don's`, should be `don't`~~
+- add word to predictive if ends in `n’t` if prior to `n` is dict word: do, does, etc
+- when backspace to punctuation, nothing suggested -suggest space
+- after typing `a` suggest a space first, then the `a` suggested words
+- exclamation mark should insert a space after
 - do not save child words after full stop - create new parent word
 - if word should be capitalized, then predictive word should be
 - add caps-lock button
