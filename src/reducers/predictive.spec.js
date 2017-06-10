@@ -454,4 +454,56 @@ it('should handle ADD_PREDICTIVE_WORD that contains an apostrophe', () => {
             },
         }
     })
+
+    expect(
+        reducer({
+            ...initialState,
+            ...{
+                words: {},
+            }
+        }, {
+            type: types.ADD_PREDICTIVE_WORD,
+            words: ['mustn’t', 'go'],
+        })
+    ).toEqual({
+        ...initialState,
+        ...{
+            words: {
+                'mustn’t': {
+                    freq: 1,
+                    words: {
+                        go: {
+                            freq: 1,
+                        }
+                    }
+                },
+            },
+        }
+    })
+
+    expect(
+        reducer({
+            ...initialState,
+            ...{
+                words: {},
+            }
+        }, {
+            type: types.ADD_PREDICTIVE_WORD,
+            words: ['shan’t', 'go'],
+        })
+    ).toEqual({
+        ...initialState,
+        ...{
+            words: {
+                'shan’t': {
+                    freq: 1,
+                    words: {
+                        go: {
+                            freq: 1,
+                        }
+                    }
+                },
+            },
+        }
+    })
 })

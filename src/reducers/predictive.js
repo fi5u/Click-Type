@@ -23,11 +23,23 @@ export default function predictive(state = initialState, action) {
                 }
 
                 // check is word in dictionary
-                // if apostrophe + 's', check word before apostrophe
+                // if word shortened with apostrophe, check word before apostrophe
                 let dictCheckWord = modifiedWord
-                if(dictCheckWord.slice(dictCheckWord.length - 2) === '’s' ||
-                    dictCheckWord.slice(dictCheckWord.length - 2) === '\'s') {
+                if(dictCheckWord.slice(-2, -1) === '’' ||
+                    dictCheckWord.slice(-2, -1) === '\'') {
                     dictCheckWord = dictCheckWord.slice(0, dictCheckWord.length - 2)
+                    // if last letter before apostrophe is 'n', remove it
+                    const wordPreApostrophe = modifiedWord.split(/[’|\']{1}/)[0]
+                    if(wordPreApostrophe.slice(-1) === 'n') {
+                        dictCheckWord = wordPreApostrophe.slice(0, wordPreApostrophe.length - 1)
+                    }
+
+                    // Exceptions
+                    // shan’t
+                    if(wordPreApostrophe === 'shan') {
+                        dictCheckWord = 'shall'
+                    }
+
                 }
                 if(wordsByLetter[dictCheckWord[0]] && wordsByLetter[dictCheckWord[0]].indexOf(dictCheckWord) === -1) {
                     nonDictionaryWordFound = true
