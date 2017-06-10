@@ -37,6 +37,11 @@ export default function output(state = initialState, action) {
                 }
                 output = conditionallyCapitalize(action.settings.autoCapitalize, outputNoPartWord, action.character, true)
             }
+
+            if(action.character === config.chars.space) {
+                output = `${state.output} `
+            }
+
             return Object.assign({}, state, {
                 output,
             })

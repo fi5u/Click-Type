@@ -293,3 +293,24 @@ it('should handle UPDATE_OUTPUT when passing a suggested word starting with spac
         }
     })
 })
+
+it('should handle UPDATE_OUTPUT when receiving a space character', () => {
+    expect(
+        reducer({
+            ...initialState,
+            ...{
+                output: 'a',
+            }
+        }, {
+            type: types.UPDATE_OUTPUT,
+            character: config.chars.space,
+            isSuggestedWord: true,
+            settings: settings,
+        })
+    ).toEqual({
+        ...initialState,
+        ...{
+            output: 'a ',
+        }
+    })
+})

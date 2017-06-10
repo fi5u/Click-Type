@@ -174,6 +174,11 @@ export class App extends Component { // export from here to allow tests w/out re
             }
         }
 
+        // If has typed 'a', first suggested word should be a space
+        if(lastWord === 'a' && output.slice(-1) !== ' ') {
+            suggestedWords = [config.chars.space].concat(suggestedWords).slice(0, config.suggestedWordCount)
+        }
+
         return suggestedWords
     }
 
