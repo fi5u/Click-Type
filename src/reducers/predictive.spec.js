@@ -507,3 +507,26 @@ it('should handle ADD_PREDICTIVE_WORD that contains an apostrophe', () => {
         }
     })
 })
+
+it('should handle ADD_PREDICTIVE_WORD that contains a sentence-ending punctuation mark', () => {
+    expect(
+        reducer({
+            ...initialState,
+            ...{
+                words: {},
+            }
+        }, {
+            type: types.ADD_PREDICTIVE_WORD,
+            words: ['will.', 'Hello', 'you'],
+        })
+    ).toEqual({
+        ...initialState,
+        ...{
+            words: {
+                'will': {
+                    freq: 1,
+                },
+            },
+        }
+    })
+})

@@ -48,7 +48,7 @@ const config = {
     },
     punctuation: punctuation,
     suggestedWordCount: 4,
-    tickDuration: 500,
+    tickDuration: 300,
     tightPunctuation: tightPunctuation,
 }
 
