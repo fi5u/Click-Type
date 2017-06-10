@@ -32,7 +32,7 @@ const Grid = ({
                                 key={character}
                                 onClick={() => clickButton(character)}
                                 style={{
-                                    textTransform: settings.autoCapitalize && shouldCapitalize(output) ? 'capitalize' : 'none',
+                                    textTransform: settings.autoCapitalize && shouldCapitalize(output, character) ? 'capitalize' : 'none',
                                 }}
                             >
                                 {character}
