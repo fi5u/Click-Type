@@ -66,6 +66,7 @@ export class App extends Component { // export from here to allow tests w/out re
 
         // Move focus back to first suggested word
         if(isSuggestedWord) {
+            this.stopAndPause(2)
             this.props.dispatch(setActiveColumn(this.props.grid[this.props.activeRow].length))
         }
 
@@ -84,11 +85,7 @@ export class App extends Component { // export from here to allow tests w/out re
             this.props.dispatch(select())
 
             // Stop and pause
-            this.stopTick()
-            window.setTimeout(() => {
-                if(this.props.tickStarted) { return }
-                this.startTick()
-            }, config.tickDuration)
+            this.stopAndPause()
         }
         else {
             this.startTick()
@@ -207,6 +204,17 @@ export class App extends Component { // export from here to allow tests w/out re
         this.ticker = window.setInterval(() => {
             this.props.dispatch(tick())
         }, config.tickDuration)
+    }
+
+    stopAndPause(times = 1) {
+        if(this.pauseInProgress)  { return }
+        this.pauseInProgress = true
+        this.stopTick()
+        window.setTimeout(() => {
+            this.pauseInProgress = false
+            if(this.props.tickStarted) { return }
+            this.startTick()
+        }, config.tickDuration * times)
     }
 
     stopTick() {

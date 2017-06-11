@@ -21,11 +21,11 @@
 - ~~when backspace to punctuation, nothing suggested -suggest space~~
 - ~~after typing `a` suggest a space first, then the `a` suggested words~
 - ~~do not save child words after full stop - create new parent word~~
-- if word should be capitalized, then predictive word should be
-- pause for twice as long when move back to first suggested word
+- ~~pause for twice as long when move back to first suggested word~~
 - add caps-lock button
 - add numbers
 - highlight predictive words differently
 - add punctuation (question mark) to predictive word
 - give some visual indicator (perhaps animation) that focus has moved to first predicted word
 - use most-used own words instead of default words (perhaps once the count gets above a certain number)
+- add a settings screen/row, where speed and auto capitalize can be set
