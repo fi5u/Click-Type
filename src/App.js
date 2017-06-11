@@ -28,6 +28,7 @@ import _ from 'lodash'
 import { addPredictiveWord } from './actions/predictive'
 import { config } from './config'
 import { connect } from 'react-redux'
+import { setSetting } from './actions/settings'
 
 export class App extends Component { // export from here to allow tests w/out redux
     constructor() {
@@ -61,6 +62,11 @@ export class App extends Component { // export from here to allow tests w/out re
     }
 
     clickButton(output, replace = false) {
+        if(output === config.chars.capsLock) {
+            this.props.dispatch(setSetting('capsLock', !this.props.settings.capsLock))
+            return
+        }
+
         const isSuggestedWord = this.props.suggestedWords.indexOf(output) > -1
         this.props.dispatch(replace ? setOutput(output) : updateOutput(output, isSuggestedWord, this.props.settings))
 

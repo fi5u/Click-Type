@@ -1,6 +1,7 @@
 const chars = {
     backspace: '⌫',
     backup: '⇡',
+    capsLock: '⇪',
     space: '[]',
 }
 
@@ -11,6 +12,7 @@ const punctuation = [
     '’',
     '?',
     '!',
+    '⇪',
 ]
 
 const tightPunctuation = [

@@ -2,6 +2,7 @@ import * as types from '../actions/action-types'
 
 export const initialState = {
     autoCapitalize: true,
+    capsLock: false,
 }
 
 export default function settings(state = initialState, action) {

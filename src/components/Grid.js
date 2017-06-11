@@ -3,6 +3,7 @@ import React, { PropTypes } from 'react'
 import { Button } from 'react-bootstrap'
 import GridRow from './GridRow'
 import _ from 'lodash'
+import { config } from '../config'
 import { shouldCapitalize } from '../helpers'
 
 const Grid = ({
@@ -29,11 +30,11 @@ const Grid = ({
                         // Do not allow duplicates apart from 'I' which can be with lower 'i'
                         return(
                             <Button
-                                className={`GridItem${iteration === activeRow && charIteration === activeElement ? ' GridItem--is-active' : ''}`}
+                                className={`GridItem${iteration === activeRow && charIteration === activeElement ? ' GridItem--is-active' : ''}${character === config.chars.capsLock && settings.capsLock ? ' GridItem--is-on' : ''}`}
                                 key={character}
                                 onClick={() => clickButton(character)}
                                 style={{
-                                    textTransform: settings.autoCapitalize && shouldCapitalize(output, character) ? 'capitalize' : 'none',
+                                    textTransform: settings.capsLock ? 'uppercase' : settings.autoCapitalize && shouldCapitalize(output, character) ? 'capitalize' : 'none',
                                 }}
                             >
                                 {character}

@@ -16,16 +16,18 @@ export default function output(state = initialState, action) {
 
     case types.UPDATE_OUTPUT: {
         // Do not output backup character
-        if(action.character === config.chars.backup) {
+        if(action.character === config.chars.backup || action.character === config.chars.capsLock) {
             return state
         }
 
+        const casedCharacter = action.settings.capsLock ? action.character.toUpperCase() : action.character
+
         if(action.isSuggestedWord) {
-            let output = conditionallyCapitalize(action.settings.autoCapitalize, state.output, action.character, true)
+            let output = conditionallyCapitalize(action.settings.autoCapitalize, state.output, casedCharacter, true)
 
             // Do not put space in front of punctuation when punc is suggested word
             if(config.tightPunctuation.indexOf(action.character) > -1) {
-                output = output.slice(0, output.length - 3) + action.character + ' '
+                output = output.slice(0, output.length - 3) + casedCharacter + ' '
             }
 
             if(state.output.slice(-1) !== ' ' && action.character !== '?' && action.character[0] !== ' ') {
@@ -35,7 +37,7 @@ export default function output(state = initialState, action) {
                 if(spaceSeparatedWordArr.length > 1) {
                     outputNoPartWord += ' '
                 }
-                output = conditionallyCapitalize(action.settings.autoCapitalize, outputNoPartWord, action.character, true)
+                output = conditionallyCapitalize(action.settings.autoCapitalize, outputNoPartWord, casedCharacter, true)
             }
 
             if(action.character === config.chars.space) {
@@ -47,7 +49,7 @@ export default function output(state = initialState, action) {
             })
         }
 
-        let output = conditionallyCapitalize(action.settings.autoCapitalize, state.output, action.character)
+        let output = conditionallyCapitalize(action.settings.autoCapitalize, state.output, casedCharacter)
 
         if(action.character === config.chars.backspace) {
             output = state.output.length ? state.output.slice(0, -1) : ''
@@ -60,7 +62,7 @@ export default function output(state = initialState, action) {
         // If punctuation and punctuation should not have space before, remove space
         if(config.tightPunctuation.indexOf(action.character) > -1 &&
             state.output[state.output.length - 1] === ' ') {
-            output = state.output.slice(0, state.output.length - 1) + action.character + ' '
+            output = state.output.slice(0, state.output.length - 1) + casedCharacter + ' '
         }
 
         return Object.assign({}, state, {

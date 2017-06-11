@@ -14,7 +14,7 @@
 - ~~fix problem where duplicate 'i' appears on same row as 'I' in predictive list~~
 - ~~check reason why word 'is' is not saving (it was saving correctly)~~
 - ~~show cursor on textarea~
-- use [pos-js](https://www.npmjs.com/package/pos) to predict next word better
+- use [pos-js](https://www.npmjs.com/package/pos) to predict next word better - i.e. after `is` adjective, adverb comp sup, possessive etc OR not noun sing pl, adverb, verb etc
 - ~~predict whether sentence should be a question, and suggest question mark~~
 - ~~writing `don'` results in `don's`, should be `don't`~~
 - ~~add word to predictive if ends in `n’t` if prior to `n` is dict word: do, does, etc~~
@@ -22,7 +22,7 @@
 - ~~after typing `a` suggest a space first, then the `a` suggested words~
 - ~~do not save child words after full stop - create new parent word~~
 - ~~pause for twice as long when move back to first suggested word~~
-- add caps-lock button
+- ~~add caps-lock button~~
 - add numbers
 - highlight predictive words differently
 - add punctuation (question mark) to predictive word
