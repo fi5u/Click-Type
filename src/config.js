@@ -49,6 +49,15 @@ const config = {
             ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
         ],
         punctuation: [punctuation],
+        secondaryPunc: [[
+            '$',
+            '£',
+            ':',
+            '/',
+            '-',
+            '@',
+            '⇪',
+        ]],
         suggestedWords: suggestedWords,
     },
     punctuation: punctuation,

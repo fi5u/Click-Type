@@ -37,6 +37,11 @@ export default function grids(state = initialState, action) {
             activeRow: state.activeAxis === 'col' ? state.activeRow : state.activeRow >= state.activeGrid.length - 1 ? 0 : state.activeRow + 1,
         })
 
+    case types.TOGGLE_CAPS_LOCK:
+        return Object.assign({}, state, {
+            activeGrid: addAdditionals(config.gridParts.letters).concat(addAdditionals(config.gridParts.numbers)).concat(addAdditionals(action.value ? config.gridParts.secondaryPunc : config.gridParts.punctuation)),
+        })
+
     case types.UPDATE_SUGGESTED_WORDS:
         return Object.assign({}, state, {
             suggestedWords: action.words

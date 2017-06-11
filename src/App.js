@@ -10,6 +10,7 @@ import {
 import {
     select,
     setActiveColumn,
+    toggleCapsLock,
     updateSuggestedWords,
 } from './actions/grids'
 import {
@@ -63,6 +64,7 @@ export class App extends Component { // export from here to allow tests w/out re
 
     clickButton(output, replace = false) {
         if(output === config.chars.capsLock) {
+            this.props.dispatch(toggleCapsLock(!this.props.settings.capsLock))
             this.props.dispatch(setSetting('capsLock', !this.props.settings.capsLock))
             return
         }
