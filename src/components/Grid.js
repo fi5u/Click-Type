@@ -17,14 +17,15 @@ const Grid = ({
     <div
         className="Grid"
     >
-        {characterGrid.map((row, iteration) => {
+        {characterGrid.map((row, iteration, rows) => {
             return (
                 <GridRow
                     clickButton={clickButton}
                     isActive={iteration === activeRow}
                     key={`row-${iteration}`}
                 >
-                    {_.uniqBy(row.concat(suggestedWords), word => word !== 'I' ? word.toLowerCase() : word).map((character, charIteration) => {
+                    {/* Do not add suggested words to last (punc) row */}
+                    {_.uniqBy(row.concat(iteration === rows.length - 1 ? [] : suggestedWords), word => word !== 'I' ? word.toLowerCase() : word).map((character, charIteration) => {
                         // Do not allow duplicates apart from 'I' which can be with lower 'i'
                         return(
                             <Button
