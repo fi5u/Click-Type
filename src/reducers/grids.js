@@ -12,7 +12,7 @@ const addAdditionals = baseCharGroup => {
 export const initialState = {
     activeAxis: 'row',
     activeElement: 0,
-    activeGrid: addAdditionals(config.gridParts.letters).concat(addAdditionals(config.gridParts.punctuation)),
+    activeGrid: addAdditionals(config.gridParts.letters).concat(addAdditionals(config.gridParts.numbers)).concat(addAdditionals(config.gridParts.punctuation)),
     activeRow: 0,
     suggestedWords: config.gridParts.suggestedWords,
 }
@@ -22,7 +22,7 @@ export default function grids(state = initialState, action) {
     case types.SELECT:
         return Object.assign({}, state, {
             activeAxis: state.activeAxis === 'col' &&
-                state.activeGrid[state.activeRow].concat(state.activeRow === state.activeGrid.length - 1 ? [] : state.suggestedWords)[state.activeElement] === config.chars.backup ?
+                state.activeGrid[state.activeRow].concat(state.activeRow >= state.activeGrid.length - 2 ? [] : state.suggestedWords)[state.activeElement] === config.chars.backup ?
                 'row' : 'col',
         })
 
@@ -33,7 +33,7 @@ export default function grids(state = initialState, action) {
 
     case types.TICK:
         return Object.assign({}, state, {
-            activeElement: state.activeAxis === 'row' ? 0 : state.activeElement >= state.activeGrid[state.activeRow].concat(state.activeRow === state.activeGrid.length - 1 ? [] : state.suggestedWords).length - 1 ? 0 : state.activeElement + 1,
+            activeElement: state.activeAxis === 'row' ? 0 : state.activeElement >= state.activeGrid[state.activeRow].concat(state.activeRow >= state.activeGrid.length - 2 ? [] : state.suggestedWords).length - 1 ? 0 : state.activeElement + 1,
             activeRow: state.activeAxis === 'col' ? state.activeRow : state.activeRow >= state.activeGrid.length - 1 ? 0 : state.activeRow + 1,
         })
 

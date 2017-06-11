@@ -116,42 +116,6 @@ exports[`test renders Grid correctly 1`] = `
       type="button">
       f
     </button>
-    <button
-      className="GridItem btn btn-default"
-      disabled={false}
-      onClick={[Function]}
-      style={
-        Object {
-          "textTransform": "capitalize",
-        }
-      }
-      type="button">
-      abs
-    </button>
-    <button
-      className="GridItem btn btn-default"
-      disabled={false}
-      onClick={[Function]}
-      style={
-        Object {
-          "textTransform": "capitalize",
-        }
-      }
-      type="button">
-      ace
-    </button>
-    <button
-      className="GridItem btn btn-default"
-      disabled={false}
-      onClick={[Function]}
-      style={
-        Object {
-          "textTransform": "capitalize",
-        }
-      }
-      type="button">
-      adder
-    </button>
   </div>
   <div
     className="GridRow btn-group"

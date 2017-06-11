@@ -45,6 +45,9 @@ const config = {
             ['p', 'q', 'r', 's', 't'],
             ['u', 'v', 'w', 'x', 'y', 'z']
         ],
+        numbers: [
+            ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
+        ],
         punctuation: [punctuation],
         suggestedWords: suggestedWords,
     },

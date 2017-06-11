@@ -26,7 +26,7 @@ const Grid = ({
                     key={`row-${iteration}`}
                 >
                     {/* Do not add suggested words to last (punc) row */}
-                    {_.uniqBy(row.concat(iteration === rows.length - 1 ? [] : suggestedWords), word => word !== 'I' ? word.toLowerCase() : word).map((character, charIteration) => {
+                    {_.uniqBy(row.concat(iteration >= rows.length - 2 ? [] : suggestedWords), word => word !== 'I' ? word.toLowerCase() : word).map((character, charIteration) => {
                         // Do not allow duplicates apart from 'I' which can be with lower 'i'
                         return(
                             <Button
