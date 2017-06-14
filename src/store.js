@@ -24,8 +24,8 @@ export const store = createStore(
             loggerMiddleware
         ),
         autoRehydrate({log: true})
-  )
+    )
 )
 
 
-persistStore(store, {whitelist: ['predictive']})
+persistStore(store, {whitelist: ['predictive', 'settings']})

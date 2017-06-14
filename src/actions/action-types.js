@@ -1,4 +1,6 @@
 export const ADD_PREDICTIVE_WORD = 'ADD_PREDICTIVE_WORD'
+export const INCREASE_SPEED = 'INCREASE_SPEED'
+export const REDUCE_SPEED = 'REDUCE_SPEED'
 export const SELECT = 'SELECT'
 export const SET_ACTIVE_COLUMN = 'SET_ACTIVE_COLUMN'
 export const SET_OUTPUT = 'SET_OUTPUT'

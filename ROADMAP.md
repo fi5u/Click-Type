@@ -13,7 +13,7 @@
 - make case insensitive when comparing words from predictive (?)
 - ~~fix problem where duplicate 'i' appears on same row as 'I' in predictive list~~
 - ~~check reason why word 'is' is not saving (it was saving correctly)~~
-- ~~show cursor on textarea~
+- ~~show cursor on textarea~~
 - use [pos-js](https://www.npmjs.com/package/pos) to predict next word better - i.e. after `is` adjective, adverb comp sup, possessive etc OR not noun sing pl, adverb, verb etc
 - ~~predict whether sentence should be a question, and suggest question mark~~
 - ~~writing `don'` results in `don's`, should be `don't`~~
@@ -25,7 +25,8 @@
 - ~~add caps-lock button~~
 - ~~add numbers~~
 - ~~caps lock should activate secondary punctuation on the punctuation row~~
+- ~~add a settings screen/row, where speed and auto capitalize can be set~~
 - highlight predictive words differently
 - give some visual indicator (perhaps animation) that focus has moved to first predicted word
 - use most-used own words instead of default words (perhaps once the count gets above a certain number)
-- add a settings screen/row, where speed and auto capitalize can be set
+- provide a key explaining symbols (plus display current speed)

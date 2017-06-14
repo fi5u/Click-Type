@@ -8,6 +8,11 @@ import {
     words,
 } from './data'
 import {
+    increaseSpeed,
+    reduceSpeed,
+    setSetting,
+} from './actions/settings'
+import {
     select,
     setActiveColumn,
     toggleCapsLock,
@@ -29,7 +34,6 @@ import _ from 'lodash'
 import { addPredictiveWord } from './actions/predictive'
 import { config } from './config'
 import { connect } from 'react-redux'
-import { setSetting } from './actions/settings'
 
 export class App extends Component { // export from here to allow tests w/out redux
     constructor() {
@@ -66,6 +70,16 @@ export class App extends Component { // export from here to allow tests w/out re
         if(output === config.chars.capsLock) {
             this.props.dispatch(toggleCapsLock(!this.props.settings.capsLock))
             this.props.dispatch(setSetting('capsLock', !this.props.settings.capsLock))
+            return
+        }
+
+        if(output === config.chars.speedUp || output === config.chars.speedDown) {
+            if((output === config.chars.speedDown && this.props.settings.canDecreaseSpeed) ||
+                (output === config.chars.speedUp && this.props.settings.canIncreaseSpeed)) {
+                this.stopAndPause(2)
+                this.props.dispatch(output === config.chars.speedDown ? reduceSpeed() : increaseSpeed())
+            }
+
             return
         }
 
@@ -211,7 +225,7 @@ export class App extends Component { // export from here to allow tests w/out re
         this.props.dispatch(startTick())
         this.ticker = window.setInterval(() => {
             this.props.dispatch(tick())
-        }, config.tickDuration)
+        }, this.props.settings.speed)
     }
 
     stopAndPause(times = 1) {
@@ -222,7 +236,7 @@ export class App extends Component { // export from here to allow tests w/out re
             this.pauseInProgress = false
             if(this.props.tickStarted) { return }
             this.startTick()
-        }, config.tickDuration * times)
+        }, this.props.settings.speed * times)
     }
 
     stopTick() {

@@ -3,6 +3,10 @@
     flex: 1;
 }
 
+.GridItem:disabled {
+    opacity: .2;
+}
+
 .GridItem--is-active {
     background-image: linear-gradient(to bottom, #fff 0%, hsl(349, 73%, 80%) 100%);
 }

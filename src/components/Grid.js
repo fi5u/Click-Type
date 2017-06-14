@@ -31,6 +31,7 @@ const Grid = ({
                         return(
                             <Button
                                 className={`GridItem${iteration === activeRow && charIteration === activeElement ? ' GridItem--is-active' : ''}${character === config.chars.capsLock && settings.capsLock ? ' GridItem--is-on' : ''}`}
+                                disabled={(character === config.chars.speedUp && !settings.canIncreaseSpeed) || (character === config.chars.speedDown && !settings.canDecreaseSpeed)}
                                 key={character}
                                 onClick={() => clickButton(character)}
                                 style={{

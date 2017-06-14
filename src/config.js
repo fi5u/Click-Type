@@ -3,6 +3,8 @@ const chars = {
     backup: '⇡',
     capsLock: '⇪',
     space: '[]',
+    speedDown: '«',
+    speedUp: '»',
 }
 
 const punctuation = [
@@ -12,6 +14,7 @@ const punctuation = [
     '’',
     '?',
     '!',
+    '-',
     '⇪',
 ]
 
@@ -54,15 +57,15 @@ const config = {
             '£',
             ':',
             '/',
-            '-',
             '@',
+            '«',
+            '»',
             '⇪',
         ]],
         suggestedWords: suggestedWords,
     },
     punctuation: punctuation,
     suggestedWordCount: 4,
-    tickDuration: 400,
     tightPunctuation: tightPunctuation,
 }
 
