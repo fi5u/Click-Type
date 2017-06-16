@@ -1,12 +1,8 @@
 /* global expect, it */
 import * as types from '../actions/action-types'
-import {
-    highSpeedLimit,
-    initialState,
-    lowSpeedLimit,
-    speedIncrement,
-} from './settings'
+import { initialState } from './settings'
 import reducer from './settings'
+import { speed } from '../config'
 
 it('should return the initial state', () => {
     expect(
@@ -33,7 +29,7 @@ it('should handle REDUCE_SPEED', () => {
     expect(
         reducer({
             ...initialState,
-            speed: highSpeedLimit, // 150
+            speed: speed.high, // 150
         }, {
             type: types.REDUCE_SPEED,
         })
@@ -42,14 +38,14 @@ it('should handle REDUCE_SPEED', () => {
         ...{
             canIncreaseSpeed: true,
             canDecreaseSpeed: true,
-            speed: highSpeedLimit + speedIncrement, // 150 + 50 = 200
+            speed: speed.high + speed.increment, // 150 + 50 = 200
         }
     })
 
     expect(
         reducer({
             ...initialState,
-            speed: lowSpeedLimit - speedIncrement, // 600 - 50 = 550
+            speed: speed.low - speed.increment, // 600 - 50 = 550
         }, {
             type: types.REDUCE_SPEED,
         })
@@ -58,7 +54,7 @@ it('should handle REDUCE_SPEED', () => {
         ...{
             canIncreaseSpeed: true,
             canDecreaseSpeed: false,
-            speed: lowSpeedLimit,
+            speed: speed.low,
         }
     })
 })
@@ -67,7 +63,7 @@ it('should handle INCREASE_SPEED', () => {
     expect(
         reducer({
             ...initialState,
-            speed: highSpeedLimit + speedIncrement,
+            speed: speed.high + speed.increment,
         }, {
             type: types.INCREASE_SPEED,
         })
@@ -76,14 +72,14 @@ it('should handle INCREASE_SPEED', () => {
         ...{
             canIncreaseSpeed: false,
             canDecreaseSpeed: true,
-            speed: highSpeedLimit,
+            speed: speed.high,
         }
     })
 
     expect(
         reducer({
             ...initialState,
-            speed: lowSpeedLimit,
+            speed: speed.low,
         }, {
             type: types.INCREASE_SPEED,
         })
@@ -92,7 +88,7 @@ it('should handle INCREASE_SPEED', () => {
         ...{
             canIncreaseSpeed: true,
             canDecreaseSpeed: true,
-            speed: lowSpeedLimit - speedIncrement,
+            speed: speed.low - speed.increment,
         }
     })
 })

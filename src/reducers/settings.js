@@ -1,16 +1,13 @@
 import * as types from '../actions/action-types'
+import { speed } from '../config'
 
 export const initialState = {
     autoCapitalize: true,
     canDecreaseSpeed: true,
     canIncreaseSpeed: true,
     capsLock: false,
-    speed: 400,
+    speed: speed.initial,
 }
-
-export const highSpeedLimit = 150
-export const lowSpeedLimit = 1000
-export const speedIncrement = 50
 
 export default function settings(state = initialState, action) {
     switch(action.type) {
@@ -18,17 +15,17 @@ export default function settings(state = initialState, action) {
     case types.REDUCE_SPEED:
         return {
             ...state,
-            canDecreaseSpeed: state.speed + speedIncrement < lowSpeedLimit, // 550 + 50 <= 600
+            canDecreaseSpeed: state.speed + speed.increment < speed.low, // 550 + 50 <= 600
             canIncreaseSpeed: true,
-            speed: state.speed > speedIncrement ? state.speed + speedIncrement : state.speed,
+            speed: state.speed > speed.increment ? state.speed + speed.increment : state.speed,
         }
 
     case types.INCREASE_SPEED:
         return {
             ...state,
             canDecreaseSpeed: true,
-            canIncreaseSpeed: state.speed - speedIncrement > highSpeedLimit,
-            speed: state.speed - speedIncrement <= highSpeedLimit ? highSpeedLimit : state.speed - speedIncrement,
+            canIncreaseSpeed: state.speed - speed.increment > speed.high,
+            speed: state.speed - speed.increment <= speed.high ? speed.high : state.speed - speed.increment,
         }
 
     case types.SET_SETTING:

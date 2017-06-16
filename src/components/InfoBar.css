@@ -1,0 +1,23 @@
+.InfoBar {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.InfoBar__item {
+    flex: 1;
+}
+
+.InfoBar__item--inner {
+    display: flex;
+    flex-direction: column;
+}
+
+.InfoBar__symbol {
+
+}
+
+.InfoBar__label {
+
+}

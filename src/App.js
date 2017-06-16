@@ -27,6 +27,7 @@ import {
     tick,
 } from './actions/timings'
 import Grid from './components/Grid'
+import InfoBar from './components/InfoBar'
 import LanguageProcessing from './services/language-processing'
 import OutputDisplay from './components/OutputDisplay'
 import PropTypes from 'prop-types'
@@ -272,6 +273,10 @@ export class App extends Component { // export from here to allow tests w/out re
 
                 <OutputDisplay
                     value={output}
+                />
+
+                <InfoBar
+                    settings={settings}
                 />
             </div>
         )

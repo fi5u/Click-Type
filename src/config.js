@@ -69,4 +69,14 @@ const config = {
     tightPunctuation: tightPunctuation,
 }
 
-export { config }
+const speed = {
+    high: 100,
+    initial: 400,
+    low: 1200,
+    increment: 50,
+}
+
+export {
+    config,
+    speed,
+}
