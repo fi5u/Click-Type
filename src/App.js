@@ -1,7 +1,6 @@
 import './App.css'
 import React, {
     Component,
-    PropTypes,
 } from 'react'
 import {
     commonWords,
@@ -30,6 +29,7 @@ import {
 import Grid from './components/Grid'
 import LanguageProcessing from './services/language-processing'
 import OutputDisplay from './components/OutputDisplay'
+import PropTypes from 'prop-types'
 import _ from 'lodash'
 import { addPredictiveWord } from './actions/predictive'
 import { config } from './config'

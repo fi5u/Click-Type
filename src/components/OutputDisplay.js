@@ -1,8 +1,8 @@
 import './OutputDisplay.css'
 import React, {
     Component,
-    PropTypes,
 } from 'react'
+import PropTypes from 'prop-types'
 
 class OutputDisplay extends Component {
     render() {

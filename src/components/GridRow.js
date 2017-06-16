@@ -2,11 +2,9 @@ import './GridItem.css'
 import './GridRow.css'
 import React, {
     Component,
-    PropTypes,
 } from 'react'
-import {
-    ButtonGroup,
-} from 'react-bootstrap'
+import { ButtonGroup } from 'react-bootstrap'
+import PropTypes from 'prop-types'
 
 class GridRow extends Component {
     render() {
