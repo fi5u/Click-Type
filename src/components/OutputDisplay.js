@@ -5,14 +5,21 @@ import React, {
 import PropTypes from 'prop-types'
 
 class OutputDisplay extends Component {
+    componentDidUpdate(prevProps) {
+        if(prevProps.value === this.props.value) { return }
+        // scroll to bottom
+        this.outputRef.scrollTop =  this.outputRef.scrollHeight
+    }
+
     render() {
         const {
-            value
+            value,
         } = this.props
 
         return(
             <div
                 className="OutputDisplay"
+                ref={el => this.outputRef = el}
             >
                 <span
                     className="OutputDisplay__content"

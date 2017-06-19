@@ -33,4 +33,4 @@
 - persist outputDisplay content
 - add GA
 - support touch - nav text changes to 'tap', detect tap for select
-- on clicking button, scroll output to bottom
+- ~~on clicking button, scroll output to bottom~~
