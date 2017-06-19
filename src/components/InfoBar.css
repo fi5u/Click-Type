@@ -1,12 +1,23 @@
 .InfoBar {
-    align-items: center;
+
+}
+
+.InfoBar__inner {
+
+}
+
+.InfoBar__items {
+    align-items: flex-start;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
+    padding: 8px 0;
     text-align: center;
 }
 
 .InfoBar__item {
     flex: 1;
+    padding: 0 6px;
 }
 
 .InfoBar__item--inner {
@@ -15,9 +26,29 @@
 }
 
 .InfoBar__symbol {
-
+    font-size: 1rem;
 }
 
 .InfoBar__label {
+    font-size: .5rem;
+}
 
+@media screen and (min-width: 425px) {
+    .InfoBar__symbol {
+        font-size: 1.2rem;
+    }
+
+    .InfoBar__label {
+        font-size: .7rem;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .InfoBar__symbol {
+        font-size: 1.4rem;
+    }
+
+    .InfoBar__label {
+        font-size: .8rem;
+    }
 }

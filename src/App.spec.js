@@ -14,6 +14,7 @@ const props = {
     activeRow: 0,
     dispatch: jest.fn(),
     grid: [['a','b','c'],['d','e','f'],['g','h','i']],
+    isRunning: false,
     output: '',
     predictiveWords: {},
     settings: {

@@ -1,8 +1,10 @@
 import './InfoBar.css'
 import {
+    colors,
     config,
     speed,
 } from '../config'
+import { Grid } from 'react-bootstrap'
 import PropTypes from 'prop-types'
 import React from 'react'
 
@@ -44,36 +46,48 @@ const InfoBar = ({
     return(
         <div
             className="InfoBar"
-            style={styleOverrides}
+            style={{
+                backgroundColor: colors.midLight,
+                color: colors.midDark,
+                ...styleOverrides,
+            }}
         >
-            {infoBarItems.map(item => {
-                return(
-                    <div
-                        className="InfoBar__item"
-                        key={item.name}
-                    >
-                        <div
-                            className="InfoBar__item-inner"
-                        >
+            <Grid
+                className="InfoBar__inner"
+            >
+                <div
+                    className="InfoBar__items"
+                >
+                    {infoBarItems.map(item => {
+                        return(
                             <div
-                                className="InfoBar__symbol"
+                                className="InfoBar__item"
+                                key={item.name}
                             >
-                                {item.setting
-                                    ? item.setting === 'speed'
-                                        ? ((speed.low - speed.high) / speed.increment) - (settings.speed / speed.increment) + 3
-                                        : settings[item.setting]
-                                    : item.symbol
-                                }
+                                <div
+                                    className="InfoBar__item-inner"
+                                >
+                                    <div
+                                        className="InfoBar__symbol"
+                                    >
+                                        {item.setting
+                                            ? item.setting === 'speed'
+                                                ? ((speed.low - speed.high) / speed.increment) - (settings.speed / speed.increment) + 3
+                                                : settings[item.setting]
+                                            : item.symbol
+                                        }
+                                    </div>
+                                    <div
+                                        className="InfoBar__label"
+                                    >
+                                        {item.label}
+                                    </div>
+                                </div>
                             </div>
-                            <div
-                                className="InfoBar__label"
-                            >
-                                {item.label}
-                            </div>
-                        </div>
-                    </div>
-                )
-            })}
+                        )
+                    })}
+                </div>
+            </Grid>
         </div>
     )
 }

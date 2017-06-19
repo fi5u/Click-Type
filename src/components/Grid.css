@@ -1,5 +1,5 @@
-.Grid {
-    display: inline-block;
-    flex-direction: column;
-    font-family: 'Courier New', monospace;
+@media screen and (max-width: 767px) {
+    .Grid {
+        width: 100%;
+    }
 }

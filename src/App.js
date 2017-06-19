@@ -27,6 +27,7 @@ import {
     tick,
 } from './actions/timings'
 import Grid from './components/Grid'
+import Header from './components/Header'
 import InfoBar from './components/InfoBar'
 import LanguageProcessing from './services/language-processing'
 import OutputDisplay from './components/OutputDisplay'
@@ -247,9 +248,11 @@ export class App extends Component { // export from here to allow tests w/out re
 
     render() {
         const {
+            activeAxis,
             activeElement,
             activeRow,
             grid,
+            isRunning,
             settings,
             suggestedWords,
             output,
@@ -259,17 +262,20 @@ export class App extends Component { // export from here to allow tests w/out re
             <div
                 className="App"
             >
-                <div>
-                    <Grid
-                        activeElement={activeElement}
-                        activeRow={activeRow}
-                        characterGrid={grid}
-                        clickButton={this.clickButton}
-                        output={output}
-                        settings={settings}
-                        suggestedWords={suggestedWords}
-                    />
-                </div>
+                <Header
+                    isRunning={isRunning}
+                />
+
+                <Grid
+                    activeAxis={activeAxis}
+                    activeElement={activeElement}
+                    activeRow={activeRow}
+                    characterGrid={grid}
+                    clickButton={this.clickButton}
+                    output={output}
+                    settings={settings}
+                    suggestedWords={suggestedWords}
+                />
 
                 <OutputDisplay
                     value={output}
@@ -284,11 +290,15 @@ export class App extends Component { // export from here to allow tests w/out re
 }
 
 App.propTypes = {
-    activeAxis: PropTypes.string.isRequired,
+    activeAxis: PropTypes.oneOf([
+        'col',
+        'row',
+    ]).isRequired,
     activeElement: PropTypes.number.isRequired,
     activeRow: PropTypes.number.isRequired,
     dispatch: PropTypes.func.isRequired,
     grid: PropTypes.array.isRequired,
+    isRunning: PropTypes.bool.isRequired,
     output: PropTypes.string.isRequired,
     predictiveWords: PropTypes.object.isRequired,
     settings: PropTypes.object.isRequired,
@@ -310,6 +320,7 @@ function mapStateToProps(state) {
         activeElement: grids.activeElement,
         activeRow: grids.activeRow,
         grid: grids.activeGrid,
+        isRunning: timings.isRunning,
         output: output.output,
         predictiveWords: predictive.words,
         settings,

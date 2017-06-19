@@ -17,6 +17,7 @@ it('should handle START_TICK', () => {
     ).toEqual({
         ...initialState,
         ...{
+            isRunning: true,
             tickStarted: true,
         }
     })

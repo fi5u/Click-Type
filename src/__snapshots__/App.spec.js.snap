@@ -1,164 +1,234 @@
 exports[`test renders App correctly 1`] = `
 <div
   className="App">
-  <div>
+  <nav
+    className="navbar navbar-default">
     <div
-      className="Grid">
+      className="container">
       <div
-        className="GridRow GridRow--is-active btn-group"
-        role="group">
-        <button
-          className="GridItem GridItem--is-active btn btn-default"
-          disabled={false}
-          onClick={[Function]}
-          style={
-            Object {
-              "textTransform": "capitalize",
-            }
+        className="navbar-header"
+        style={
+          Object {
+            "float": "left",
           }
-          type="button">
-          a
-        </button>
-        <button
-          className="GridItem btn btn-default"
-          disabled={false}
-          onClick={[Function]}
-          style={
-            Object {
-              "textTransform": "capitalize",
-            }
-          }
-          type="button">
-          b
-        </button>
-        <button
-          className="GridItem btn btn-default"
-          disabled={false}
-          onClick={[Function]}
-          style={
-            Object {
-              "textTransform": "capitalize",
-            }
-          }
-          type="button">
-          c
-        </button>
-        <button
-          className="GridItem btn btn-default"
-          disabled={false}
-          onClick={[Function]}
-          style={
-            Object {
-              "textTransform": "capitalize",
-            }
-          }
-          type="button">
-          abs
-        </button>
-        <button
-          className="GridItem btn btn-default"
-          disabled={false}
-          onClick={[Function]}
-          style={
-            Object {
-              "textTransform": "capitalize",
-            }
-          }
-          type="button">
-          ace
-        </button>
-        <button
-          className="GridItem btn btn-default"
-          disabled={false}
-          onClick={[Function]}
-          style={
-            Object {
-              "textTransform": "capitalize",
-            }
-          }
-          type="button">
-          adder
-        </button>
+        }>
+        <a
+          className="navbar-brand"
+          href="#">
+          ClickType
+        </a>
       </div>
+      <p
+        className="navbar-text navbar-right"
+        style={
+          Object {
+            "float": "right",
+            "marginRight": 0,
+          }
+        }>
+        Press space to 
+        start
+      </p>
+    </div>
+  </nav>
+  <div
+    className="Grid container">
+    <div
+      className="row">
       <div
-        className="GridRow btn-group"
-        role="group">
-        <button
-          className="GridItem btn btn-default"
-          disabled={false}
-          onClick={[Function]}
-          style={
-            Object {
-              "textTransform": "capitalize",
+        className="col-xs-12">
+        <div
+          className="GridRow GridRow--is-active btn-group"
+          role="group">
+          <button
+            className="GridItem btn btn-default"
+            disabled={false}
+            onClick={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#a8dadc",
+                "borderRadius": "4px 0px 0px 0px",
+                "color": "#222",
+                "textTransform": "capitalize",
+              }
             }
-          }
-          type="button">
-          d
-        </button>
-        <button
-          className="GridItem btn btn-default"
-          disabled={false}
-          onClick={[Function]}
-          style={
-            Object {
-              "textTransform": "capitalize",
+            type="button">
+            a
+          </button>
+          <button
+            className="GridItem btn btn-default"
+            disabled={false}
+            onClick={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#a8dadc",
+                "borderRadius": "0px 0px 0px 0px",
+                "color": "#222",
+                "textTransform": "capitalize",
+              }
             }
-          }
-          type="button">
-          e
-        </button>
-        <button
-          className="GridItem btn btn-default"
-          disabled={false}
-          onClick={[Function]}
-          style={
-            Object {
-              "textTransform": "capitalize",
+            type="button">
+            b
+          </button>
+          <button
+            className="GridItem btn btn-default"
+            disabled={false}
+            onClick={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#a8dadc",
+                "borderRadius": "0px 0px 0px 0px",
+                "color": "#222",
+                "textTransform": "capitalize",
+              }
             }
-          }
-          type="button">
-          f
-        </button>
-      </div>
-      <div
-        className="GridRow btn-group"
-        role="group">
-        <button
-          className="GridItem btn btn-default"
-          disabled={false}
-          onClick={[Function]}
-          style={
-            Object {
-              "textTransform": "capitalize",
+            type="button">
+            c
+          </button>
+          <button
+            className="GridItem btn btn-default"
+            disabled={false}
+            onClick={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#a8dadc",
+                "borderRadius": "0px 0px 0px 0px",
+                "color": "#222",
+                "textTransform": "capitalize",
+              }
             }
-          }
-          type="button">
-          g
-        </button>
-        <button
-          className="GridItem btn btn-default"
-          disabled={false}
-          onClick={[Function]}
-          style={
-            Object {
-              "textTransform": "capitalize",
+            type="button">
+            abs
+          </button>
+          <button
+            className="GridItem btn btn-default"
+            disabled={false}
+            onClick={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#a8dadc",
+                "borderRadius": "0px 0px 0px 0px",
+                "color": "#222",
+                "textTransform": "capitalize",
+              }
             }
-          }
-          type="button">
-          h
-        </button>
-        <button
-          className="GridItem btn btn-default"
-          disabled={false}
-          onClick={[Function]}
-          style={
-            Object {
-              "textTransform": "capitalize",
+            type="button">
+            ace
+          </button>
+          <button
+            className="GridItem btn btn-default"
+            disabled={false}
+            onClick={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#a8dadc",
+                "borderRadius": "0px 4px 0px 0px",
+                "color": "#222",
+                "textTransform": "capitalize",
+              }
             }
-          }
-          type="button">
-          i
-        </button>
+            type="button">
+            adder
+          </button>
+        </div>
+        <div
+          className="GridRow btn-group"
+          role="group">
+          <button
+            className="GridItem btn btn-default"
+            disabled={false}
+            onClick={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#a8dadc",
+                "borderRadius": "0px 0px 0px 0px",
+                "color": "#222",
+                "textTransform": "capitalize",
+              }
+            }
+            type="button">
+            d
+          </button>
+          <button
+            className="GridItem btn btn-default"
+            disabled={false}
+            onClick={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#a8dadc",
+                "borderRadius": "0px 0px 0px 0px",
+                "color": "#222",
+                "textTransform": "capitalize",
+              }
+            }
+            type="button">
+            e
+          </button>
+          <button
+            className="GridItem btn btn-default"
+            disabled={false}
+            onClick={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#a8dadc",
+                "borderRadius": "0px 0px 0px 0px",
+                "color": "#222",
+                "textTransform": "capitalize",
+              }
+            }
+            type="button">
+            f
+          </button>
+        </div>
+        <div
+          className="GridRow btn-group"
+          role="group">
+          <button
+            className="GridItem btn btn-default"
+            disabled={false}
+            onClick={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#a8dadc",
+                "borderRadius": "0px 0px 0px 4px",
+                "color": "#222",
+                "textTransform": "capitalize",
+              }
+            }
+            type="button">
+            g
+          </button>
+          <button
+            className="GridItem btn btn-default"
+            disabled={false}
+            onClick={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#a8dadc",
+                "borderRadius": "0px 0px 0px 0px",
+                "color": "#222",
+                "textTransform": "capitalize",
+              }
+            }
+            type="button">
+            h
+          </button>
+          <button
+            className="GridItem btn btn-default"
+            disabled={false}
+            onClick={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#a8dadc",
+                "borderRadius": "0px 0px 4px 0px",
+                "color": "#222",
+                "textTransform": "capitalize",
+              }
+            }
+            type="button">
+            i
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -168,6 +238,119 @@ exports[`test renders App correctly 1`] = `
       className="OutputDisplay__content">
       
     </span>
+  </div>
+  <div
+    className="InfoBar"
+    style={
+      Object {
+        "backgroundColor": "#a8dadc",
+        "color": "#457b9d",
+      }
+    }>
+    <div
+      className="InfoBar__inner container">
+      <div
+        className="InfoBar__items">
+        <div
+          className="InfoBar__item">
+          <div
+            className="InfoBar__item-inner">
+            <div
+              className="InfoBar__symbol">
+              ⇡
+            </div>
+            <div
+              className="InfoBar__label">
+              switch to rows
+            </div>
+          </div>
+        </div>
+        <div
+          className="InfoBar__item">
+          <div
+            className="InfoBar__item-inner">
+            <div
+              className="InfoBar__symbol">
+              ⌫
+            </div>
+            <div
+              className="InfoBar__label">
+              backspace
+            </div>
+          </div>
+        </div>
+        <div
+          className="InfoBar__item">
+          <div
+            className="InfoBar__item-inner">
+            <div
+              className="InfoBar__symbol">
+              []
+            </div>
+            <div
+              className="InfoBar__label">
+              space
+            </div>
+          </div>
+        </div>
+        <div
+          className="InfoBar__item">
+          <div
+            className="InfoBar__item-inner">
+            <div
+              className="InfoBar__symbol">
+              ⇪
+            </div>
+            <div
+              className="InfoBar__label">
+              toggle caps lock
+            </div>
+          </div>
+        </div>
+        <div
+          className="InfoBar__item">
+          <div
+            className="InfoBar__item-inner">
+            <div
+              className="InfoBar__symbol">
+              «
+            </div>
+            <div
+              className="InfoBar__label">
+              slow down
+            </div>
+          </div>
+        </div>
+        <div
+          className="InfoBar__item">
+          <div
+            className="InfoBar__item-inner">
+            <div
+              className="InfoBar__symbol">
+              NaN
+            </div>
+            <div
+              className="InfoBar__label">
+              current speed
+            </div>
+          </div>
+        </div>
+        <div
+          className="InfoBar__item">
+          <div
+            className="InfoBar__item-inner">
+            <div
+              className="InfoBar__symbol">
+              »
+            </div>
+            <div
+              className="InfoBar__label">
+              speed up
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 `;

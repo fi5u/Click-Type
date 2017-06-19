@@ -29,6 +29,15 @@ const tightPunctuation = [
 
 const suggestedWords = ['I', 'you', 'what', 'when']
 
+const colors = {
+    bold: '#e63946',
+    dark: '#1d3557',
+    light: '#f1faee',
+    midDark: '#457b9d',
+    midLight: '#a8dadc',
+    midLighter: '#cce9eb',
+}
+
 const config = {
     capitalizedAfter: [
         '. ',
@@ -77,6 +86,7 @@ const speed = {
 }
 
 export {
+    colors,
     config,
     speed,
 }

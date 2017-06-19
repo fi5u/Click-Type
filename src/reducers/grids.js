@@ -21,7 +21,7 @@ export default function grids(state = initialState, action) {
     switch(action.type) {
 
     case 'persist/REHYDRATE':
-        return action.payload.settings.capsLock ? Object.assign({}, state, {
+        return action.payload.settings && action.payload.settings.capsLock ? Object.assign({}, state, {
             activeGrid: addAdditionals(config.gridParts.letters).concat(addAdditionals(config.gridParts.numbers)).concat(addAdditionals(config.gridParts.secondaryPunc)),
         }) : state
 
