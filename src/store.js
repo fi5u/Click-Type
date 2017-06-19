@@ -28,4 +28,4 @@ export const store = createStore(
 )
 
 
-persistStore(store, {whitelist: ['predictive', 'settings']})
+persistStore(store, {whitelist: ['output', 'predictive', 'settings']})

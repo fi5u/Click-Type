@@ -30,7 +30,7 @@
 - give some visual indicator (perhaps animation) that focus has moved to first predicted word
 - use most-used own words instead of default words (perhaps once the count gets above a certain number)
 - ~~provide a key explaining symbols (plus display current speed)~~
-- persist outputDisplay content
+- ~~persist outputDisplay content~~
 - add GA
 - support touch - nav text changes to 'tap', detect tap for select
 - ~~on clicking button, scroll output to bottom~~
