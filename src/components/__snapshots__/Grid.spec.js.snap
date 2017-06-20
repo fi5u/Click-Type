@@ -59,7 +59,7 @@ exports[`test renders Grid correctly 1`] = `
           onClick={[Function]}
           style={
             Object {
-              "backgroundColor": "#a8dadc",
+              "backgroundColor": "#a8c0dc",
               "borderRadius": "0px 0px 0px 0px",
               "color": "#222",
               "textTransform": "capitalize",
@@ -74,7 +74,7 @@ exports[`test renders Grid correctly 1`] = `
           onClick={[Function]}
           style={
             Object {
-              "backgroundColor": "#a8dadc",
+              "backgroundColor": "#a8c0dc",
               "borderRadius": "0px 0px 0px 0px",
               "color": "#222",
               "textTransform": "capitalize",
@@ -89,7 +89,7 @@ exports[`test renders Grid correctly 1`] = `
           onClick={[Function]}
           style={
             Object {
-              "backgroundColor": "#a8dadc",
+              "backgroundColor": "#a8c0dc",
               "borderRadius": "0px 4px 0px 0px",
               "color": "#222",
               "textTransform": "capitalize",

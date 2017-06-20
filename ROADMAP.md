@@ -34,3 +34,5 @@
 - add GA
 - support touch - nav text changes to 'tap', detect tap for select
 - ~~on clicking button, scroll output to bottom~~
+- add clear button, (with confirmation)
+- write the readme

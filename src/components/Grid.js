@@ -51,7 +51,11 @@ const Grid = ({
                                         key={character}
                                         onClick={() => clickButton(character)}
                                         style={{
-                                            backgroundColor: isActiveItem ? colors.bold : colors.midLight,
+                                            backgroundColor: isActiveItem
+                                                ? colors.bold
+                                                : suggestedWords.indexOf(character) > -1
+                                                    ? colors.midLightAnalogous
+                                                    : colors.midLight,
                                             borderRadius: `${iteration === 0 && charIteration === 0 ? 4 : 0}px ${iteration === 0 && charIteration === characters.length - 1 ? 4 : 0}px ${iteration === rows.length - 1 && charIteration === characters.length - 1 ? 4 : 0}px ${iteration === rows.length - 1 && charIteration === 0 ? 4 : 0}px`,
                                             color: isActiveItem ? '#fff' : '#222',
                                             textTransform: settings.capsLock ? 'uppercase' : settings.autoCapitalize && shouldCapitalize(output, character) ? 'capitalize' : 'none',

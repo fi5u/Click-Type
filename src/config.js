@@ -31,10 +31,12 @@ const suggestedWords = ['I', 'you', 'what', 'when']
 
 const colors = {
     bold: '#e63946',
+    boldAnalogous: '#e68339',
     dark: '#1d3557',
     light: '#f1faee',
     midDark: '#457b9d',
     midLight: '#a8dadc',
+    midLightAnalogous: '#a8c0dc',
     midLighter: '#cce9eb',
 }
 
