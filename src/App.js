@@ -47,6 +47,12 @@ export class App extends Component { // export from here to allow tests w/out re
 
         this.clickButton = this.clickButton.bind(this)
         this.clickMainButton = this.clickMainButton.bind(this)
+
+        document.addEventListener('touchstart', event => {
+            if(event.target.tagName !== 'BUTTON') {
+                this.clickMainButton()
+            }
+        })
     }
 
     addLodashMixins() {

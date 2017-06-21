@@ -26,8 +26,7 @@ exports[`test renders App correctly 1`] = `
             "marginRight": 0,
           }
         }>
-        Press space to 
-        start
+        Press space to start
       </p>
     </div>
   </nav>

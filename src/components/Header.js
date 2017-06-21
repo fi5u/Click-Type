@@ -26,7 +26,7 @@ const Header = ({
                     marginRight: 0,
                 }}
             >
-                Press space to {`${isRunning ? 'select' : 'start'}`}
+                {`${'ontouchstart' in window || navigator.maxTouchPoints ? 'Tap' : 'Press space'} to ${isRunning ? 'select' : 'start'}`}
             </Navbar.Text>
         </Navbar>
     )
