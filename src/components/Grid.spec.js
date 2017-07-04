@@ -14,6 +14,7 @@ const props = {
     settings: {
         autoCapitalize: true,
     },
+    showClearConfirm: false,
     suggestedWords: ['abs', 'ace', 'adder'],
 }
 
@@ -24,8 +25,17 @@ it('renders Grid without crashing', () => {
 })
 
 it('renders Grid correctly', () => {
-    const tree = renderer.create(
+    let tree = renderer.create(
         <Grid {...props} />
+    ).toJSON()
+    expect(tree).toMatchSnapshot()
+
+    // Show clear confirm
+    tree = renderer.create(
+        <Grid
+            {...props}
+            showClearConfirm={true}
+        />
     ).toJSON()
     expect(tree).toMatchSnapshot()
 })

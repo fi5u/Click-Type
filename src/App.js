@@ -41,6 +41,10 @@ export class App extends Component { // export from here to allow tests w/out re
     constructor() {
         super()
 
+        this.state = {
+            showClearConfirm: false,
+        }
+
         document.addEventListener('keydown', this.detectClick.bind(this), true)
         this.addLodashMixins()
         this.langProcess = new LanguageProcessing()
@@ -75,6 +79,27 @@ export class App extends Component { // export from here to allow tests w/out re
     }
 
     clickButton(output, replace = false) {
+        if(output === config.chars.clear) {
+            if(this.state.showClearConfirm) {
+                this.props.dispatch(setOutput(''))
+                this.props.dispatch(toggleCapsLock(false))
+                this.setState({
+                    showClearConfirm: false,
+                })
+            }
+            else {
+                this.setState({
+                    showClearConfirm: true,
+                })
+            }
+            return
+        }
+        else if(this.state.showClearConfirm) {
+            this.setState({
+                showClearConfirm: false,
+            })
+        }
+
         if(output === config.chars.capsLock) {
             this.props.dispatch(toggleCapsLock(!this.props.settings.capsLock))
             this.props.dispatch(setSetting('capsLock', !this.props.settings.capsLock))
@@ -280,6 +305,7 @@ export class App extends Component { // export from here to allow tests w/out re
                     clickButton={this.clickButton}
                     output={output}
                     settings={settings}
+                    showClearConfirm={this.state.showClearConfirm}
                     suggestedWords={suggestedWords}
                 />
 

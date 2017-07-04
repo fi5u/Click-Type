@@ -351,3 +351,25 @@ it('handles the click event by moving to the first suggested word after selectin
     wrapper.instance().clickButton(output)
     expect(gridsActions.setActiveColumn).toHaveBeenCalledWith(wrapper.props().grid[wrapper.props().activeRow].length)
 })
+
+it('shows clear confirmation when clear button pressed', () => {
+    const wrapper = mount(
+        <App {...props} />
+    )
+    expect(wrapper.state('showClearConfirm')).toEqual(false)
+    wrapper.instance().clickButton(config.chars.clear)
+    expect(wrapper.state('showClearConfirm')).toEqual(true)
+})
+
+it('clears output text when clear confirm pressed', () => {
+    const wrapper = mount(
+        <App {...props}
+            output="Some text here"
+        />
+    )
+    outputActions.setOutput = jest.fn()
+    wrapper.setState({ showClearConfirm: true })
+    wrapper.instance().clickButton(config.chars.clear)
+    expect(wrapper.state('showClearConfirm')).toEqual(false)
+    expect(outputActions.setOutput).toHaveBeenCalledWith('')
+})

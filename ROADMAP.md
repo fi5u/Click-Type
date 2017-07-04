@@ -34,6 +34,7 @@
 - add GA
 - ~~support touch - nav text changes to 'tap', detect tap for select~~
 - ~~on clicking button, scroll output to bottom~~
-- add clear button, (with confirmation)
+- ~~add clear button, (with confirmation)~~
 - write the readme
 - prevent wrap on rows
+- caps lock should have a different state when active

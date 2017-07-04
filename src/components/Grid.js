@@ -23,6 +23,7 @@ const Grid = ({
     clickButton,
     output,
     settings,
+    showClearConfirm,
     suggestedWords,
 }) => (
     <LayoutGrid
@@ -44,24 +45,29 @@ const Grid = ({
                                 // Do not allow duplicates apart from 'I' which can be with lower 'i'
                                 const isActiveItem = activeAxis === 'col' && iteration === activeRow && charIteration === activeElement
 
+                                let char = character
+                                if(char === config.chars.clear && showClearConfirm) {
+                                    char = 'Sure?'
+                                }
+
                                 return(
                                     <Button
-                                        className={`GridItem${isActiveItem ? ' GridItem--is-active' : ''}${character === config.chars.capsLock && settings.capsLock ? ' GridItem--is-on' : ''}`}
-                                        disabled={(character === config.chars.speedUp && !settings.canIncreaseSpeed) || (character === config.chars.speedDown && !settings.canDecreaseSpeed)}
-                                        key={character}
+                                        className={`GridItem${isActiveItem ? ' GridItem--is-active' : ''}${char === config.chars.capsLock && settings.capsLock ? ' GridItem--is-on' : ''}`}
+                                        disabled={(char === config.chars.speedUp && !settings.canIncreaseSpeed) || (char === config.chars.speedDown && !settings.canDecreaseSpeed)}
+                                        key={char}
                                         onClick={() => clickButton(character)}
                                         style={{
                                             backgroundColor: isActiveItem
                                                 ? colors.bold
-                                                : suggestedWords.indexOf(character) > -1
+                                                : suggestedWords.indexOf(char) > -1
                                                     ? colors.midLightAnalogous
                                                     : colors.midLight,
                                             borderRadius: `${iteration === 0 && charIteration === 0 ? 4 : 0}px ${iteration === 0 && charIteration === characters.length - 1 ? 4 : 0}px ${iteration === rows.length - 1 && charIteration === characters.length - 1 ? 4 : 0}px ${iteration === rows.length - 1 && charIteration === 0 ? 4 : 0}px`,
                                             color: isActiveItem ? '#fff' : '#222',
-                                            textTransform: settings.capsLock ? 'uppercase' : settings.autoCapitalize && shouldCapitalize(output, character) ? 'capitalize' : 'none',
+                                            textTransform: settings.capsLock ? 'uppercase' : settings.autoCapitalize && shouldCapitalize(output, char) ? 'capitalize' : 'none',
                                         }}
                                     >
-                                        {character}
+                                        {char}
                                     </Button>
                                 )
                             })}
@@ -84,6 +90,7 @@ Grid.propTypes = {
     clickButton: PropTypes.func.isRequired,
     output: PropTypes.string.isRequired,
     settings: PropTypes.object.isRequired,
+    showClearConfirm: PropTypes.bool.isRequired,
     suggestedWords: PropTypes.array.isRequired,
 }
 

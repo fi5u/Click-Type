@@ -21,10 +21,6 @@ const infoBarItems = [{
     name: 'space',
     symbol: config.chars.space,
 }, {
-    label: 'toggle caps lock',
-    name: 'capslock',
-    symbol: config.chars.capsLock,
-}, {
     label: 'slow down',
     name: 'speeddown',
     symbol: config.chars.speedDown,
@@ -37,6 +33,14 @@ const infoBarItems = [{
     label: 'speed up',
     name: 'speedup',
     symbol: config.chars.speedUp,
+}, {
+    label: 'toggle caps lock',
+    name: 'capslock',
+    symbol: config.chars.capsLock,
+}, {
+    label: 'clear all',
+    name: 'clear',
+    symbol: config.chars.clear,
 }]
 
 const InfoBar = ({

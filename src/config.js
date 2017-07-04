@@ -2,6 +2,7 @@ const chars = {
     backspace: '⌫',
     backup: '⇡',
     capsLock: '⇪',
+    clear: '×',
     space: '[]',
     speedDown: '«',
     speedUp: '»',
@@ -15,7 +16,7 @@ const punctuation = [
     '?',
     '!',
     '-',
-    '⇪',
+    chars.capsLock,
 ]
 
 const tightPunctuation = [
@@ -69,9 +70,10 @@ const config = {
             ':',
             '/',
             '@',
-            '«',
-            '»',
-            '⇪',
+            chars.speedDown,
+            chars.speedUp,
+            chars.capsLock,
+            chars.clear,
         ]],
         suggestedWords: suggestedWords,
     },

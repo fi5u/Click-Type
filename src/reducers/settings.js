@@ -12,6 +12,11 @@ export const initialState = {
 export default function settings(state = initialState, action) {
     switch(action.type) {
 
+    case 'persist/REHYDRATE':
+        return action.payload.settings && action.payload.settings.capsLock ? Object.assign({}, state, {
+            capsLock: true,
+        }) : state
+
     case types.REDUCE_SPEED:
         return {
             ...state,

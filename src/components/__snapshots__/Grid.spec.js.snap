@@ -201,3 +201,207 @@ exports[`test renders Grid correctly 1`] = `
   </div>
 </div>
 `;
+
+exports[`test renders Grid correctly 2`] = `
+<div
+  className="Grid container">
+  <div
+    className="row">
+    <div
+      className="col-xs-12">
+      <div
+        className="GridRow GridRow--is-active btn-group"
+        role="group">
+        <button
+          className="GridItem btn btn-default"
+          disabled={false}
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": "#a8dadc",
+              "borderRadius": "4px 0px 0px 0px",
+              "color": "#222",
+              "textTransform": "capitalize",
+            }
+          }
+          type="button">
+          a
+        </button>
+        <button
+          className="GridItem btn btn-default"
+          disabled={false}
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": "#a8dadc",
+              "borderRadius": "0px 0px 0px 0px",
+              "color": "#222",
+              "textTransform": "capitalize",
+            }
+          }
+          type="button">
+          b
+        </button>
+        <button
+          className="GridItem btn btn-default"
+          disabled={false}
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": "#a8dadc",
+              "borderRadius": "0px 0px 0px 0px",
+              "color": "#222",
+              "textTransform": "capitalize",
+            }
+          }
+          type="button">
+          c
+        </button>
+        <button
+          className="GridItem btn btn-default"
+          disabled={false}
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": "#a8c0dc",
+              "borderRadius": "0px 0px 0px 0px",
+              "color": "#222",
+              "textTransform": "capitalize",
+            }
+          }
+          type="button">
+          abs
+        </button>
+        <button
+          className="GridItem btn btn-default"
+          disabled={false}
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": "#a8c0dc",
+              "borderRadius": "0px 0px 0px 0px",
+              "color": "#222",
+              "textTransform": "capitalize",
+            }
+          }
+          type="button">
+          ace
+        </button>
+        <button
+          className="GridItem btn btn-default"
+          disabled={false}
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": "#a8c0dc",
+              "borderRadius": "0px 4px 0px 0px",
+              "color": "#222",
+              "textTransform": "capitalize",
+            }
+          }
+          type="button">
+          adder
+        </button>
+      </div>
+      <div
+        className="GridRow btn-group"
+        role="group">
+        <button
+          className="GridItem btn btn-default"
+          disabled={false}
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": "#a8dadc",
+              "borderRadius": "0px 0px 0px 0px",
+              "color": "#222",
+              "textTransform": "capitalize",
+            }
+          }
+          type="button">
+          d
+        </button>
+        <button
+          className="GridItem btn btn-default"
+          disabled={false}
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": "#a8dadc",
+              "borderRadius": "0px 0px 0px 0px",
+              "color": "#222",
+              "textTransform": "capitalize",
+            }
+          }
+          type="button">
+          e
+        </button>
+        <button
+          className="GridItem btn btn-default"
+          disabled={false}
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": "#a8dadc",
+              "borderRadius": "0px 0px 0px 0px",
+              "color": "#222",
+              "textTransform": "capitalize",
+            }
+          }
+          type="button">
+          f
+        </button>
+      </div>
+      <div
+        className="GridRow btn-group"
+        role="group">
+        <button
+          className="GridItem btn btn-default"
+          disabled={false}
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": "#a8dadc",
+              "borderRadius": "0px 0px 0px 4px",
+              "color": "#222",
+              "textTransform": "capitalize",
+            }
+          }
+          type="button">
+          g
+        </button>
+        <button
+          className="GridItem btn btn-default"
+          disabled={false}
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": "#a8dadc",
+              "borderRadius": "0px 0px 0px 0px",
+              "color": "#222",
+              "textTransform": "capitalize",
+            }
+          }
+          type="button">
+          h
+        </button>
+        <button
+          className="GridItem btn btn-default"
+          disabled={false}
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": "#a8dadc",
+              "borderRadius": "0px 0px 4px 0px",
+              "color": "#222",
+              "textTransform": "capitalize",
+            }
+          }
+          type="button">
+          i
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
