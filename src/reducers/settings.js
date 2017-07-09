@@ -38,6 +38,12 @@ export default function settings(state = initialState, action) {
             [action.setting]: action.value,
         })
 
+    case types.TOGGLE_CAPS_LOCK:
+        return {
+            ...state,
+            capsLock: action.value,
+        }
+
     default:
         return state
     }

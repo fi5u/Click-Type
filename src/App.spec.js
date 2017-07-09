@@ -19,6 +19,7 @@ const props = {
     predictiveWords: {},
     settings: {
         autoCapitalize: true,
+        capsLock: false,
     },
     suggestedWords: ['abs', 'ace', 'adder'],
     tickStarted: false,
