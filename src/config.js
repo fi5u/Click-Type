@@ -78,7 +78,7 @@ const config = {
         suggestedWords: suggestedWords,
     },
     punctuation: punctuation,
-    suggestedWordCount: 4,
+    suggestedWordCountMax: 4,
     tightPunctuation: tightPunctuation,
 }
 

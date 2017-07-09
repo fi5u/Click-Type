@@ -188,13 +188,13 @@ export class App extends Component { // export from here to allow tests w/out re
         if(outputWords.length > 0) {
             // Do not allow duplicates
             // Concat the default suggested words
-            suggestedWords = _.uniqBy(this.getPredictiveWords(outputWords).concat(config.gridParts.suggestedWords), word => word.toLowerCase()).slice(0, config.suggestedWordCount)
+            suggestedWords = _.uniqBy(this.getPredictiveWords(outputWords).concat(config.gridParts.suggestedWords), word => word.toLowerCase()).slice(0, this.props.grid.suggestedWordCount)
 
             // If endeded on a full word and sentence is a question, offer question mark
             if(output.slice(-1) === ' ') {
                 const lastSentence = output.split(/\.|\?|!/g).pop()
                 if(this.langProcess.shouldBeAQuestion(lastSentence)) {
-                    suggestedWords = ['?'].concat(suggestedWords).slice(0, config.suggestedWordCount)
+                    suggestedWords = ['?'].concat(suggestedWords).slice(0, this.props.grid.suggestedWordCount)
                 }
             }
         }
@@ -206,10 +206,10 @@ export class App extends Component { // export from here to allow tests w/out re
 
             const wordPart = output.trim().split(' ').pop()
             // Get common words
-            suggestedWords = this.getWordsFromArray(commonWords, wordPart, config.suggestedWordCount)
+            suggestedWords = this.getWordsFromArray(commonWords, wordPart, this.props.grid.suggestedWordCount)
             // If not enough common words, get from full dictionary
-            if(suggestedWords.length < config.suggestedWordCount) {
-                const suggestedFullWords = this.getWordsFromArray(words, wordPart, config.suggestedWordCount - suggestedWords.length, suggestedWords)
+            if(suggestedWords.length < this.props.grid.suggestedWordCount) {
+                const suggestedFullWords = this.getWordsFromArray(words, wordPart, this.props.grid.suggestedWordCount - suggestedWords.length, suggestedWords)
                 suggestedWords = suggestedWords.concat(suggestedFullWords)
             }
 
@@ -228,7 +228,7 @@ export class App extends Component { // export from here to allow tests w/out re
 
         // If has typed 'a', first suggested word should be a space
         if(lastWord === 'a' && output.slice(-1) !== ' ') {
-            suggestedWords = [config.chars.space].concat(suggestedWords).slice(0, config.suggestedWordCount)
+            suggestedWords = [config.chars.space].concat(suggestedWords).slice(0, this.props.grid.suggestedWordCount)
         }
 
         return suggestedWords

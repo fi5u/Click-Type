@@ -79,6 +79,7 @@ it('should handle UPDATE_SUGGESTED_WORDS', () => {
         ...initialState,
         ...{
             suggestedWords: ['cab', 'car', 'cat'],
+            suggestedWordCount: 3,
         }
     })
 })
