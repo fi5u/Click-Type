@@ -37,7 +37,7 @@
 - ~~add clear button, (with confirmation)~~
 - write the readme
 - ~~prevent wrap on rows~~
-- caps lock should have a different state when active
+- ~~caps lock should have a different state when active~~
 - after clearing output, change back to lowercase
 - add shift option to caps lock - shift applies to next letter, caps lock applies until off
 - do not set suggested word color of question mark, when in punctuation row

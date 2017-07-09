@@ -44,6 +44,7 @@ const Grid = ({
                             {_.uniqBy(row.concat(iteration >= rows.length - 2 ? [] : suggestedWords), word => word !== 'I' ? word.toLowerCase() : word).map((character, charIteration, characters) => {
                                 // Do not allow duplicates apart from 'I' which can be with lower 'i'
                                 const isActiveItem = activeAxis === 'col' && iteration === activeRow && charIteration === activeElement
+                                const isOn = character === config.chars.capsLock && settings.capsLock
 
                                 let char = character
                                 if(char === config.chars.clear && showClearConfirm) {
@@ -52,18 +53,20 @@ const Grid = ({
 
                                 return(
                                     <Button
-                                        className={`GridItem${isActiveItem ? ' GridItem--is-active' : ''}${char === config.chars.capsLock && settings.capsLock ? ' GridItem--is-on' : ''}`}
+                                        className={`GridItem${isActiveItem ? ' GridItem--is-active' : ''}${isOn ? ' GridItem--is-on' : ''}`}
                                         disabled={(char === config.chars.speedUp && !settings.canIncreaseSpeed) || (char === config.chars.speedDown && !settings.canDecreaseSpeed)}
                                         key={char}
                                         onClick={() => clickButton(character)}
                                         style={{
                                             backgroundColor: isActiveItem
                                                 ? colors.bold
-                                                : suggestedWords.indexOf(char) > -1
-                                                    ? colors.midLightAnalogous
-                                                    : colors.midLight,
+                                                : isOn
+                                                    ? colors.boldAnalogous
+                                                    : suggestedWords.indexOf(char) > -1
+                                                        ? colors.midLightAnalogous
+                                                        : colors.midLight,
                                             borderRadius: `${iteration === 0 && charIteration === 0 ? 4 : 0}px ${iteration === 0 && charIteration === characters.length - 1 ? 4 : 0}px ${iteration === rows.length - 1 && charIteration === characters.length - 1 ? 4 : 0}px ${iteration === rows.length - 1 && charIteration === 0 ? 4 : 0}px`,
-                                            color: isActiveItem ? '#fff' : '#222',
+                                            color: isActiveItem || isOn ? '#fff' : '#222',
                                             textTransform: settings.capsLock ? 'uppercase' : settings.autoCapitalize && shouldCapitalize(output, char) ? 'capitalize' : 'none',
                                         }}
                                     >
