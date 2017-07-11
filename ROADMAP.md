@@ -40,6 +40,6 @@
 - ~~caps lock should have a different state when active~~
 - ~~after clearing output, change back to lowercase~~
 - add shift option to caps lock - shift applies to next letter, caps lock applies until off
-- do not set suggested word color of question mark, when in punctuation row
+- ~~do not set suggested word color of question mark, when in punctuation row~~
 - if a capital letter manually set for first letter of word, ensure first letter of suggested word is capitalized
 - make wrapping better in keys row

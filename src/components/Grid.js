@@ -15,6 +15,9 @@ import React from 'react'
 import _ from 'lodash'
 import { shouldCapitalize } from '../helpers'
 
+// Number of rows from end that do not contain suggested words
+const lastNRowsNoSuggested = 2
+
 const Grid = ({
     activeAxis,
     activeElement,
@@ -41,7 +44,7 @@ const Grid = ({
                             key={`row-${iteration}`}
                         >
                             {/* Do not add suggested words to last (punc) row */}
-                            {_.uniqBy(row.concat(iteration >= rows.length - 2 ? [] : suggestedWords), word => word !== 'I' ? word.toLowerCase() : word).map((character, charIteration, characters) => {
+                            {_.uniqBy(row.concat(iteration >= rows.length - lastNRowsNoSuggested ? [] : suggestedWords), word => word !== 'I' ? word.toLowerCase() : word).map((character, charIteration, characters) => {
                                 // Do not allow duplicates apart from 'I' which can be with lower 'i'
                                 const isActiveItem = activeAxis === 'col' && iteration === activeRow && charIteration === activeElement
                                 const isOn = character === config.chars.capsLock && settings.capsLock
@@ -62,7 +65,7 @@ const Grid = ({
                                                 ? colors.bold
                                                 : isOn
                                                     ? colors.boldAnalogous
-                                                    : suggestedWords.indexOf(char) > -1
+                                                    : suggestedWords.indexOf(char) > -1 && iteration < rows.length - lastNRowsNoSuggested
                                                         ? colors.midLightAnalogous
                                                         : colors.midLight,
                                             borderRadius: `${iteration === 0 && charIteration === 0 ? 4 : 0}px ${iteration === 0 && charIteration === characters.length - 1 ? 4 : 0}px ${iteration === rows.length - 1 && charIteration === characters.length - 1 ? 4 : 0}px ${iteration === rows.length - 1 && charIteration === 0 ? 4 : 0}px`,
