@@ -70,7 +70,11 @@ const Grid = ({
                                                         : colors.midLight,
                                             borderRadius: `${iteration === 0 && charIteration === 0 ? 4 : 0}px ${iteration === 0 && charIteration === characters.length - 1 ? 4 : 0}px ${iteration === rows.length - 1 && charIteration === characters.length - 1 ? 4 : 0}px ${iteration === rows.length - 1 && charIteration === 0 ? 4 : 0}px`,
                                             color: isActiveItem || isOn ? '#fff' : '#222',
-                                            textTransform: settings.capsLock ? 'uppercase' : settings.autoCapitalize && shouldCapitalize(output, char) ? 'capitalize' : 'none',
+                                            textTransform: settings.capsLock
+                                                ? 'uppercase'
+                                                : settings.autoCapitalize && shouldCapitalize(output, char)
+                                                    ? 'capitalize'
+                                                    : 'none',
                                         }}
                                     >
                                         {char}

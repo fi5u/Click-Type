@@ -60,20 +60,6 @@ it('should handle UPDATE_OUTPUT', () => {
     })
 
     expect(
-        reducer(initialState, {
-            type: types.UPDATE_OUTPUT,
-            character: 'dog',
-            isSuggestedWord: true,
-            settings,
-        })
-    ).toEqual({
-        ...initialState,
-        ...{
-            output: 'Dog ',
-        }
-    })
-
-    expect(
         reducer({
             ...initialState,
             ...{
@@ -311,6 +297,27 @@ it('should handle UPDATE_OUTPUT when receiving a space character', () => {
         ...initialState,
         ...{
             output: 'a ',
+        }
+    })
+})
+
+it('should handle UPDATE_OUTPUT when adding a suggested word that the has been capitalized', () => {
+    expect(
+        reducer({
+            ...initialState,
+            ...{
+                output: 'I like Dall',
+            }
+        }, {
+            type: types.UPDATE_OUTPUT,
+            character: 'dallas',
+            isSuggestedWord: true,
+            settings: settings,
+        })
+    ).toEqual({
+        ...initialState,
+        ...{
+            output: 'I like Dallas ',
         }
     })
 })

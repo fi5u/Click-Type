@@ -33,4 +33,6 @@ it('should capitalize correctly', () => {
     expect(shouldCapitalize('Today ')).toEqual(false)
     expect(shouldCapitalize('Today I')).toEqual(false)
     expect(shouldCapitalize('you.', ' you')).toEqual(true)
+    expect(shouldCapitalize('Wha', 'what')).toEqual(true)
+    expect(shouldCapitalize('I like Dal', 'bridal')).toEqual(false)
 })

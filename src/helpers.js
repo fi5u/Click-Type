@@ -26,5 +26,12 @@ export function shouldCapitalize(testString, character) {
         return true
     }
 
+    // If current word started with a capital letter, then capitalize suggested word
+    const firstLetterLastWord = testString.split(' ').slice(-1)[0][0]
+    if(character && firstLetterLastWord && firstLetterLastWord === firstLetterLastWord.toUpperCase() && character.length > 1
+        && character[0].toLowerCase() === firstLetterLastWord.toLowerCase()) {
+        return true
+    }
+
     return false
 }
