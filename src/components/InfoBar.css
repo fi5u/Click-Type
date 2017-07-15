@@ -9,7 +9,6 @@
 .InfoBar__items {
     align-items: flex-start;
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-between;
     padding: 8px 0;
     text-align: center;
