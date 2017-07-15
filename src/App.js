@@ -165,8 +165,10 @@ export class App extends Component { // export from here to allow tests w/out re
             let results = this.getSortedObj(this.props.predictiveWords[testWord].words)
             foundWords = results.length ? results : foundWords
         }
+
         if(wordsLower[wordsLower.length - 2]
             && wordsLower[wordsLower.length - 2] in this.props.predictiveWords
+            && 'words' in this.props.predictiveWords[wordsLower[wordsLower.length - 2]]
             && wordsLower[wordsLower.length - 1] in this.props.predictiveWords[wordsLower[wordsLower.length - 2]].words
         ) {
             let results = this.getSortedObj(this.props.predictiveWords[wordsLower[wordsLower.length - 2]].words[wordsLower[wordsLower.length - 1]].words)

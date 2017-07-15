@@ -43,4 +43,5 @@
 - ~~do not set suggested word color of question mark, when in punctuation row~~
 - ~~if a capital letter manually set for first letter of word, ensure first letter of suggested word is capitalized~~
 - make wrapping better in keys row
-- Error: Cannot use 'in' operator to search for 'birmingham' in undefined
+- ~~error: Cannot use 'in' operator to search for 'birmingham' in undefined~~
+- set a default predictive words object, perhaps using something like http://www.englishinuse.net
