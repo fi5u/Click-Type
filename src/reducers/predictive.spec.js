@@ -3,6 +3,10 @@ import * as types from '../actions/action-types'
 import { initialState } from './predictive'
 import reducer from './predictive'
 
+const emptyState = {
+    words: {}
+}
+
 it('should return the initial state', () => {
     expect(
         reducer(undefined, {})
@@ -11,19 +15,19 @@ it('should return the initial state', () => {
 
 it('should handle ADD_PREDICTIVE_WORD', () => {
     expect(
-        reducer(initialState, {
+        reducer(emptyState, {
             type: types.ADD_PREDICTIVE_WORD,
             words: [],
         })
-    ).toEqual(initialState)
+    ).toEqual(emptyState)
 
     expect(
-        reducer(initialState, {
+        reducer(emptyState, {
             type: types.ADD_PREDICTIVE_WORD,
             words: ['apples', 'are'],
         })
     ).toEqual({
-        ...initialState,
+        ...emptyState,
         ...{
             words: {
                 apples: {
@@ -40,7 +44,7 @@ it('should handle ADD_PREDICTIVE_WORD', () => {
 
     expect(
         reducer({
-            ...initialState,
+            ...emptyState,
             ...{
                 words: {
                     apples: {
@@ -58,7 +62,7 @@ it('should handle ADD_PREDICTIVE_WORD', () => {
             words: ['apples', 'can'],
         })
     ).toEqual({
-        ...initialState,
+        ...emptyState,
         ...{
             words: {
                 apples: {
@@ -78,7 +82,7 @@ it('should handle ADD_PREDICTIVE_WORD', () => {
 
     expect(
         reducer({
-            ...initialState,
+            ...emptyState,
             ...{
                 words: {
                     apples: {
@@ -96,7 +100,7 @@ it('should handle ADD_PREDICTIVE_WORD', () => {
             words: ['what'],
         })
     ).toEqual({
-        ...initialState,
+        ...emptyState,
         ...{
             words: {
                 apples: {
@@ -116,7 +120,7 @@ it('should handle ADD_PREDICTIVE_WORD', () => {
 
     expect(
         reducer({
-            ...initialState,
+            ...emptyState,
             ...{
                 words: {
                     apples: {
@@ -134,7 +138,7 @@ it('should handle ADD_PREDICTIVE_WORD', () => {
             words: ['apples', 'take', 'time'],
         })
     ).toEqual({
-        ...initialState,
+        ...emptyState,
         ...{
             words: {
                 apples: {
@@ -280,7 +284,7 @@ it('should handle ADD_PREDICTIVE_WORD', () => {
 
     expect(
         reducer({
-            ...initialState,
+            ...emptyState,
             ...{
                 words: {},
             }
@@ -289,7 +293,7 @@ it('should handle ADD_PREDICTIVE_WORD', () => {
             words: ['Apples', 'are'],
         })
     ).toEqual({
-        ...initialState,
+        ...emptyState,
         ...{
             words: {
                 apples: {
@@ -306,7 +310,7 @@ it('should handle ADD_PREDICTIVE_WORD', () => {
 
     expect(
         reducer({
-            ...initialState,
+            ...emptyState,
             ...{
                 words: {},
             }
@@ -315,7 +319,7 @@ it('should handle ADD_PREDICTIVE_WORD', () => {
             words: ['I', 'love', 'apples.'],
         })
     ).toEqual({
-        ...initialState,
+        ...emptyState,
         ...{
             words: {
                 i: {
@@ -339,7 +343,7 @@ it('should handle ADD_PREDICTIVE_WORD', () => {
 it('should handle ADD_PREDICTIVE_WORD and not add a non-dictionary word', () => {
     expect(
         reducer({
-            ...initialState,
+            ...emptyState,
             ...{
                 words: {},
             }
@@ -348,7 +352,7 @@ it('should handle ADD_PREDICTIVE_WORD and not add a non-dictionary word', () => 
             words: ['I', 'elvo', 'apples.'],
         })
     ).toEqual({
-        ...initialState,
+        ...emptyState,
         ...{
             words: {
                 i: {
@@ -360,7 +364,7 @@ it('should handle ADD_PREDICTIVE_WORD and not add a non-dictionary word', () => 
 
     expect(
         reducer({
-            ...initialState,
+            ...emptyState,
             ...{
                 words: {},
             }
@@ -369,7 +373,7 @@ it('should handle ADD_PREDICTIVE_WORD and not add a non-dictionary word', () => 
             words: ['I', 'love', 'ppleas.'],
         })
     ).toEqual({
-        ...initialState,
+        ...emptyState,
         ...{
             words: {
                 i: {
@@ -386,7 +390,7 @@ it('should handle ADD_PREDICTIVE_WORD and not add a non-dictionary word', () => 
 
     expect(
         reducer({
-            ...initialState,
+            ...emptyState,
             ...{
                 words: {},
             }
@@ -395,7 +399,7 @@ it('should handle ADD_PREDICTIVE_WORD and not add a non-dictionary word', () => 
             words: ['sfdlk', 'love', 'apples'],
         })
     ).toEqual({
-        ...initialState,
+        ...emptyState,
         ...{
             words: {},
         }
@@ -405,7 +409,7 @@ it('should handle ADD_PREDICTIVE_WORD and not add a non-dictionary word', () => 
 it('should handle ADD_PREDICTIVE_WORD that contains an apostrophe', () => {
     expect(
         reducer({
-            ...initialState,
+            ...emptyState,
             ...{
                 words: {},
             }
@@ -414,7 +418,7 @@ it('should handle ADD_PREDICTIVE_WORD that contains an apostrophe', () => {
             words: ['mum’s', 'house'],
         })
     ).toEqual({
-        ...initialState,
+        ...emptyState,
         ...{
             words: {
                 'mum’s': {
@@ -431,7 +435,7 @@ it('should handle ADD_PREDICTIVE_WORD that contains an apostrophe', () => {
 
     expect(
         reducer({
-            ...initialState,
+            ...emptyState,
             ...{
                 words: {},
             }
@@ -440,7 +444,7 @@ it('should handle ADD_PREDICTIVE_WORD that contains an apostrophe', () => {
             words: ['mum\'s', 'house'],
         })
     ).toEqual({
-        ...initialState,
+        ...emptyState,
         ...{
             words: {
                 'mum\'s': {
@@ -457,7 +461,7 @@ it('should handle ADD_PREDICTIVE_WORD that contains an apostrophe', () => {
 
     expect(
         reducer({
-            ...initialState,
+            ...emptyState,
             ...{
                 words: {},
             }
@@ -466,7 +470,7 @@ it('should handle ADD_PREDICTIVE_WORD that contains an apostrophe', () => {
             words: ['mustn’t', 'go'],
         })
     ).toEqual({
-        ...initialState,
+        ...emptyState,
         ...{
             words: {
                 'mustn’t': {
@@ -483,7 +487,7 @@ it('should handle ADD_PREDICTIVE_WORD that contains an apostrophe', () => {
 
     expect(
         reducer({
-            ...initialState,
+            ...emptyState,
             ...{
                 words: {},
             }
@@ -492,7 +496,7 @@ it('should handle ADD_PREDICTIVE_WORD that contains an apostrophe', () => {
             words: ['shan’t', 'go'],
         })
     ).toEqual({
-        ...initialState,
+        ...emptyState,
         ...{
             words: {
                 'shan’t': {
@@ -511,7 +515,7 @@ it('should handle ADD_PREDICTIVE_WORD that contains an apostrophe', () => {
 it('should handle ADD_PREDICTIVE_WORD that contains a sentence-ending punctuation mark', () => {
     expect(
         reducer({
-            ...initialState,
+            ...emptyState,
             ...{
                 words: {},
             }
@@ -520,7 +524,7 @@ it('should handle ADD_PREDICTIVE_WORD that contains a sentence-ending punctuatio
             words: ['will.', 'Hello', 'you'],
         })
     ).toEqual({
-        ...initialState,
+        ...emptyState,
         ...{
             words: {
                 'will': {

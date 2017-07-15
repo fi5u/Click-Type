@@ -38,7 +38,7 @@ export default function output(state = initialState, action) {
                 }
 
                 // If first letter of last word has been capitalized, then capitalize last word
-                if(spaceSeparatedWordArr.slice(-1)[0][0] === spaceSeparatedWordArr.slice(-1)[0][0].toUpperCase()) {
+                if(spaceSeparatedWordArr.slice(-1)[0].length && spaceSeparatedWordArr.slice(-1)[0][0] === spaceSeparatedWordArr.slice(-1)[0][0].toUpperCase()) {
                     output = (outputNoPartWord ? outputNoPartWord + '' : '') + casedCharacter[0].toUpperCase() + casedCharacter.slice(1) + ' '
                 }
                 else {

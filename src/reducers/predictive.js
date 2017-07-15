@@ -1,11 +1,10 @@
 import * as types from '../actions/action-types'
 import { config } from '../config'
 import deepAssign from 'deep-assign'
+import defaultPredictiveWords from '../data/default-predictive-words.json'
 import { wordsByLetter } from '../data'
 
-export const initialState = {
-    words: {},
-}
+export const initialState = defaultPredictiveWords
 
 export default function predictive(state = initialState, action) {
     switch(action.type) {

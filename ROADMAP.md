@@ -42,6 +42,8 @@
 - add shift option to caps lock - shift applies to next letter, caps lock applies until off
 - ~~do not set suggested word color of question mark, when in punctuation row~~
 - ~~if a capital letter manually set for first letter of word, ensure first letter of suggested word is capitalized~~
-- make wrapping better in keys row
+- ~~make wrapping better in keys row~
 - ~~error: Cannot use 'in' operator to search for 'birmingham' in undefined~~
-- set a default predictive words object, perhaps using something like http://www.englishinuse.net
+- ~~set a default predictive words object, perhaps using something like http://www.englishinuse.net~~
+- improve color scheme
+- when `a` in suggested words, normal `a` is highlighted, suggested `a` is removed
