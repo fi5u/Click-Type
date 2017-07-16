@@ -8,14 +8,50 @@ const props = {
     activeAxis: 'row',
     activeElement: 0,
     activeRow: 0,
-    characterGrid: [['a','b','c'],['d','e','f'],['g','h','i']],
+    characterGrid: [[{
+        charType: 'letter',
+        character: 'a',
+    }, {
+        charType: 'letter',
+        character: 'b',
+    }, {
+        charType: 'letter',
+        character: 'c',
+    }],[{
+        charType: 'letter',
+        character: 'd',
+    }, {
+        charType: 'letter',
+        character: 'e',
+    }, {
+        charType: 'letter',
+        character: 'f',
+    }],[{
+        charType: 'letter',
+        character: 'g',
+    }, {
+        charType: 'letter',
+        character: 'h',
+    }, {
+        charType: 'letter',
+        character: 'i',
+    }]],
     clickButton: jest.fn(),
     output: '',
     settings: {
         autoCapitalize: true,
     },
     showClearConfirm: false,
-    suggestedWords: ['abs', 'ace', 'adder'],
+    suggestedWords: [{
+        character: 'abs',
+        charType: 'suggested',
+    }, {
+        character: 'ace',
+        charType: 'suggested',
+    }, {
+        character: 'adder',
+        charType: 'suggested',
+    }],
 }
 
 it('renders Grid without crashing', () => {

@@ -12,7 +12,6 @@ import {
 import GridRow from './GridRow'
 import PropTypes from 'prop-types'
 import React from 'react'
-import _ from 'lodash'
 import { shouldCapitalize } from '../helpers'
 
 // Number of rows from end that do not contain suggested words
@@ -44,7 +43,10 @@ const Grid = ({
                             key={`row-${iteration}`}
                         >
                             {/* Do not add suggested words to last (punc) row */}
-                            {_.uniqBy(row.concat(iteration >= rows.length - lastNRowsNoSuggested ? [] : suggestedWords), word => word !== 'I' ? word.toLowerCase() : word).map((character, charIteration, characters) => {
+                            {row.concat(iteration >= rows.length - lastNRowsNoSuggested
+                                ? []
+                                : suggestedWords
+                            ).map(({character, charType}, charIteration, characters) => {
                                 // Do not allow duplicates apart from 'I' which can be with lower 'i'
                                 const isActiveItem = activeAxis === 'col' && iteration === activeRow && charIteration === activeElement
                                 const isOn = character === config.chars.capsLock && settings.capsLock
@@ -58,14 +60,14 @@ const Grid = ({
                                     <Button
                                         className={`GridItem${isActiveItem ? ' GridItem--is-active' : ''}${isOn ? ' GridItem--is-on' : ''}`}
                                         disabled={(char === config.chars.speedUp && !settings.canIncreaseSpeed) || (char === config.chars.speedDown && !settings.canDecreaseSpeed)}
-                                        key={char}
-                                        onClick={() => clickButton(character)}
+                                        key={`${charType}-${character}`}
+                                        onClick={() => clickButton({character, charType})}
                                         style={{
                                             backgroundColor: isActiveItem
                                                 ? colors.bold
                                                 : isOn
                                                     ? colors.boldAnalogous
-                                                    : suggestedWords.indexOf(char) > -1 && iteration < rows.length - lastNRowsNoSuggested
+                                                    : charType === 'suggested' && iteration < rows.length - lastNRowsNoSuggested
                                                         ? colors.midLightAnalogous
                                                         : colors.midLight,
                                             borderRadius: `${iteration === 0 && charIteration === 0 ? 4 : 0}px ${iteration === 0 && charIteration === characters.length - 1 ? 4 : 0}px ${iteration === rows.length - 1 && charIteration === characters.length - 1 ? 4 : 0}px ${iteration === rows.length - 1 && charIteration === 0 ? 4 : 0}px`,

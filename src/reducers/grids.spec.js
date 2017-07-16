@@ -78,7 +78,16 @@ it('should handle UPDATE_SUGGESTED_WORDS', () => {
     ).toEqual({
         ...initialState,
         ...{
-            suggestedWords: ['cab', 'car', 'cat'],
+            suggestedWords: [{
+                charType: 'suggested',
+                character: 'cab',
+            }, {
+                charType: 'suggested',
+                character: 'car',
+            }, {
+                charType: 'suggested',
+                character: 'cat',
+            }],
             suggestedWordCount: 3,
         }
     })

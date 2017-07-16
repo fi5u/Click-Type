@@ -13,7 +13,34 @@ const props = {
     activeElement: 0,
     activeRow: 0,
     dispatch: jest.fn(),
-    grid: [['a','b','c'],['d','e','f'],['g','h','i']],
+    grid: [[{
+        charType: 'letter',
+        character: 'a',
+    }, {
+        charType: 'letter',
+        character: 'b',
+    }, {
+        charType: 'letter',
+        character: 'c',
+    }],[{
+        charType: 'letter',
+        character: 'd',
+    }, {
+        charType: 'letter',
+        character: 'e',
+    }, {
+        charType: 'letter',
+        character: 'f',
+    }],[{
+        charType: 'letter',
+        character: 'g',
+    }, {
+        charType: 'letter',
+        character: 'h',
+    }, {
+        charType: 'letter',
+        character: 'i',
+    }]],
     isRunning: false,
     output: '',
     predictiveWords: {},
@@ -21,7 +48,16 @@ const props = {
         autoCapitalize: true,
         capsLock: false,
     },
-    suggestedWords: ['abs', 'ace', 'adder'],
+    suggestedWords: [{
+        charType: 'suggested',
+        character: 'abs',
+    }, {
+        charType: 'suggested',
+        character: 'ace',
+    }, {
+        charType: 'suggested',
+        character: 'adder',
+    }],
     tickStarted: false,
 }
 
@@ -320,14 +356,20 @@ it('handles the click event', () => {
     outputActions.updateOutput = jest.fn()
     predictiveActions.addPredictiveWord = jest.fn()
 
-    wrapper.instance().clickButton(output)
-    expect(outputActions.updateOutput).toHaveBeenCalledWith('canary', wrapper.instance().props.suggestedWords.indexOf(output) > -1, wrapper.instance().props.settings)
+    wrapper.instance().clickButton({
+        character: output,
+        charType: 'suggested',
+    })
+    expect(outputActions.updateOutput).toHaveBeenCalledWith('canary', true, wrapper.instance().props.settings)
 
     wrapper.setProps({
         output: 'I love my ',
         suggestedWords: ['canary'],
     })
-    wrapper.instance().clickButton(output)
+    wrapper.instance().clickButton({
+        character: output,
+        charType: 'suggested',
+    })
     expect(predictiveActions.addPredictiveWord).toHaveBeenCalledWith(['I', 'love', 'my', 'canary'])
 
     output = 'I love my canary'
@@ -335,7 +377,10 @@ it('handles the click event', () => {
         output: 'I love my ',
         suggestedWords: [],
     })
-    wrapper.instance().clickButton(output, true)
+    wrapper.instance().clickButton({
+        character: output,
+        charType: 'suggested',
+    }, true)
     expect(outputActions.setOutput).toHaveBeenCalledWith(output)
 })
 
@@ -349,7 +394,10 @@ it('handles the click event by moving to the first suggested word after selectin
     )
     let output = 'adder'
     gridsActions.setActiveColumn = jest.fn()
-    wrapper.instance().clickButton(output)
+    wrapper.instance().clickButton({
+        character: output,
+        charType: 'suggested',
+    })
     expect(gridsActions.setActiveColumn).toHaveBeenCalledWith(wrapper.props().grid[wrapper.props().activeRow].length)
 })
 
@@ -358,7 +406,10 @@ it('shows clear confirmation when clear button pressed', () => {
         <App {...props} />
     )
     expect(wrapper.state('showClearConfirm')).toEqual(false)
-    wrapper.instance().clickButton(config.chars.clear)
+    wrapper.instance().clickButton({
+        charType: 'function',
+        character: config.chars.clear,
+    })
     expect(wrapper.state('showClearConfirm')).toEqual(true)
 })
 
@@ -370,7 +421,10 @@ it('clears output text when clear confirm pressed', () => {
     )
     outputActions.setOutput = jest.fn()
     wrapper.setState({ showClearConfirm: true })
-    wrapper.instance().clickButton(config.chars.clear)
+    wrapper.instance().clickButton({
+        charType: 'function',
+        character: config.chars.clear,
+    })
     expect(wrapper.state('showClearConfirm')).toEqual(false)
     expect(outputActions.setOutput).toHaveBeenCalledWith('')
 })

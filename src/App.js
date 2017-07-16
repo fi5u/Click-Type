@@ -9,7 +9,6 @@ import {
 import {
     increaseSpeed,
     reduceSpeed,
-    setSetting,
 } from './actions/settings'
 import {
     select,
@@ -78,8 +77,8 @@ export class App extends Component { // export from here to allow tests w/out re
         this.props.dispatch(updateSuggestedWords(this.getSuggestedWords()))
     }
 
-    clickButton(output, replace = false) {
-        if(output === config.chars.clear) {
+    clickButton({character, charType}, replace = false) {
+        if(character === config.chars.clear) {
             if(this.state.showClearConfirm) {
                 this.props.dispatch(setOutput(''))
                 this.props.dispatch(toggleCapsLock(false))
@@ -100,24 +99,23 @@ export class App extends Component { // export from here to allow tests w/out re
             })
         }
 
-        if(output === config.chars.capsLock) {
+        if(character === config.chars.capsLock) {
             this.props.dispatch(toggleCapsLock(!this.props.settings.capsLock))
-            this.props.dispatch(setSetting('capsLock', !this.props.settings.capsLock))
             return
         }
 
-        if(output === config.chars.speedUp || output === config.chars.speedDown) {
-            if((output === config.chars.speedDown && this.props.settings.canDecreaseSpeed) ||
-                (output === config.chars.speedUp && this.props.settings.canIncreaseSpeed)) {
+        if(character === config.chars.speedUp || character === config.chars.speedDown) {
+            if((character === config.chars.speedDown && this.props.settings.canDecreaseSpeed) ||
+                (character === config.chars.speedUp && this.props.settings.canIncreaseSpeed)) {
                 this.stopAndPause(2)
-                this.props.dispatch(output === config.chars.speedDown ? reduceSpeed() : increaseSpeed())
+                this.props.dispatch(character === config.chars.speedDown ? reduceSpeed() : increaseSpeed())
             }
 
             return
         }
 
-        const isSuggestedWord = this.props.suggestedWords.indexOf(output) > -1
-        this.props.dispatch(replace ? setOutput(output) : updateOutput(output, isSuggestedWord, this.props.settings))
+        const isSuggestedWord = charType === 'suggested'
+        this.props.dispatch(replace ? setOutput(character) : updateOutput(character, isSuggestedWord, this.props.settings))
 
         // Move focus back to first suggested word
         if(isSuggestedWord) {
@@ -127,8 +125,8 @@ export class App extends Component { // export from here to allow tests w/out re
 
         // Save predictive words
         const outputWords = this.props.output.trim().split(' ')
-        if((output.slice(-config.chars.space.length) === config.chars.space || output.slice(-1) === ' ' || isSuggestedWord) && outputWords.length > 1) {
-            this.props.dispatch(addPredictiveWord(outputWords.concat(outputWords[outputWords.length - 1] !== output ? output : [])))
+        if((character.slice(-config.chars.space.length) === config.chars.space || character.slice(-1) === ' ' || isSuggestedWord) && outputWords.length > 1) {
+            this.props.dispatch(addPredictiveWord(outputWords.concat(outputWords[outputWords.length - 1] !== character ? character : [])))
         }
     }
 

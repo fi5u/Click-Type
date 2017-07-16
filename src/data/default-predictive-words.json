@@ -825,9 +825,6 @@
                         }
                     }
                 },
-                "mike": {
-                    "freq": 1
-                },
                 "prepare": {
                     "freq": 1,
                     "words": {
@@ -12332,28 +12329,7 @@
             "freq": 3,
             "words": {
                 "to": {
-                    "freq": 2,
-                    "words": {
-                        "mike": {
-                            "freq": 1
-                        }
-                    }
-                }
-            }
-        },
-        "mike": {
-            "freq": 1
-        },
-        "mac": {
-            "freq": 1,
-            "words": {
-                "bought": {
-                    "freq": 1,
-                    "words": {
-                        "a": {
-                            "freq": 1
-                        }
-                    }
+                    "freq": 2
                 }
             }
         },
