@@ -10,7 +10,7 @@
 - ~~add apostrophe to punctuation~~
 - ~~allow (valid) words with apostrophe to be saved to predictive list~~
 - ~~suggest an 's' after apostrophe~~
-- make case insensitive when comparing words from predictive (?)
+- ~~make case insensitive when comparing words from predictive (?)~~
 - ~~fix problem where duplicate 'i' appears on same row as 'I' in predictive list~~
 - ~~check reason why word 'is' is not saving (it was saving correctly)~~
 - ~~show cursor on textarea~~
@@ -27,7 +27,7 @@
 - ~~caps lock should activate secondary punctuation on the punctuation row~~
 - ~~add a settings screen/row, where speed and auto capitalize can be set~~
 - ~~highlight predictive words differently~~
-- give some visual indicator (perhaps animation) that focus has moved to first predicted word
+- ~~give some visual indicator (perhaps animation) that focus has moved to first predicted word~~
 - use most-used own words instead of default words (perhaps once the count gets above a certain number)
 - ~~provide a key explaining symbols (plus display current speed)~~
 - ~~persist outputDisplay content~~
@@ -46,4 +46,6 @@
 - ~~error: Cannot use 'in' operator to search for 'birmingham' in undefined~~
 - ~~set a default predictive words object, perhaps using something like http://www.englishinuse.net~~
 - improve color scheme
-- when `a` in suggested words, normal `a` is highlighted, suggested `a` is removed
+- ~~when `a` in suggested words, normal `a` is highlighted, suggested `a` is removed~~
+- setup github pages
+- import 'Lato' font

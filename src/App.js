@@ -42,11 +42,13 @@ export class App extends Component { // export from here to allow tests w/out re
 
         this.state = {
             showClearConfirm: false,
+            windowWidth: this.getWindowWidth(window.innerWidth),
         }
 
         document.addEventListener('keydown', this.detectClick.bind(this), true)
         this.addLodashMixins()
         this.langProcess = new LanguageProcessing()
+        this.isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints
 
         this.clickButton = this.clickButton.bind(this)
         this.clickMainButton = this.clickMainButton.bind(this)
@@ -55,6 +57,12 @@ export class App extends Component { // export from here to allow tests w/out re
             if(event.target.tagName !== 'BUTTON') {
                 this.clickMainButton()
             }
+        })
+
+        window.addEventListener('resize', () => {
+            this.setState({
+                windowWidth: this.getWindowWidth(window.innerWidth),
+            })
         })
     }
 
@@ -234,6 +242,16 @@ export class App extends Component { // export from here to allow tests w/out re
         return suggestedWords
     }
 
+    getWindowWidth(windowWidth) {
+        if(windowWidth < 425) {
+            return 'micro'
+        }
+        else if(windowWidth < 768) {
+            return 'mini'
+        }
+        return 'full'
+    }
+
     getWordsFromArray(wordArray, match, count, ignoreValues = []) {
         const stringAtStart = [] // store words that contain string at start
         const stringInString = [] // store words that contain string not at start
@@ -295,6 +313,7 @@ export class App extends Component { // export from here to allow tests w/out re
             >
                 <Header
                     isRunning={isRunning}
+                    isTouchDevice={!!this.isTouchDevice}
                 />
 
                 <Grid
@@ -307,6 +326,7 @@ export class App extends Component { // export from here to allow tests w/out re
                     settings={settings}
                     showClearConfirm={this.state.showClearConfirm}
                     suggestedWords={suggestedWords}
+                    windowWidth={this.state.windowWidth}
                 />
 
                 <OutputDisplay

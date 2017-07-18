@@ -1,15 +1,55 @@
-.GridItem {
-    background-image: none;
-    border: none;
-    flex: 1;
-    font-size: .5rem;
-    margin-bottom: 1px;
-    margin-left: 1px !important;
-    margin-right: 1px;
-    margin-top: 1px;
-    padding: 3px 5px;
-    text-shadow: none;
+.ui.basic.buttons .button,
+.ui.basic.button {
+    background: #fff !important;
 }
+
+.ui.basic.buttons .button:hover,
+.ui.basic.button:hover {
+    background: #eee !important;
+}
+
+.ui.compact.buttons .button,
+.ui.compact.button {
+    padding: 0.58928571em .18em 0.58928571em;
+}
+
+.GridItem {
+    flex: 1 !important;
+}
+
+.ui.buttons .button:first-child,
+.ui.buttons .button:last-child {
+    border-radius: 0 !important;
+}
+
+.ui.basic.buttons .button.GridItem--suggested,
+.ui.basic.button.GridItem--suggested {
+    background: #e3eff7 !important;
+}
+
+.ui.basic.buttons .button.GridItem--is-on,
+.ui.basic.button.GridItem--is-on {
+    background: #f7e3ef !important;
+}
+
+.ui.basic.buttons .button.GridItem--is-active,
+.ui.basic.button.GridItem--is-active {
+    background: #e0e1e2 !important;
+}
+
+.GridItem--is-capitalized {
+    text-transform: capitalize !important;
+}
+
+.GridItem--is-uppercase {
+    text-transform: uppercase !important;
+}
+
+.GridItem--pre {
+    flex: 0 0 38px !important;
+    padding: 0.78571429em .5em 0.78571429em !important;
+}
+
 @media screen and (min-width: 425px) {
     .GridItem {
         font-size: .8rem;

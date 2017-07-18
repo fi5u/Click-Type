@@ -1,8 +1,22 @@
 .GridRow {
+    border-color: #d2dad1 !important;
+    border-radius: 0 !important;
     display: flex;
-    opacity: .6;
+    margin-bottom: -1px !important;
+    opacity: .5;
+    overflow: hidden;
+    width: 100%;
 }
 
 .GridRow--is-active {
+    border-color: #aaa !important;
     opacity: 1;
+}
+
+.GridRow--is-first {
+    border-radius: 0.28571429rem 0.28571429rem 0 0 !important;
+}
+
+.GridRow--is-last {
+    border-radius: 0 0 0.28571429rem 0.28571429rem !important;
 }

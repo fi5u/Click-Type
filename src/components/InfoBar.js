@@ -1,10 +1,8 @@
 import './InfoBar.css'
 import {
-    colors,
     config,
     speed,
 } from '../config'
-import { Grid } from 'react-bootstrap'
 import PropTypes from 'prop-types'
 import React from 'react'
 
@@ -50,13 +48,9 @@ const InfoBar = ({
     return(
         <div
             className="InfoBar"
-            style={{
-                backgroundColor: colors.midLight,
-                color: colors.midDark,
-                ...styleOverrides,
-            }}
+            style={styleOverrides}
         >
-            <Grid
+            <div
                 className="InfoBar__inner"
             >
                 <div
@@ -91,7 +85,7 @@ const InfoBar = ({
                         )
                     })}
                 </div>
-            </Grid>
+            </div>
         </div>
     )
 }

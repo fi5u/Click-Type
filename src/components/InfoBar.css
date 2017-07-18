@@ -1,9 +1,12 @@
 .InfoBar {
-
+    background-color: #e3eff7;
+    border-top: 1px solid  #d2dad1;
+    color: rgba(0,0,0,0.6);
 }
 
 .InfoBar__inner {
-
+    margin: 0 auto;
+    max-width: 990px;
 }
 
 .InfoBar__items {
