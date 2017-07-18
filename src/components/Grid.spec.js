@@ -52,6 +52,7 @@ const props = {
         character: 'adder',
         charType: 'suggested',
     }],
+    windowWidth: 'full',
 }
 
 it('renders Grid without crashing', () => {

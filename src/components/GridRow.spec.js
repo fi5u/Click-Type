@@ -9,6 +9,7 @@ const props = {
     characters: ['a','b','c'],
     clickButton: jest.fn(),
     isActive: false,
+    windowWidth: 'full',
 }
 
 it('renders GridRow without crashing', () => {

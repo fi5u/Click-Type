@@ -1,17 +1,14 @@
 exports[`test renders GridRow correctly 1`] = `
 <div
-  className="GridRow btn-group"
-  role="group" />
+  className="ui basic buttons GridRow  " />
 `;
 
 exports[`test renders GridRow correctly 2`] = `
 <div
-  className="GridRow GridRow--is-active btn-group"
-  role="group" />
+  className="ui basic buttons GridRow GridRow--is-active " />
 `;
 
 exports[`test renders GridRow correctly 3`] = `
 <div
-  className="GridRow GridRow--is-active btn-group"
-  role="group" />
+  className="ui basic buttons GridRow GridRow--is-active " />
 `;
