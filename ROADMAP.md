@@ -45,7 +45,7 @@
 - ~~make wrapping better in keys row~
 - ~~error: Cannot use 'in' operator to search for 'birmingham' in undefined~~
 - ~~set a default predictive words object, perhaps using something like http://www.englishinuse.net~~
-- improve color scheme
+- ~~improve color scheme~~
 - ~~when `a` in suggested words, normal `a` is highlighted, suggested `a` is removed~~
 - setup github pages
-- import 'Lato' font
+- ~~import 'Lato' font~~
