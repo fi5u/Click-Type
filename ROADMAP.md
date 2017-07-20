@@ -52,3 +52,4 @@
 - ~~add EUR symbol~~
 - move current readme to GH Pages branch, add something to original readme
 - add link to readme
+- clicking back up with mouse does not work

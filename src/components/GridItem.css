@@ -3,11 +3,6 @@
     background: #fff !important;
 }
 
-.ui.basic.buttons .button:hover,
-.ui.basic.button:hover {
-    background: #eee !important;
-}
-
 .ui.compact.buttons .button,
 .ui.compact.button {
     padding: 0.58928571em .18em 0.58928571em;
@@ -32,6 +27,11 @@
     background: #eee !important;
 }
 
+.ui.basic.buttons .button.GridItem:hover,
+.ui.basic.button.GridItem:hover {
+    background: #ddd !important;
+}
+
 .ui.basic.buttons .button.GridItem--is-on,
 .ui.basic.button.GridItem--is-on {
     background: #f7e3ef !important;
@@ -40,6 +40,7 @@
 .ui.basic.buttons .button.GridItem--is-active,
 .ui.basic.button.GridItem--is-active {
     background: #e0e1e2 !important;
+    box-shadow: 0 0 0px 1px #fff inset !important;
 }
 
 .GridItem--is-capitalized {
