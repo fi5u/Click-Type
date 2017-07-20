@@ -47,6 +47,7 @@
 - ~~set a default predictive words object, perhaps using something like http://www.englishinuse.net~~
 - ~~improve color scheme~~
 - ~~when `a` in suggested words, normal `a` is highlighted, suggested `a` is removed~~
-- setup github pages
+- ~~setup github page~~
 - ~~import 'Lato' font~~
 - add EUR symbol
+- move current readme to GH Pages branch, add something to original readme

@@ -26,9 +26,11 @@ const Grid = ({
         className="Grid"
     >
         {characterGrid.map((row, iteration, rows) => {
+            const isActiveRow = iteration === activeRow
+
             return (
                 <GridRow
-                    isActive={iteration === activeRow}
+                    isActive={isActiveRow}
                     key={`row-${iteration}`}
                     order={iteration === 0 ? 'first' : iteration === rows.length - 1 ? 'last' : 'middle'}
                     windowWidth={windowWidth}
@@ -39,7 +41,7 @@ const Grid = ({
                         : suggestedWords
                     ).map(({character, charType}, charIteration) => {
                         // Do not allow duplicates apart from 'I' which can be with lower 'i'
-                        const isActiveItem = activeAxis === 'col' && iteration === activeRow && charIteration === activeElement
+                        const isActiveItem = activeAxis === 'col' && isActiveRow && charIteration === activeElement
                         const isOn = character === config.chars.capsLock && settings.capsLock
 
                         let char = character
@@ -49,6 +51,8 @@ const Grid = ({
 
                         const itemClasses = [[
                             isActiveItem, 'is-active',
+                        ], [
+                            !isActiveRow, 'is-inactive-row',
                         ], [
                             isOn, 'is-on',
                         ], [
