@@ -49,5 +49,6 @@
 - ~~when `a` in suggested words, normal `a` is highlighted, suggested `a` is removed~~
 - ~~setup github page~~
 - ~~import 'Lato' font~~
-- add EUR symbol
+- ~~add EUR symbol~~
 - move current readme to GH Pages branch, add something to original readme
+- add link to readme

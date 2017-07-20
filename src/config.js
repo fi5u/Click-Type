@@ -66,6 +66,7 @@ const config = {
         punctuation: [punctuation],
         secondaryPunc: [[
             '$',
+            '€',
             '£',
             ':',
             '/',
