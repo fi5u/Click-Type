@@ -19,3 +19,5 @@ Providing you're not using ClickType in an incognito window, and you do not clea
 ### Contact
 
 Please file an issue :point_up: if you have any comments or suggestions.
+
+[Go to ClickType.](https://github.com/fi5u/Click-Type)

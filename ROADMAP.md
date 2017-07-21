@@ -51,5 +51,7 @@
 - ~~import 'Lato' font~~
 - ~~add EUR symbol~~
 - move current readme to GH Pages branch, add something to original readme
-- add link to readme
+- ~~add link to readme~~
 - clicking back up with mouse does not work
+- can deploy with production settings?
+- set default speed to 12
