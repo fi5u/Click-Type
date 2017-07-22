@@ -85,7 +85,7 @@ const config = {
 
 const speed = {
     high: 100,
-    initial: 400,
+    initial: 650,
     low: 1200,
     increment: 50,
 }
