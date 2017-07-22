@@ -23,6 +23,13 @@ exports[`renders App correctly 1`] = `
       >
         Press space to start
       </div>
+      <a
+        className="item"
+        href="https://github.com/fi5u/Click-Type/blob/master/README.md"
+        onClick={[Function]}
+      >
+        Help
+      </a>
     </div>
   </div>
   <div
