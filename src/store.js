@@ -1,3 +1,4 @@
+/* global process */
 import {
     applyMiddleware,
     compose,
@@ -11,21 +12,15 @@ import { createLogger } from 'redux-logger'
 import rootReducer from './reducers'
 import thunkMiddleware from 'redux-thunk'
 
-const loggerMiddleware = createLogger({
-    predicate: (getState, action) => action.type !== 'TICK'
-})
+const middlewares = [thunkMiddleware]
+if(process.env.NODE_ENV === 'development') {
+    middlewares.push(createLogger({
+        predicate: (getState, action) => action.type !== 'TICK'
+    }))
+}
 
-export const store = createStore(
-    rootReducer,
-    undefined,
-    compose(
-        applyMiddleware(
-            thunkMiddleware,
-            loggerMiddleware
-        ),
-        autoRehydrate({log: true})
-    )
-)
-
+export const store = compose(applyMiddleware(...middlewares),autoRehydrate({
+    log: true,
+}))(createStore)(rootReducer)
 
 persistStore(store, {whitelist: ['output', 'predictive', 'settings']})
