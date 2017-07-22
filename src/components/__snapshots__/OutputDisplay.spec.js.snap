@@ -1,18 +1,24 @@
-exports[`test renders OutputDisplay correctly 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders OutputDisplay correctly 1`] = `
 <div
-  className="OutputDisplay">
+  className="OutputDisplay"
+>
   <span
-    className="OutputDisplay__content">
+    className="OutputDisplay__content"
+  >
     
   </span>
 </div>
 `;
 
-exports[`test renders OutputDisplay correctly 2`] = `
+exports[`renders OutputDisplay correctly 2`] = `
 <div
-  className="OutputDisplay">
+  className="OutputDisplay"
+>
   <span
-    className="OutputDisplay__content">
+    className="OutputDisplay__content"
+  >
     The quick brown fox
   </span>
 </div>

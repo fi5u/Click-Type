@@ -7,7 +7,7 @@ import {
     autoRehydrate,
     persistStore,
 } from 'redux-persist'
-import createLogger from 'redux-logger'
+import { createLogger } from 'redux-logger'
 import rootReducer from './reducers'
 import thunkMiddleware from 'redux-thunk'
 

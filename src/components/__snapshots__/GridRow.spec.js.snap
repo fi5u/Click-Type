@@ -1,14 +1,19 @@
-exports[`test renders GridRow correctly 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders GridRow correctly 1`] = `
 <div
-  className="ui basic buttons GridRow  " />
+  className="ui basic buttons GridRow  "
+/>
 `;
 
-exports[`test renders GridRow correctly 2`] = `
+exports[`renders GridRow correctly 2`] = `
 <div
-  className="ui basic buttons GridRow GridRow--is-active " />
+  className="ui basic buttons GridRow GridRow--is-active "
+/>
 `;
 
-exports[`test renders GridRow correctly 3`] = `
+exports[`renders GridRow correctly 3`] = `
 <div
-  className="ui basic buttons GridRow GridRow--is-active " />
+  className="ui basic buttons GridRow GridRow--is-active "
+/>
 `;

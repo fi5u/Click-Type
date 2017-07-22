@@ -1,195 +1,229 @@
-exports[`test renders Grid correctly 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders Grid correctly 1`] = `
 <div
-  className="Grid">
+  className="Grid"
+>
   <div
-    className="ui basic buttons GridRow GridRow--is-active GridRow--is-first">
+    className="ui basic buttons GridRow GridRow--is-active GridRow--is-first"
+  >
     <button
-      className="ui medium button GridItem GridItem--letter    GridItem--is-capitalized"
+      className="ui medium button GridItem GridItem--letter     GridItem--is-capitalized"
       disabled={undefined}
       onClick={[Function]}
-      tabIndex={undefined}>
+      tabIndex={undefined}
+    >
       a
     </button>
     <button
-      className="ui medium button GridItem GridItem--letter    GridItem--is-capitalized"
+      className="ui medium button GridItem GridItem--letter     GridItem--is-capitalized"
       disabled={undefined}
       onClick={[Function]}
-      tabIndex={undefined}>
+      tabIndex={undefined}
+    >
       b
     </button>
     <button
-      className="ui medium button GridItem GridItem--letter    GridItem--is-capitalized"
+      className="ui medium button GridItem GridItem--letter     GridItem--is-capitalized"
       disabled={undefined}
       onClick={[Function]}
-      tabIndex={undefined}>
+      tabIndex={undefined}
+    >
       c
     </button>
     <button
-      className="ui medium button GridItem GridItem--suggested    GridItem--is-capitalized"
+      className="ui medium button GridItem GridItem--suggested     GridItem--is-capitalized"
       disabled={undefined}
       onClick={[Function]}
-      tabIndex={undefined}>
+      tabIndex={undefined}
+    >
       abs
     </button>
     <button
-      className="ui medium button GridItem GridItem--suggested    GridItem--is-capitalized"
+      className="ui medium button GridItem GridItem--suggested     GridItem--is-capitalized"
       disabled={undefined}
       onClick={[Function]}
-      tabIndex={undefined}>
+      tabIndex={undefined}
+    >
       ace
     </button>
     <button
-      className="ui medium button GridItem GridItem--suggested    GridItem--is-capitalized"
+      className="ui medium button GridItem GridItem--suggested     GridItem--is-capitalized"
       disabled={undefined}
       onClick={[Function]}
-      tabIndex={undefined}>
+      tabIndex={undefined}
+    >
       adder
     </button>
   </div>
   <div
-    className="ui basic buttons GridRow  GridRow--is-middle">
+    className="ui basic buttons GridRow  GridRow--is-middle"
+  >
     <button
-      className="ui medium button GridItem GridItem--letter    GridItem--is-capitalized"
+      className="ui medium button GridItem GridItem--letter  GridItem--is-inactive-row   GridItem--is-capitalized"
       disabled={undefined}
       onClick={[Function]}
-      tabIndex={undefined}>
+      tabIndex={undefined}
+    >
       d
     </button>
     <button
-      className="ui medium button GridItem GridItem--letter    GridItem--is-capitalized"
+      className="ui medium button GridItem GridItem--letter  GridItem--is-inactive-row   GridItem--is-capitalized"
       disabled={undefined}
       onClick={[Function]}
-      tabIndex={undefined}>
+      tabIndex={undefined}
+    >
       e
     </button>
     <button
-      className="ui medium button GridItem GridItem--letter    GridItem--is-capitalized"
+      className="ui medium button GridItem GridItem--letter  GridItem--is-inactive-row   GridItem--is-capitalized"
       disabled={undefined}
       onClick={[Function]}
-      tabIndex={undefined}>
+      tabIndex={undefined}
+    >
       f
     </button>
   </div>
   <div
-    className="ui basic buttons GridRow  GridRow--is-last">
+    className="ui basic buttons GridRow  GridRow--is-last"
+  >
     <button
-      className="ui medium button GridItem GridItem--letter    GridItem--is-capitalized"
+      className="ui medium button GridItem GridItem--letter  GridItem--is-inactive-row   GridItem--is-capitalized"
       disabled={undefined}
       onClick={[Function]}
-      tabIndex={undefined}>
+      tabIndex={undefined}
+    >
       g
     </button>
     <button
-      className="ui medium button GridItem GridItem--letter    GridItem--is-capitalized"
+      className="ui medium button GridItem GridItem--letter  GridItem--is-inactive-row   GridItem--is-capitalized"
       disabled={undefined}
       onClick={[Function]}
-      tabIndex={undefined}>
+      tabIndex={undefined}
+    >
       h
     </button>
     <button
-      className="ui medium button GridItem GridItem--letter    GridItem--is-capitalized"
+      className="ui medium button GridItem GridItem--letter  GridItem--is-inactive-row   GridItem--is-capitalized"
       disabled={undefined}
       onClick={[Function]}
-      tabIndex={undefined}>
+      tabIndex={undefined}
+    >
       i
     </button>
   </div>
 </div>
 `;
 
-exports[`test renders Grid correctly 2`] = `
+exports[`renders Grid correctly 2`] = `
 <div
-  className="Grid">
+  className="Grid"
+>
   <div
-    className="ui basic buttons GridRow GridRow--is-active GridRow--is-first">
+    className="ui basic buttons GridRow GridRow--is-active GridRow--is-first"
+  >
     <button
-      className="ui medium button GridItem GridItem--letter    GridItem--is-capitalized"
+      className="ui medium button GridItem GridItem--letter     GridItem--is-capitalized"
       disabled={undefined}
       onClick={[Function]}
-      tabIndex={undefined}>
+      tabIndex={undefined}
+    >
       a
     </button>
     <button
-      className="ui medium button GridItem GridItem--letter    GridItem--is-capitalized"
+      className="ui medium button GridItem GridItem--letter     GridItem--is-capitalized"
       disabled={undefined}
       onClick={[Function]}
-      tabIndex={undefined}>
+      tabIndex={undefined}
+    >
       b
     </button>
     <button
-      className="ui medium button GridItem GridItem--letter    GridItem--is-capitalized"
+      className="ui medium button GridItem GridItem--letter     GridItem--is-capitalized"
       disabled={undefined}
       onClick={[Function]}
-      tabIndex={undefined}>
+      tabIndex={undefined}
+    >
       c
     </button>
     <button
-      className="ui medium button GridItem GridItem--suggested    GridItem--is-capitalized"
+      className="ui medium button GridItem GridItem--suggested     GridItem--is-capitalized"
       disabled={undefined}
       onClick={[Function]}
-      tabIndex={undefined}>
+      tabIndex={undefined}
+    >
       abs
     </button>
     <button
-      className="ui medium button GridItem GridItem--suggested    GridItem--is-capitalized"
+      className="ui medium button GridItem GridItem--suggested     GridItem--is-capitalized"
       disabled={undefined}
       onClick={[Function]}
-      tabIndex={undefined}>
+      tabIndex={undefined}
+    >
       ace
     </button>
     <button
-      className="ui medium button GridItem GridItem--suggested    GridItem--is-capitalized"
+      className="ui medium button GridItem GridItem--suggested     GridItem--is-capitalized"
       disabled={undefined}
       onClick={[Function]}
-      tabIndex={undefined}>
+      tabIndex={undefined}
+    >
       adder
     </button>
   </div>
   <div
-    className="ui basic buttons GridRow  GridRow--is-middle">
+    className="ui basic buttons GridRow  GridRow--is-middle"
+  >
     <button
-      className="ui medium button GridItem GridItem--letter    GridItem--is-capitalized"
+      className="ui medium button GridItem GridItem--letter  GridItem--is-inactive-row   GridItem--is-capitalized"
       disabled={undefined}
       onClick={[Function]}
-      tabIndex={undefined}>
+      tabIndex={undefined}
+    >
       d
     </button>
     <button
-      className="ui medium button GridItem GridItem--letter    GridItem--is-capitalized"
+      className="ui medium button GridItem GridItem--letter  GridItem--is-inactive-row   GridItem--is-capitalized"
       disabled={undefined}
       onClick={[Function]}
-      tabIndex={undefined}>
+      tabIndex={undefined}
+    >
       e
     </button>
     <button
-      className="ui medium button GridItem GridItem--letter    GridItem--is-capitalized"
+      className="ui medium button GridItem GridItem--letter  GridItem--is-inactive-row   GridItem--is-capitalized"
       disabled={undefined}
       onClick={[Function]}
-      tabIndex={undefined}>
+      tabIndex={undefined}
+    >
       f
     </button>
   </div>
   <div
-    className="ui basic buttons GridRow  GridRow--is-last">
+    className="ui basic buttons GridRow  GridRow--is-last"
+  >
     <button
-      className="ui medium button GridItem GridItem--letter    GridItem--is-capitalized"
+      className="ui medium button GridItem GridItem--letter  GridItem--is-inactive-row   GridItem--is-capitalized"
       disabled={undefined}
       onClick={[Function]}
-      tabIndex={undefined}>
+      tabIndex={undefined}
+    >
       g
     </button>
     <button
-      className="ui medium button GridItem GridItem--letter    GridItem--is-capitalized"
+      className="ui medium button GridItem GridItem--letter  GridItem--is-inactive-row   GridItem--is-capitalized"
       disabled={undefined}
       onClick={[Function]}
-      tabIndex={undefined}>
+      tabIndex={undefined}
+    >
       h
     </button>
     <button
-      className="ui medium button GridItem GridItem--letter    GridItem--is-capitalized"
+      className="ui medium button GridItem GridItem--letter  GridItem--is-inactive-row   GridItem--is-capitalized"
       disabled={undefined}
       onClick={[Function]}
-      tabIndex={undefined}>
+      tabIndex={undefined}
+    >
       i
     </button>
   </div>
