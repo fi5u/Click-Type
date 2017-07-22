@@ -25,7 +25,7 @@ exports[`renders App correctly 1`] = `
       </div>
       <a
         className="item"
-        href="https://github.com/fi5u/Click-Type/blob/master/README.md"
+        href="https://github.com/fi5u/Click-Type/wiki/ClickType-help"
         onClick={[Function]}
       >
         Help
