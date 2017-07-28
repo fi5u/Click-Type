@@ -31,7 +31,7 @@ const Header = ({
 
                 <Menu.Item
                     as="a"
-                    href="https://github.com/fi5u/Click-Type/wiki/ClickType-help"
+                    href="https://github.com/fi5u/clicktype/wiki/ClickType-help"
                 >
                     Help
                 </Menu.Item>
