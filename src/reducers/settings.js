@@ -1,4 +1,5 @@
 import * as types from '../actions/action-types'
+import ReactGA from 'react-ga'
 import { speed } from '../config'
 
 export const initialState = {
@@ -17,21 +18,37 @@ export default function settings(state = initialState, action) {
             capsLock: true,
         }) : state
 
-    case types.REDUCE_SPEED:
+    case types.REDUCE_SPEED: {
+        const newSpeed = state.speed > speed.increment ? state.speed + speed.increment : state.speed
+        ReactGA.event({
+            action: 'Reduced speed',
+            category: 'Settings',
+            value: newSpeed,
+        })
+
         return {
             ...state,
             canDecreaseSpeed: state.speed + speed.increment < speed.low, // 550 + 50 <= 600
             canIncreaseSpeed: true,
-            speed: state.speed > speed.increment ? state.speed + speed.increment : state.speed,
+            speed: newSpeed,
         }
+    }
 
-    case types.INCREASE_SPEED:
+    case types.INCREASE_SPEED: {
+        const newSpeed = state.speed - speed.increment <= speed.high ? speed.high : state.speed - speed.increment
+        ReactGA.event({
+            action: 'Reduced speed',
+            category: 'Settings',
+            value: newSpeed,
+        })
+
         return {
             ...state,
             canDecreaseSpeed: true,
             canIncreaseSpeed: state.speed - speed.increment > speed.high,
-            speed: state.speed - speed.increment <= speed.high ? speed.high : state.speed - speed.increment,
+            speed: newSpeed,
         }
+    }
 
     case types.SET_SETTING:
         return Object.assign({}, state, {
@@ -39,6 +56,11 @@ export default function settings(state = initialState, action) {
         })
 
     case types.TOGGLE_CAPS_LOCK:
+        ReactGA.event({
+            action: 'Toggle caps lock',
+            category: 'Settings',
+            label: action.value,
+        })
         return {
             ...state,
             capsLock: action.value,

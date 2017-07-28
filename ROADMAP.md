@@ -31,7 +31,7 @@
 - use most-used own words instead of default words (perhaps once the count gets above a certain number)
 - ~~provide a key explaining symbols (plus display current speed)~~
 - ~~persist outputDisplay content~~
-- add GA
+- ~~add GA~~
 - ~~support touch - nav text changes to 'tap', detect tap for select~~
 - ~~on clicking button, scroll output to bottom~~
 - ~~add clear button, (with confirmation)~~
@@ -56,3 +56,4 @@
 - ~~can deploy with production settings?~~
 - ~~set default speed to 12~~
 - implement the button
+- update favicon

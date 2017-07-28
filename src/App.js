@@ -31,6 +31,7 @@ import InfoBar from './components/InfoBar'
 import LanguageProcessing from './services/language-processing'
 import OutputDisplay from './components/OutputDisplay'
 import PropTypes from 'prop-types'
+import ReactGA from 'react-ga'
 import _ from 'lodash'
 import { addPredictiveWord } from './actions/predictive'
 import { config } from './config'
@@ -88,6 +89,11 @@ export class App extends Component { // export from here to allow tests w/out re
     clickButton({character, charType}, replace = false) {
         if(character === config.chars.clear) {
             if(this.state.showClearConfirm) {
+                ReactGA.event({
+                    action: 'Function',
+                    category: 'Clear success',
+                    label: this.props.output,
+                })
                 this.props.dispatch(setOutput(''))
                 this.props.dispatch(toggleCapsLock(false))
                 this.setState({
@@ -95,6 +101,11 @@ export class App extends Component { // export from here to allow tests w/out re
                 })
             }
             else {
+                ReactGA.event({
+                    action: 'Function',
+                    category: 'Clear activated',
+                    label: this.props.output,
+                })
                 this.setState({
                     showClearConfirm: true,
                 })
@@ -136,6 +147,12 @@ export class App extends Component { // export from here to allow tests w/out re
         if((character.slice(-config.chars.space.length) === config.chars.space || character.slice(-1) === ' ' || isSuggestedWord) && outputWords.length > 1) {
             this.props.dispatch(addPredictiveWord(outputWords.concat(outputWords[outputWords.length - 1] !== character ? character : [])))
         }
+
+        ReactGA.event({
+            action: 'Typing',
+            category: charType,
+            label: character,
+        })
     }
 
     clickMainButton() {
@@ -203,6 +220,12 @@ export class App extends Component { // export from here to allow tests w/out re
                 const lastSentence = output.split(/\.|\?|!/g).pop()
                 if(this.langProcess.shouldBeAQuestion(lastSentence)) {
                     suggestedWords = ['?'].concat(suggestedWords).slice(0, this.props.grid.suggestedWordCount)
+
+                    ReactGA.event({
+                        action: 'Language',
+                        category: 'Suggested question mark',
+                        label: lastSentence,
+                    })
                 }
             }
         }

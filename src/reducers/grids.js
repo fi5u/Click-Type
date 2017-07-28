@@ -1,4 +1,5 @@
 import * as types from '../actions/action-types'
+import ReactGA from 'react-ga'
 import { config } from '../config'
 
 const addAdditionals = (baseCharGroup, charType) => {
@@ -82,6 +83,7 @@ export default function grids(state = initialState, action) {
     case types.UPDATE_SUGGESTED_WORDS: {
         let suggestedLetterCount = 0
         let wordCount = 0
+        // Make sure all suggested words will fit, if necessary remove some words
         for(const word of action.words) {
             if(suggestedLetterCount + word.length > suggestedLetterCountMax || wordCount >= config.suggestedWordCountMax) {
                 break
@@ -89,8 +91,15 @@ export default function grids(state = initialState, action) {
             wordCount++
             suggestedLetterCount += word.length
         }
+        // Remove extra words that do not fit
+        const words = action.words.slice(0, wordCount)
+        ReactGA.event({
+            action: 'Update',
+            category: 'Suggested words',
+            label: words.join(),
+        })
         return Object.assign({}, state, {
-            suggestedWords: action.words.slice(0, wordCount)
+            suggestedWords: words
                 .map(word => ({
                     character: word,
                     charType: 'suggested',

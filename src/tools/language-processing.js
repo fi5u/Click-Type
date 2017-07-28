@@ -1,3 +1,8 @@
+/** Used to log out a predictive words object from an array
+ * of sentences. Used for initial setting of predictive
+ * words.
+ */
+
 import predictive from '../reducers/predictive'
 import sentences from '../data/sentences.json'
 
@@ -18,4 +23,4 @@ for(let i = sentences.length - 1; i >= 0; i--) {
 
 }
 
-console.log(JSON.stringify(state))
+//console.log(JSON.stringify(state))
