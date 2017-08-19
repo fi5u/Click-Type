@@ -8,7 +8,8 @@
     "react-addons-test-utils": "^15.6.0",
     "react-scripts": "1.0.10",
     "react-test-renderer": "^15.6.1",
-    "redux-logger": "^3.0.6"
+    "redux-logger": "^3.0.6",
+    "source-map-explorer": "^1.4.0"
   },
   "dependencies": {
     "deep-assign": "^2.0.0",
@@ -30,6 +31,7 @@
   },
   "homepage": "https://fi5u.github.io/clicktype/",
   "scripts": {
+    "analyze": "source-map-explorer build/static/js/main.*",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "start": "react-scripts start",
