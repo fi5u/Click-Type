@@ -55,5 +55,5 @@
 - clicking back up with mouse does not work
 - ~~can deploy with production settings?~~
 - ~~set default speed to 12~~
-- implement the button
+- ~~implement the button~~
 - ~~update favicon~~
