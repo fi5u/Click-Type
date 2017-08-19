@@ -6,4 +6,4 @@ ClickType is built with [React](https://facebook.github.io/react/) library. Stat
 
 The [POS](https://www.npmjs.com/package/pos) library is used to (somewhat) intelligently predict upcoming words. A store of common word sequences (both in general, and for the user) is kept and referred to when deciding words to suggest.
 
-Puck.js is an open source microcontroller button, which can be used with ClickType instead of using keyboard keys. This allows the user to be some way away from the computer keyboard.
+[Puck.js](https://www.puck-js.com) is an open source microcontroller button, which can be used with ClickType instead of using keyboard keys. This allows the user to be some way away from the computer keyboard.
