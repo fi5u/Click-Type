@@ -25,6 +25,26 @@ exports[`renders App correctly 1`] = `
       </div>
       <a
         className="item"
+        onClick={[Function]}
+      >
+        Link Puck
+        <i
+          aria-hidden="true"
+          className="help circle outline icon Header--question"
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          style={
+            Object {
+              "color": "rgba(0, 0, 0, 0.87)",
+            }
+          }
+        />
+      </a>
+      <a
+        className="item"
         href="https://github.com/fi5u/clicktype/wiki/ClickType-help"
         onClick={[Function]}
       >

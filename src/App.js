@@ -11,6 +11,11 @@ import {
     reduceSpeed,
 } from './actions/settings'
 import {
+    puckActivated,
+    puckActivating,
+    puckActivationFailed,
+} from './actions/puck'
+import {
     select,
     setActiveColumn,
     toggleCapsLock,
@@ -50,7 +55,9 @@ export class App extends Component { // export from here to allow tests w/out re
         this.addLodashMixins()
         this.langProcess = new LanguageProcessing()
         this.isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints
+        this.connection = null
 
+        this.activatePuck = this.activatePuck.bind(this)
         this.clickButton = this.clickButton.bind(this)
         this.clickMainButton = this.clickMainButton.bind(this)
 
@@ -63,6 +70,45 @@ export class App extends Component { // export from here to allow tests w/out re
         window.addEventListener('resize', () => {
             this.setState({
                 windowWidth: this.getWindowWidth(window.innerWidth),
+            })
+        })
+    }
+
+    activatePuck() {
+        this.props.dispatch(puckActivating())
+
+        if(this.connection) {
+            this.connection.close()
+            this.connection = null
+        }
+
+        window.Puck.connect(c => {
+            if(!c) {
+                this.props.dispatch(puckActivationFailed())
+                return
+            }
+            this.connection = c
+
+            // Watch for button presses
+            this.connection.on('data', d => {
+                if(d === 'btnpress') {
+                    this.clickMainButton()
+                }
+            })
+
+            // Watch for connection close
+            this.connection.on('close', () => {
+                this.props.dispatch(puckActivationFailed())
+            })
+
+            // Reset and set button watch on the Puck
+            this.connection.write('reset();\n', () => {
+                window.setTimeout(() => {
+                    this.connection.write('setWatch(function() {Bluetooth.print("btnpress")}, BTN, {edge:"rising", debounce:50, repeat:true});\n',
+                    () => {
+                        this.props.dispatch(puckActivated())
+                    })
+                }, 1500)
             })
         })
     }
@@ -328,6 +374,8 @@ export class App extends Component { // export from here to allow tests w/out re
             settings,
             suggestedWords,
             output,
+            puckActivated,
+            puckActivating,
         } = this.props
 
         return (
@@ -335,8 +383,11 @@ export class App extends Component { // export from here to allow tests w/out re
                 className="App"
             >
                 <Header
+                    activatePuck={this.activatePuck}
                     isRunning={isRunning}
                     isTouchDevice={!!this.isTouchDevice}
+                    puckActivated={puckActivated}
+                    puckActivating={puckActivating}
                 />
 
                 <Grid
@@ -376,6 +427,8 @@ App.propTypes = {
     isRunning: PropTypes.bool.isRequired,
     output: PropTypes.string.isRequired,
     predictiveWords: PropTypes.object.isRequired,
+    puckActivated: PropTypes.bool.isRequired,
+    puckActivating: PropTypes.bool.isRequired,
     settings: PropTypes.object.isRequired,
     suggestedWords: PropTypes.array.isRequired,
     tickStarted: PropTypes.bool.isRequired,
@@ -386,6 +439,7 @@ function mapStateToProps(state) {
         grids,
         output,
         predictive,
+        puck,
         settings,
         timings,
     } = state
@@ -398,6 +452,8 @@ function mapStateToProps(state) {
         isRunning: timings.isRunning,
         output: output.output,
         predictiveWords: predictive.words,
+        puckActivated: puck.activated,
+        puckActivating: puck.activating,
         settings,
         suggestedWords: grids.suggestedWords,
         tickStarted: timings.tickStarted,

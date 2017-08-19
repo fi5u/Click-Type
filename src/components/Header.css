@@ -4,3 +4,16 @@
     border-right: none !important;
     border-top: none !important;
 }
+
+.Header--icon {
+    margin-left: 8px !important;
+}
+
+.Header--question {
+    color: rgba(0,0,0,0.65);
+    font-size: 75% !important;
+    line-height: 0;
+    position: relative;
+    top: -0.3em;
+    vertical-align: baseline;
+}

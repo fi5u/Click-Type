@@ -44,6 +44,8 @@ const props = {
     isRunning: false,
     output: '',
     predictiveWords: {},
+    puckActivated: false,
+    puckActivating: false,
     settings: {
         autoCapitalize: true,
         capsLock: false,

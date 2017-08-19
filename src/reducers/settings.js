@@ -59,7 +59,7 @@ export default function settings(state = initialState, action) {
         ReactGA.event({
             action: 'Toggle caps lock',
             category: 'Settings',
-            label: action.value,
+            label: action.value.toString(),
         })
         return {
             ...state,
