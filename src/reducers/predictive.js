@@ -42,8 +42,8 @@ export default function predictive(state = initialState, action) {
                     if(wordPreApostrophe === 'shan') {
                         dictCheckWord = 'shall'
                     }
-
                 }
+
                 if(wordsByLetter[dictCheckWord[0]] && wordsByLetter[dictCheckWord[0]].indexOf(dictCheckWord) === -1) {
                     preventFurtherWords = true
                     return undefined

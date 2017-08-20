@@ -3,10 +3,6 @@ import React, {
     Component,
 } from 'react'
 import {
-    commonWords,
-    words,
-} from './data'
-import {
     increaseSpeed,
     reduceSpeed,
 } from './actions/settings'
@@ -74,6 +70,11 @@ export class App extends Component { // export from here to allow tests w/out re
         })
     }
 
+    async componentDidUpdate(prevProps) {
+        if(prevProps.output === this.props.output) { return }
+        this.props.dispatch(updateSuggestedWords(await this.getSuggestedWords()))
+    }
+
     activatePuck() {
         this.props.dispatch(puckActivating())
 
@@ -125,11 +126,6 @@ export class App extends Component { // export from here to allow tests w/out re
                 }))
             }
         })
-    }
-
-    componentDidUpdate(prevProps) {
-        if(prevProps.output === this.props.output) { return }
-        this.props.dispatch(updateSuggestedWords(this.getSuggestedWords()))
     }
 
     clickButton({character, charType}, replace = false) {
@@ -250,7 +246,8 @@ export class App extends Component { // export from here to allow tests w/out re
         return _.reverse(Object.keys(_.sortKeysBy(obj, value => { return value.freq })))
     }
 
-    getSuggestedWords() {
+    async getSuggestedWords() {
+        await this.getWordLists()
         let output = this.props.output.toLowerCase()
         let suggestedWords = config.gridParts.suggestedWords
         const outputWords = output.trim().split(' ')
@@ -283,10 +280,10 @@ export class App extends Component { // export from here to allow tests w/out re
 
             const wordPart = output.trim().split(' ').pop()
             // Get common words
-            suggestedWords = this.getWordsFromArray(commonWords, wordPart, this.props.grid.suggestedWordCount)
+            suggestedWords = this.getWordsFromArray(this.commonWords, wordPart, this.props.grid.suggestedWordCount)
             // If not enough common words, get from full dictionary
             if(suggestedWords.length < this.props.grid.suggestedWordCount) {
-                const suggestedFullWords = this.getWordsFromArray(words, wordPart, this.props.grid.suggestedWordCount - suggestedWords.length, suggestedWords)
+                const suggestedFullWords = this.getWordsFromArray(this.words, wordPart, this.props.grid.suggestedWordCount - suggestedWords.length, suggestedWords)
                 suggestedWords = suggestedWords.concat(suggestedFullWords)
             }
 
@@ -319,6 +316,23 @@ export class App extends Component { // export from here to allow tests w/out re
             return 'mini'
         }
         return 'full'
+    }
+
+    async getWordLists() {
+        if(!this.commonWords || !this.words) {
+            try {
+                const {
+                    commonWords,
+                    words,
+                } = await import('./data')
+
+                this.commonWords = commonWords
+                this.words = words
+            }
+            catch(e) {
+                console.log('Failed to load words')
+            }
+        }
     }
 
     getWordsFromArray(wordArray, match, count, ignoreValues = []) {

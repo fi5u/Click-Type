@@ -1,5 +1,3 @@
-import pos from 'pos'
-
 export default class LanguageProcessing {
     /** Create suggested words when the last char is apostrophe
         Pass the word plus apostrophe */
@@ -105,9 +103,9 @@ export default class LanguageProcessing {
     }
 
     /** Determines if the last word should have a question mark */
-    shouldBeAQuestion(sentence) {
+    async shouldBeAQuestion(sentence) {
         const words = sentence.trim().toLowerCase().split(' ')
-        const tags = this._getTags(sentence)
+        const tags = await this._getTags(sentence)
         const firstTag = tags[0]
         const lastTag = tags[tags.length - 1]
         const startTags = ['MD', 'WDT', 'WP', 'WP$', 'WRB']
@@ -147,11 +145,17 @@ export default class LanguageProcessing {
     }
 
     /** Returns an array of tags */
-    _getTags(sentence) {
-        const words = new pos.Lexer().lex(sentence.trim())
-        const tagger = new pos.Tagger()
-        const taggedWords = tagger.tag(words)
-        return taggedWords.map(taggedWord => taggedWord[1])
+    async _getTags(sentence) {
+        try {
+            const pos = await import('pos')
+            const words = new pos.Lexer().lex(sentence.trim())
+            const tagger = new pos.Tagger()
+            const taggedWords = tagger.tag(words)
+            return taggedWords.map(taggedWord => taggedWord[1])
+        }
+        catch(e) {
+            console.log('Error getting tags')
+        }
     }
 
     _testApostropheWord(word, list) {

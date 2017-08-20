@@ -232,31 +232,31 @@ it('gets predictive words', () => {
     expect(predicitedWords.length).toBe(0)
 })
 
-it('gets suggested words', () => {
+it('gets suggested words', async () => {
     const wrapper = mount(
         <App {...props} output="ca" predictiveWords={predictiveWords} />
     )
-    let suggestedWords = wrapper.instance().getSuggestedWords()
+    let suggestedWords = await wrapper.instance().getSuggestedWords()
     expect(suggestedWords[0].indexOf('ca') > -1).toBe(true)
     wrapper.setProps({ output: 'br' })
-    suggestedWords = wrapper.instance().getSuggestedWords()
+    suggestedWords = await wrapper.instance().getSuggestedWords()
     expect(suggestedWords[0].indexOf('br') > -1).toBe(true)
     wrapper.setProps({
         output: 'I think ',
     })
-    suggestedWords = wrapper.instance().getSuggestedWords()
-    expect(suggestedWords[0]).toBe('when')
-    expect(suggestedWords[1]).toBe('things')
-    expect(suggestedWords[2]).toBe('before')
+    suggestedWords = await wrapper.instance().getSuggestedWords()
+    expect(suggestedWords[0]).toBe('?')
+    expect(suggestedWords[1]).toBe('when')
+    expect(suggestedWords[2]).toBe('things')
 
     wrapper.setProps({
         output: 'Apples are ',
         predictiveWords: {},
     })
-    suggestedWords = wrapper.instance().getSuggestedWords()
-    expect(suggestedWords[0]).toBe(config.gridParts.suggestedWords[0])
-    expect(suggestedWords[1]).toBe(config.gridParts.suggestedWords[1])
-    expect(suggestedWords[2]).toBe(config.gridParts.suggestedWords[2])
+    suggestedWords = await wrapper.instance().getSuggestedWords()
+    expect(suggestedWords[0]).toBe('?')
+    expect(suggestedWords[1]).toBe(config.gridParts.suggestedWords[0])
+    expect(suggestedWords[2]).toBe(config.gridParts.suggestedWords[1])
 
     wrapper.setProps({
         output: 'What do ',
@@ -276,30 +276,30 @@ it('gets suggested words', () => {
             }
         },
     })
-    suggestedWords = wrapper.instance().getSuggestedWords()
-    expect(suggestedWords[0]).toBe('I')
-    expect(suggestedWords[1]).not.toBe('I')
+    suggestedWords = await wrapper.instance().getSuggestedWords()
+    expect(suggestedWords[0]).toBe('?')
+    expect(suggestedWords[1]).toBe('I')
     expect(suggestedWords[2]).not.toBe('I')
 
     wrapper.setProps({
         output: 'dad’',
         predictiveWords: {},
     })
-    suggestedWords = wrapper.instance().getSuggestedWords()
+    suggestedWords = await wrapper.instance().getSuggestedWords()
     expect(suggestedWords.indexOf('dad’s')).toBeGreaterThan(-1)
 
     wrapper.setProps({
         output: 'dad\'',
         predictiveWords: {},
     })
-    suggestedWords = wrapper.instance().getSuggestedWords()
+    suggestedWords = await wrapper.instance().getSuggestedWords()
     expect(suggestedWords.indexOf('dad\'s')).toBeGreaterThan(-1)
 
     wrapper.setProps({
         output: 'it’',
         predictiveWords: {},
     })
-    suggestedWords = wrapper.instance().getSuggestedWords()
+    suggestedWords = await wrapper.instance().getSuggestedWords()
     expect(suggestedWords.indexOf('it’s')).toBeGreaterThan(-1)
     expect(suggestedWords.indexOf('it’ll')).toBeGreaterThan(-1)
 
@@ -307,21 +307,22 @@ it('gets suggested words', () => {
         output: 'Apples ',
         predictiveWords: predictiveWords,
     })
-    suggestedWords = wrapper.instance().getSuggestedWords()
-    expect(suggestedWords[0]).toBe('taste')
+    suggestedWords = await wrapper.instance().getSuggestedWords()
+    expect(suggestedWords[0]).toBe('?')
+    expect(suggestedWords[1]).toBe('taste')
 
     wrapper.setProps({
         output: 'What is your name ',
         predictiveWords: {},
     })
-    suggestedWords = wrapper.instance().getSuggestedWords()
+    suggestedWords = await wrapper.instance().getSuggestedWords()
     expect(suggestedWords[0]).toBe('?')
 
     wrapper.setProps({
         output: 'Hello you.',
         predictiveWords: {},
     })
-    suggestedWords = wrapper.instance().getSuggestedWords()
+    suggestedWords = await wrapper.instance().getSuggestedWords()
     expect(suggestedWords[0]).toBe(' I')
     expect(suggestedWords[1]).toBe(' you')
 
@@ -329,7 +330,7 @@ it('gets suggested words', () => {
         output: 'Hello you!',
         predictiveWords: {},
     })
-    suggestedWords = wrapper.instance().getSuggestedWords()
+    suggestedWords = await wrapper.instance().getSuggestedWords()
     expect(suggestedWords[0]).toBe(' I')
     expect(suggestedWords[1]).toBe(' you')
 
@@ -337,7 +338,7 @@ it('gets suggested words', () => {
         output: 'a',
         predictiveWords: {},
     })
-    suggestedWords = wrapper.instance().getSuggestedWords()
+    suggestedWords = await wrapper.instance().getSuggestedWords()
     expect(suggestedWords[0]).toBe(config.chars.space)
     expect(suggestedWords[1]).toBe('and')
 
@@ -345,7 +346,7 @@ it('gets suggested words', () => {
         output: 'a ',
         predictiveWords: {},
     })
-    suggestedWords = wrapper.instance().getSuggestedWords()
+    suggestedWords = await wrapper.instance().getSuggestedWords()
     expect(suggestedWords[0]).not.toBe(config.chars.space)
 })
 
